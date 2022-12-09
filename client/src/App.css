@@ -1,0 +1,52 @@
+.App {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.maintitle {
+  position: relative;
+  margin: 10rem 0 2rem 0;
+  width: 100%;
+  height: 100%;
+  font-size: 5rem;
+}
+
+.link_lastreport {
+  width: 7rem;
+  height: 5rem;
+}
+
+.dep_box {
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.dep_list {
+  margin: 0.5rem;
+  width: 12rem;
+  height: 9rem;
+  background-color: rgb(194, 224, 204);
+  position: relative;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.dep_list:hover {
+  background-color: rgb(107, 131, 119);
+}
+.dep_list p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 2rem;
+  width: fit-content;
+  font-size: 1.5rem;
+}
+
+
+

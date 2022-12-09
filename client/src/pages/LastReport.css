@@ -1,0 +1,581 @@
+.LastReport {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 1700px;
+  height: 2600px;
+  background-image: url('../images/YouthReport2.jpg');
+}
+
+.buttons {
+  position: absolute;
+  top: 50px;
+  left: 120px;
+  width: 1400px;
+  height: 100px;
+  display: flex;
+}
+
+.button1 {
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 120px;
+  height: 50px;
+  font-size: 20px;
+  background-color: #fcfbe6;
+  cursor: pointer;
+  transition: all 0.5s;
+  z-index: 9;
+}
+.button1:hover {
+  background-color: #6f6e5a;
+  font-weight: bold;
+}
+
+
+
+.inputs {
+  position: absolute;
+  width: 1600px;
+  height: 2200px;
+  top: -6px;
+  left: -8px;
+}
+
+input {
+  text-align: center;
+  font-size: 25px;
+  border: 1px solid #b1b1ae; 
+  border-radius: 5px;
+  z-index: 1;
+  position: absolute;
+}
+
+
+
+.부서 {
+  top: 412px;
+  left: 285px;
+  width: 780px;
+  height: 50px;
+}
+
+
+.날짜 {
+  top: 528px;
+  height: 50px;
+  width: 100px;
+}
+.날짜.년 {
+  left: 285px;
+  width: 150px;
+}
+.날짜.월 {
+  left: 550px;
+}
+.날짜.일 {
+  left: 760px;
+}
+.날짜.째주 {
+  left: 950px;
+}
+
+.예배 {
+  top: 745px;
+  width: 230px;
+  height: 50px;
+}
+.예배.예배기도자 {
+  left: 285px;
+}
+.예배.설교본문 {
+  left: 535px;
+}
+.예배.설교자 {
+  left: 787px;
+}
+.예배.설교제목 {
+  left: 1040px;
+  width: 480px;
+}
+
+
+.헌금 {
+  top: 945px;
+  width: 230px;
+  height: 50px;
+}
+.헌금1 {
+  left: 285px;
+}
+.헌금2 {
+  left: 535px;
+}
+.헌금3 {
+  left: 787px;
+}
+.헌금4 {
+  left: 1040px;
+}
+.헌금.합계 {
+  left: 1293px;
+}
+
+.출석-반 {
+  font-size: 18px;
+  width: 57px;
+  height: 50px;
+  position: absolute;
+  background-color: #fcfbe6;
+  border: 1px solid #cecca9;
+  top: 1075px;
+}
+.출석-반.출석-반1 {
+  left: 432px;
+}
+.출석-반.출석-반2 {
+  left: 533px;
+}
+.출석-반.출석-반3 {
+  left: 634px;
+}
+.출석-반.출석-반4 {
+  left: 734px;
+}
+.출석-반.출석-반5 {
+  left: 835px;
+}
+.출석-반.출석-반6 {
+  left: 936px;
+}
+.출석-반.출석-반7 {
+  left: 1037px;
+}
+.출석-반.출석-반8 {
+  left: 1138px;
+}
+.출석-반.출석-반9 {
+  left: 1239px;
+}
+
+
+.학년_세-1 {
+  font-size: 20px;
+  top: 1145px;
+  left: 280px;
+  width: 48px;
+  height: 50px;
+}
+.학년_세-2 {
+  font-size: 20px;
+  top: 1215px;
+  left: 280px;
+  width: 48px;
+  height: 50px;
+  background-color: #eaf5ef;
+  border: 1px solid #a1b2a8;
+}
+.학년_세-3 {
+  font-size: 20px;
+  top: 1287px;
+  left: 280px;
+  width: 48px;
+  height: 50px;
+}
+
+
+.출석1 {
+  width: 80px;
+  height: 50px;
+  top: 1145px;
+}
+.출석1.출석1-1 {
+  left: 435px;
+}
+.출석1.출석1-2 {
+  left: 537px;
+}
+.출석1.출석1-3 {
+  left: 638px;
+}
+.출석1.출석1-4 {
+  left: 739px;
+}
+.출석1.출석1-5 {
+  left: 840px;
+}
+.출석1.출석1-6 {
+  left: 941px;
+}
+.출석1.출석1-7 {
+  left: 1042px;
+}
+.출석1.출석1-8 {
+  left: 1143px;
+}
+.출석1.출석1-9 {
+  left: 1244px;
+}
+.출석1.출석1-10 {
+  left: 1345px;
+}
+.출석1.출석1-11 {
+  text-align: center;
+  font-size: 25px;
+  border-radius: 5px;
+  z-index: 1;
+  position: absolute;
+  left: 1446px;
+  background-color: #e6e7e9;
+  border: 1px solid #b7b8b9;
+}
+
+.출석2 {
+  background-color: #eaf5ef;
+  border: 1px solid #a1b2a8;
+  width: 80px;
+  height: 50px;
+  top: 1215px;
+}
+
+.출석2.출석2-1 {
+  left: 435px;
+}
+.출석2.출석2-2 {
+  left: 537px;
+}
+.출석2.출석2-3 {
+  left: 638px;
+}
+.출석2.출석2-4 {
+  left: 739px;
+}
+.출석2.출석2-5 {
+  left: 840px;
+}
+.출석2.출석2-6 {
+  left: 941px;
+}
+.출석2.출석2-7 {
+  left: 1042px;
+}
+.출석2.출석2-8 {
+  left: 1143px;
+}
+.출석2.출석2-9 {
+  left: 1244px;
+}
+.출석2.출석2-10 {
+  left: 1345px;
+}
+.출석2.출석2-11 {
+  left: 1446px;
+  background-color: #e6e7e9;
+  border: 1px solid #b7b8b9;
+}
+
+
+.출석3 {
+  top: 1287px;
+  width: 80px;
+  height: 50px;
+}
+.출석3.출석3-1 {
+  left: 435px;
+}
+.출석3.출석3-2 {
+  left: 537px;
+}
+.출석3.출석3-3 {
+  left: 638px;
+}
+.출석3.출석3-4 {
+  left: 739px;
+}
+.출석3.출석3-5 {
+  left: 840px;
+}
+.출석3.출석3-6 {
+  left: 941px;
+}
+.출석3.출석3-7 {
+  left: 1042px;
+}
+.출석3.출석3-8 {
+  left: 1143px;
+}
+.출석3.출석3-9 {
+  left: 1244px;
+}
+.출석3.출석3-10 {
+  left: 1345px;
+}
+.출석3.출석3-11 {
+  left: 1446px;
+  background-color: #e6e7e9;
+  border: 1px solid #b7b8b9;
+}
+
+
+
+.출석총원-재적 {
+  width: 80px;
+  height: 50px;
+  z-index: 1;
+  background-color: #fcfbe6;
+  border: 1px solid #cecca9;
+  top: 1360px;
+  left: 1295px;
+}
+.출석총원-계 {
+  top: 1360px;
+  width: 80px;
+  height: 50px;
+  left: 1446px;
+  background-color: #e6e7e9;
+  border: 1px solid #b7b8b9;
+}
+
+
+
+
+
+.결석자 {
+  width: 290px;
+  height: 50px;
+}
+
+.결석자.결석_1 {
+  left: 290px;
+  top: 1560px;
+}
+.결석자.결석_2 {
+  left: 597px;
+  top: 1560px;
+}
+.결석자.결석_3 {
+  left: 917px;
+  top: 1560px;
+}
+.결석자.결석_4 {
+  left: 1230px;
+  top: 1560px;
+}
+
+.결석자.결석_5 {
+  left: 290px;
+  top: 1631px;
+}
+.결석자.결석_6 {
+  left: 597px;
+  top: 1631px;
+}
+.결석자.결석_7 {
+  left: 917px;
+  top: 1631px;
+}
+.결석자.결석_8 {
+  left: 1230px;
+  top: 1631px;
+}
+
+.결석자.결석_9 {
+  left: 290px;
+  top: 1702px;
+}
+.결석자.결석_10 {
+  left: 597px;
+  top: 1702px;
+}
+.결석자.결석_11 {
+  left: 917px;
+  top: 1702px;
+}
+.결석자.결석_12 {
+  left: 1230px;
+  top: 1702px;
+}
+
+.결석자.결석_13 {
+  left: 290px;
+  top: 1773px;
+}
+.결석자.결석_14 {
+  left: 597px;
+  top: 1773px;
+}
+.결석자.결석_15 {
+  left: 917px;
+  top: 1773px;
+}
+.결석자.결석_16 {
+  left: 1230px;
+  top: 1773px;
+}
+
+
+.결석자.결석_17 {
+  left: 290px;
+  top: 1844px;
+}
+.결석자.결석_18 {
+  left: 597px;
+  top: 1844px;
+}
+.결석자.결석_19 {
+  left: 917px;
+  top: 1844px;
+}
+.결석자.결석_20 {
+  left: 1230px;
+  top: 1844px;
+}
+
+.결석자.결석_21 {
+  left: 290px;
+  top: 1915px;
+}
+.결석자.결석_22 {
+  left: 597px;
+  top: 1915px;
+}
+.결석자.결석_23 {
+  left: 917px;
+  top: 1915px;
+}
+.결석자.결석_24 {
+  left: 1230px;
+  top: 1915px;
+}
+
+.결석자.결석_25 {
+  left: 290px;
+  top: 1981px;
+}
+.결석자.결석_26 {
+  left: 597px;
+  top: 1981px;
+}
+.결석자.결석_27 {
+  left: 917px;
+  top: 1981px;
+}
+.결석자.결석_28 {
+  left: 1230px;
+  top: 1981px;
+}
+
+.결석자.결석_29 {
+  left: 290px;
+  top: 2050px;
+}
+.결석자.결석_30 {
+  left: 597px;
+  top: 2050px;
+}
+.결석자.결석_31 {
+  left: 917px;
+  top: 2050px;
+}
+.결석자.결석_32 {
+  left: 1230px;
+  top: 2050px;
+}
+.결석자.결석_33 {
+  left: 290px;
+  top: 2120px;
+}
+.결석자.결석_34 {
+  left: 597px;
+  top: 2120px;
+}
+.결석자.결석_35 {
+  left: 917px;
+  top: 2120px;
+}
+.결석자.결석_36 {
+  left: 1230px;
+  top: 2120px;
+}
+.결석자.결석_37 {
+  left: 290px;
+  top: 2190px;
+}
+.결석자.결석_38 {
+  left: 597px;
+  top: 2190px;
+}
+.결석자.결석_39 {
+  left: 917px;
+  top: 2190px;
+}
+.결석자.결석_40 {
+  left: 1230px;
+  top: 2190px;
+}
+.결석자.결석_41 {
+  left: 290px;
+  top: 2260px;
+}
+.결석자.결석_42 {
+  left: 597px;
+  top: 2260px;
+}
+.결석자.결석_43 {
+  left: 917px;
+  top: 2260px;
+}
+.결석자.결석_44 {
+  left: 1230px;
+  top: 2260px;
+}
+.결석자.결석_45 {
+  left: 290px;
+  top: 2330px;
+}
+.결석자.결석_46 {
+  left: 597px;
+  top: 2330px;
+}
+.결석자.결석_47 {
+  left: 917px;
+  top: 2330px;
+}
+.결석자.결석_48 {
+  left: 1230px;
+  top: 2330px;
+}
+
+
+.button2 {
+  background-color: #fcfbe6;
+  font-size: 20px;
+  width: 150px;
+  height: 80px;
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.button2:hover {
+  background-color: #6f6e5a;
+  font-weight: bold;
+}
+
+.uplordButton1 {
+  top: 180px;
+  left: 1350px;
+}
+
+.savebutton {
+  top: 2420px;
+  left: 1350px;
+}
+

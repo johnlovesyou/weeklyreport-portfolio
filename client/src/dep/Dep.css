@@ -1,0 +1,11 @@
+.dep_main {
+  position: relative;
+}
+
+.dep_inputbox {
+  margin-top: 50px;
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  left: 50px;
+}
