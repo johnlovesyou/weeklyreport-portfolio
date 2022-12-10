@@ -31,6 +31,7 @@ function Dep1(props) {
       <Deptable dep1={dep1[0]} group={group1_1}></Deptable>
       <Deptable dep1={dep1[1]} group={group1_2}></Deptable>
       
+      
       <button onClick={()=>{
           console.log(group1_1)
           }}> 테스트 </button>   

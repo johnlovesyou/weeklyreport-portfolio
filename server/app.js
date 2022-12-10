@@ -36,7 +36,7 @@ db.connect();
 
 
 app.get('/dep1', function(요청, 응답) {
-  db.query('select dep1.id,groupname,name,day1,day2,day3,day4,day5,day6,day7,day8,day9,day10 from dep1 left join group1_1 on dep1.groupname = group1_1.dep'
+  db.query('select dep1.id,dep1.groupname,name,day1,day2,day3,day4,day5,day6,day7,day8,day9,day10 from dep1 left join group1_1 on dep1.groupname = group1_1.groupname'
   , function (error, result) {
     console.log(result)
     if (error) {console.log(error);}
@@ -69,7 +69,7 @@ app.post('/nameinput', function(요청, 응답){
 app.delete('/dep_delete', function(요청, 응답) {
   console.log(요청.body);
   db.query(`DELETE FROM group1_1
-  WHERE id='${요청.body.id}' AND dep='${요청.body.groupname}' AND name='${요청.body.name}'`,
+  WHERE id='${요청.body.id}' AND groupname='${요청.body.groupname}' AND name='${요청.body.name}'`,
   function(error, result){
     if(error){throw error;}
   })

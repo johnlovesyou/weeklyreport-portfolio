@@ -28,18 +28,9 @@ let 부서이름 = createSlice({
     '초등2부', '초등3부', 
     '중등부', '고등부'
   ]
-
 })
 
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
 
-  let [년, 년변경] = useState(year)
-  let [월, 월변경] = useState(month)
-  let [일, 일변경] = useState(day)
-  let [째주, 째주변경] = useState('')
 
 let 사역자 = createSlice({
   name : '사역자',
