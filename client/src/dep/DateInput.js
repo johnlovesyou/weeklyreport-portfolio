@@ -1,9 +1,10 @@
+/*eslint-disable*/
 import { React, useMemo, useState } from 'react';
 import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import './NameInput.css'
+import './DateInput.css'
 
-function NameInput(props) {
+function DateInput(props) {
 
   let navigate = useNavigate();
 
@@ -31,24 +32,19 @@ function NameInput(props) {
 
 
   return (
-    <div className='nameinput'>
+    <div className='dateinput'>
       
-      <div className='nameinput_inputbox'>
-        <input type="text" className="input_none" onChange={(e)=>{setid(e.target.value)}}/>
-        <div>
-          <div className='nameinput_text'>학년</div>
-          <div><input type="text" className="input" onChange={(e)=>{setdep(e.target.value)}}/></div>
-        </div>
-        <div>
-          <div className='nameinput_text'>이름</div>
-          <div><input type="text" className="input" onChange={(e)=>{setname(e.target.value)}}/></div>
-        </div>  
+      <div className='dateinput_input'>
+        <div className="dep_group"><div>하이</div></div>
       </div>
 
-      <button className='nameinput_button' 
+
+
+
+      <button className='dateinput_button' 
 
         onClick={()=>{
-        axios.post('/nameinput', {
+        axios.post('/dateinput', {
           id : id,
           dep : dep,
           name : name,
@@ -61,8 +57,14 @@ function NameInput(props) {
 
       }}>입력하기</button> 
 
+      <button className='nameinput_button' 
+        onClick={()=>{
+          navigate('/dep1')
+        }}
+      >돌아가기</button> 
+
     </div>
   );
 }
 
-export default NameInput;
+export default DateInput;

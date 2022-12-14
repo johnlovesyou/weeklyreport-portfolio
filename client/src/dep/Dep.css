@@ -1,11 +1,30 @@
 .dep_main {
+  
+}
+.dep_main_deptable {
+  margin-top: 1rem;
+}
+.dep_main_button {
   position: relative;
 }
-
-.dep_inputbox {
-  margin-top: 50px;
+.dep_dateinputbutton,
+.dep_nameinputbutton, 
+.dep_nameinputtest,
+.dep_homebutton {
   position: absolute;
+  left: 3rem;
+  top: 0;
+  margin-top: 50px;
   width: 200px;
   height: 50px;
-  left: 50px;
+}
+
+.dep_dateinputbutton {
+  top: 5rem;
+}
+.dep_nameinputtest {
+  top: 10rem;
+}
+.dep_homebutton {
+  top: 15rem;
 }

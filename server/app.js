@@ -26,6 +26,7 @@ app.use(cors());
 
 // 내 컴퓨터 용
 var mysql = require('mysql');
+const { request } = require('https');
 var db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -35,45 +36,131 @@ var db = mysql.createConnection({
 db.connect();
 
 
-app.get('/dep1', function(요청, 응답) {
-  db.query('select dep1.id,dep1.groupname,name,day1,day2,day3,day4,day5,day6,day7,day8,day9,day10 from dep1 left join group1_1 on dep1.groupname = group1_1.groupname'
+// dep //
+app.get('/dep/:id', function(요청, 응답) {
+  const dep_id = 요청.params.id
+  db.query(`
+  (select * from dep${dep_id} inner join group${dep_id}_1 on dep${dep_id}.depgroupname = group${dep_id}_1.groupname)
+  union
+  (select * from dep${dep_id} inner join group${dep_id}_2 on dep${dep_id}.depgroupname = group${dep_id}_2.groupname)
+  union
+  (select * from dep${dep_id} inner join group${dep_id}_3 on dep${dep_id}.depgroupname = group${dep_id}_3.groupname)
+  union
+  (select * from dep${dep_id} inner join group${dep_id}_4 on dep${dep_id}.depgroupname = group${dep_id}_4.groupname)
+  union
+  (select * from dep${dep_id} inner join group${dep_id}_5 on dep${dep_id}.depgroupname = group${dep_id}_5.groupname)
+  union
+  (select * from dep${dep_id} inner join group${dep_id}_6 on dep${dep_id}.depgroupname = group${dep_id}_6.groupname)
+  union
+  (select * from dep${dep_id} inner join group${dep_id}_7 on dep${dep_id}.depgroupname = group${dep_id}_7.groupname)
+  union
+  (select * from dep${dep_id} inner join group${dep_id}_8 on dep${dep_id}.depgroupname = group${dep_id}_8.groupname)
+  union
+  (select * from dep${dep_id} inner join group${dep_id}_9 on dep${dep_id}.depgroupname = group${dep_id}_9.groupname)
+  union
+  (select * from dep${dep_id} inner join group${dep_id}_10 on dep${dep_id}.depgroupname = group${dep_id}_10.groupname)
+  order by depgroupname`
   , function (error, result) {
-    console.log(result)
     if (error) {console.log(error);}
     응답.send(result)
   });
 })
 
 
-app.post('/nameinput', function(요청, 응답){
-  console.log(요청.body);
-  db.query(`INSERT INTO dep1 (groupname) values (?)`, []
-  , function(error, result){
-  if(error){
-    throw error;
-  }
-  })
-  db.query(`INSERT INTO group1_1 (dep, name, day1, day2, day3, day4, day5, day6, day7, day8, day9, day10)
-   VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-  [요청.body.dep, 요청.body.name, 요청.body.day1, 요청.body.day2, 요청.body.day3, 요청.body.day4,
-    요청.body.day5, 요청.body.day6, 요청.body.day7, 요청.body.day8, 요청.body.day9, 요청.body.day10], 
-  function(error, result){
-  if(error){
-    throw error;
-  }
-  })
+// (select * from dep1 inner join group1_1 on dep1.depgroupname = group1_1.groupname)
+// union
+// (select * from dep1 inner join group1_2 on dep1.depgroupname = group1_2.groupname)
+// union
+// (select * from dep1 inner join group1_3 on dep1.depgroupname = group1_3.groupname)
+// union
+// (select * from dep1 inner join group1_4 on dep1.depgroupname = group1_4.groupname)
+// union
+// (select * from dep1 inner join group1_5 on dep1.depgroupname = group1_5.groupname)
+// union
+// (select * from dep1 inner join group1_6 on dep1.depgroupname = group1_6.groupname)
+// union
+// (select * from dep1 inner join group1_7 on dep1.depgroupname = group1_7.groupname)
+// union
+// (select * from dep1 inner join group1_8 on dep1.depgroupname = group1_8.groupname)
+// union
+// (select * from dep1 inner join group1_9 on dep1.depgroupname = group1_9.groupname)
+// union
+// (select * from dep1 inner join group1_10 on dep1.depgroupname = group1_10.groupname)
+// order by depgroupname
 
+
+// namemodify //
+app.get('/namemodify', function(요청, 응답) {
+  db.query(`
+  (select depmain.depname_main, depgroupname from depmain inner join dep1 on depmain.depname_main = dep1.depname)
+  union
+  (select depmain.depname_main, depgroupname from depmain inner join dep3 on depmain.depname_main = dep3.depname)
+  order by depname_main
+  `
+  , function (error, result) {
+    if (error) {console.log(error);}
+    응답.send(result)
+  });
+})
+
+
+app.post('/namemodify', function(요청, 응답){
+  console.log(요청.body);
+  const depnumber = 요청.body.depnumber
+  const group = 요청.body.newgroup;
+  db.query(`INSERT INTO group${group} (groupname, name) VALUES (?, ?)`,
+  [요청.body.newgroup, 요청.body.newgroupname]
+  , function(error, result){if(error){throw error}})
+
+  if (요청.body.depnumber == '1') {
+  
+  }
+  else if (요청.body.depnumber == '3') {
+    db.query(`INSERT INTO group${group} (groupname, name) VALUES (?, ?)`,
+    [요청.body.newgroup, 요청.body.newgroupname]
+    , function(error, result){if(error){throw error}})
+  }
 });
+
+
+
+
+
+
+// app.post('/nameinput', function(요청, 응답){
+//   console.log(요청.body);
+//   db.query(`INSERT INTO group1_1 (dep, name, day1, day2, day3, day4, day5, day6, day7, day8, day9, day10)
+//    VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+//   [요청.body.dep, 요청.body.name, 요청.body.day1, 요청.body.day2, 요청.body.day3, 요청.body.day4,
+//     요청.body.day5, 요청.body.day6, 요청.body.day7, 요청.body.day8, 요청.body.day9, 요청.body.day10], 
+//   function(error, result){
+//   if(error){
+//     throw error;
+//   }
+//   })
+// });
+
+
+
 
 
 app.delete('/dep_delete', function(요청, 응답) {
   console.log(요청.body);
-  db.query(`DELETE FROM group1_1
-  WHERE id='${요청.body.id}' AND groupname='${요청.body.groupname}' AND name='${요청.body.name}'`,
-  function(error, result){
-    if(error){throw error;}
-  })
+  if (요청.body.groupname == '1-1') {
+    db.query(`DELETE FROM group1_1
+    WHERE id='${요청.body.id}' AND groupname='${요청.body.groupname}' AND name='${요청.body.name}'`,
+    function(error, result){if(error){throw error;}})
+  }
+  else if (요청.body.groupname == '1-2') {
+    db.query(`DELETE FROM group1_2
+    WHERE id='${요청.body.id}' AND groupname='${요청.body.groupname}' AND name='${요청.body.name}'`,
+    function(error, result){if(error){throw error;}})
+  }
 })
+
+
+
+
 
 
 

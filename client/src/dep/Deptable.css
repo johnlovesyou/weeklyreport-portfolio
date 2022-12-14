@@ -3,77 +3,61 @@
   display: flex;
   margin-bottom: 10px;
 }
-.dep_agebox {
-  width: 120px;
-  height: calc('.dep_box3');
+
+.dep_agenamebox {
+  position: fixed;
   display: flex;
-  
+  z-index: 9;
+  background-color: #fff;
 }
-.dep_agebox .dep_empty {
+.dep_empty {
   width: 20px;
-  height: 100%;
 }
-.dep_agebox .dep_group {
+.dep_group {
   position: relative;
   width: 100px;
-  height: 100%;
   border: 0.1px solid rgb(187, 187, 187);
 }
-.dep_agebox .dep_group div {
-  position: absolute;
-  width: 40px;
-  height: 18px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+.dep_group div {
+  display: flex;
+  width: 100%; 
+  height: 100%; 
+  align-items: center;
+  justify-content: center;
+}
+.dep_name {
+  position: relative;
+}
+.dep_namebox {
+  width: 100px;
+  height: 31px;
+  border: 0.1px solid rgb(187, 187, 187);
+  background-color: #fcfbe6;
+}
+.dep_namebox div {
+  display: flex;
+  width: 100%; 
+  height: 100%; 
+  align-items: center;
+  justify-content: center;
 }
 
+
+
 .dep_nametablebox {
-  width: 1780px;
-  height: calc('.dep_box3');
+  position: relative;
+  width: 1680px;
+  left: 220px;
 }
 .dep_nametablebox .dep_nametableboxwrapper {
   display: flex;
 }
-
-.dep_nametablebox .dep_namebox {
-  position: relative;
-  width: 100px;
-  height: 30px;
-  background-color: rgb(178, 248, 185);
-} 
-.dep_nametablebox .dep_namebox p {
-  position: absolute;
-  width: 70px;
-  height: 1rem;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  
-}
-
-.dep_nametablebox .dep_tablebox {
-  width: 1580px;
-  height: fit-content;
-}
-.dep_deptable {
-  width: 1580px;
-  height: 30px;
-  display: flex;
-}
-.dep_deptable .dep_deptable_table {
-  width: 1580px;
-}
-.dep_deptable .dep_deptable_table .dep_deptable_date {
-  width: calc(1580px / 52);
+.dep_nametablebox .dep_deptable_date {
+  width: calc(1580px / 53);
   height: 30px;
   border: 0.1px solid rgb(187, 187, 187);
   vertical-align: middle;
 } 
-.color_1 {
+.dep_nametablebox .color_1 {
   background-color: rgb(198, 252, 213);
-}
+} 

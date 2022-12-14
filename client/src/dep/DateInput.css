@@ -1,24 +1,48 @@
-.nameinput {
+.dateinput {
   margin: 20px;
 }
-input {
-  width: 100px;
-  height: 50px;
+.dateinput_input {
+  margin: auto;
+  width: 500px;
+  height: 100px;
+  display: flex;
+  margin-top: 50px; 
+  margin-bottom: 50px; 
 }
-.nameinput_text {
-
-
+.dateinput_inputbox {
+  position: relative;
+  margin: auto;
+  width: 200px;
+  height: 100px;
 }
-input[type="text"] {
-  text-align: center;
+.dateinput_inputbox .text {
+  position: absolute;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  font-size: 1.5rem;
 }
-
-
+.dateinput_inputbox .input {
+  position: absolute;
+  top: 30px;
+  left: 0; 
+  width: 200px;
+  height: 70px;
+}
 .input_none {
   display: none;
 }
 .color_1 {
   background-color: rgb(198, 252, 213);
+}
+
+.dateinput_button {
+  width: 100px;
+  height: 50px;
+}
+
+input[type="text"] {
+  text-align: center;
 }
 
 /* 
