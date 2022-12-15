@@ -59,6 +59,10 @@ function NameModify(props) {
   let [newgroup, setnewgroup] = useState('')
   let [newgroupname, setnewgroupname] = useState('')
 
+
+  // 테스트박스
+  let [test1, settest1] = useState('')
+  let [test2, settest2] = useState('')
   
 
   var depnamechange = (dep) => {
@@ -67,47 +71,59 @@ function NameModify(props) {
     else if (dep == 'dep3') {return '유치2부'}
   };
 
-  var depshowchange = (dep) => {
+  var depchange_number = (dep) => {
     if (dep == '영유아2부') {return '1'} 
+    else if (dep == '영유아3부') {return '2'}
     else if (dep == '유치2부') {return '3'}
   };
 
-  var depchange_reverse = (dep) => {
-    if (dep == '영유아2부') {return '1'} 
-    else if (dep == '유치2부') {return '3'}
+  
+  var dep1groupchange_number = (dep) => {
+    if (dep == '1-1') {return '1'} 
+    else if (dep == '1-2') {return '2'}
+    else if (dep == '1-3') {return '3'}
   };
 
-
-  var groupchange_reverse = (group) => {
-    for (var i = 1; i < 101; i++) {
-      for (var a = 1; a < 11; i++) {
-        group == i;
-        return `${i}_${a}`
-      }
-      
-    }
-
-    // if () {return '1_1'} 
-    // else if (group == '1-2') {}
-    // else if (group == '1-3') {return '1_3'}
-    // else if (group == '1-4') {return '1_4'}
-    // else if (group == '1-5') {return '1_5'}
-    // else if (group == '1-6') {return '1_6'}
-    // else if (group == '1-7') {return '1_7'}
-    // else if (group == '1-8') {return '1_8'}
-    // else if (group == '1-9') {return '1_9'}
-    // else if (group == '1-10') {return '1_10'}
-    
-    
+  var dep3groupchange_number = (dep) => {
+    if (dep == '1-1') {return '1'} 
+    else if (dep == '1-2') {return '2'}
+    else if (dep == '1-3') {return '3'}
   };
-
 
   return (
     <div className='nameinput'>
 
-
       {/* 상단 선택 박스 */}
       <div className='nameinput_wrapper'>
+
+      {/* test 박스 */}
+      <div className='testbox'>
+        <div className='testinpunt2'>
+          <input type="text" onChange={(e)=>{
+            settest1(e.target.value)
+          }}></input>을</div>
+        <div className='testinpunt2'>
+        <input type="text" onChange={(e)=>{
+          settest2(e.target.value)
+        }}></input>으로</div>
+        
+        <button className='testbutton2' 
+        onClick={()=>{
+        axios.post('/testmodify', {
+          testname1 : settest1,
+          testname2 : settest2
+        }).then((결과)=>{})
+        .catch(()=>{
+          console.log('실패함')
+        })
+      }}>테이블 이름 수정하기</button>
+        <div>
+
+        </div>
+      </div>
+
+
+
 
         {/* 각부서 선택 */}
           <div className='nameinput_box1'>
@@ -122,7 +138,7 @@ function NameModify(props) {
                 onChange={(e)=>{
                 let copy = e.target.value
                 setdepname(copy)
-                let showdata = depshowchange(copy)
+                let showdata = depchange_number(copy)
                 setshow(showdata)
               }}>
                 <option>부서</option>
@@ -208,8 +224,9 @@ function NameModify(props) {
       <button className='nameinput_button' 
         onClick={()=>{
         axios.post('/namemodify', {
-          depnumber : depchange_reverse(depname),
-          newgroup : groupchange_reverse(newgroup),
+          depnumber : depchange_number(depname),
+          groupnumber : newgroup,
+          newgroup : newgroup,
           newgroupname : newgroupname,
         }).then((결과)=>{})
         .catch(()=>{
@@ -228,12 +245,19 @@ function NameModify(props) {
 
       <button className='test_button' 
         onClick={()=>{
-          console.log(newgroup)
+          console.log()
         }}
       >테스트</button>
 
       
   
+
+  
+
+
+
+      
+
 
     </div>
   );
