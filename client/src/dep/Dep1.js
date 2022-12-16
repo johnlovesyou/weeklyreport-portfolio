@@ -14,7 +14,7 @@ function Dep1(props) {
   let navigate = useNavigate();
 
   useMemo(()=>{ return (
-    axios.get(`/dep/1`).then((결과)=>{
+    axios.get(`/dep/1`).then((결과)=>{ //부서별 수정할 것
       console.log(결과.data)
       let copy = [...결과.data]
       setgroup(copy)
@@ -22,12 +22,11 @@ function Dep1(props) {
   ) }, [])
 
   let [group, setgroup] = useState(Basicgroup)
-
-  let copy = group.map(e => e.groupname)
+  let copy = group.map(e => e.gn)
   let dep1 = [...new Set(copy)]
 
-  let group1_1 = group.filter(e => e.groupname === "1-1")
-  let group1_2 = group.filter(e => e.groupname === "1-2")
+  let group1_1 = group.filter(e => e.gn === "1-1") //부서별 수정할 것
+  let group1_2 = group.filter(e => e.gn === "1-2") //부서별 수정할 것
   
 
   return (
@@ -51,7 +50,7 @@ function Dep1(props) {
 
       
         <button className='dep_nameinputtest' onClick={()=>{
-            
+            console.log(dep1)
         }}> 테스트 </button> 
 
     

@@ -8,122 +8,63 @@ import './NameModify.css'
 import Basicdepmain from './Basicdepmain.js';
 import Basicgroup from './Basicgroup.js';
 import Basicgroup2 from './Basicgroup2.js';
+import Basicdep from './Basicdep';
 
 function NameModify(props) {
 
   let state = useSelector((state) => { return state } )
   let navigate = useNavigate();
-
-  useMemo(()=>{ return (
-    axios.get('/namemodify').then((결과)=>{
-      console.log(결과.data)
-      let copy = [...결과.data]
-      setdep(copy)
-    }),
-    axios.get('/dep/1').then((결과)=>{
-      console.log(결과.data)
-      let copy = [...결과.data]
-      setgroup1(copy)
-    }),
-    axios.get('/dep/3').then((결과)=>{
-      console.log(결과.data)
-      let copy = [...결과.data]
-      setgroup3(copy)
-    })
-  ) }, [])
-
-
-  
-  
-
   let [show, setshow] = useState('')
 
-  // 부서이름선택
-  let [dep, setdep] = useState(Basicdepmain)
-  let copy = dep.map(e => e.depname_main)
-  let depcopy = [...new Set(copy)]
-  
-  // 각부서 그룹이름 선택
-  let [depname, setdepname] = useState('')
-  let [group1, setgroup1] = useState(Basicgroup)
-  let group1_copy = group1.map(e => e.groupname)
-  let group1_depcopy = [...new Set(group1_copy)]
+  useMemo(()=>{ return (
+    axios.get('/namemodify').then((결과)=>{console.log(결과.data); let copy = [...결과.data]; set부서(copy)}),
+    axios.get('/dep/1').then((결과)=>{console.log(결과.data); let copy = [...결과.data]; set영유아2부(copy)}),
+    axios.get('/dep/3').then((결과)=>{console.log(결과.data); let copy = [...결과.data]; set유치2부(copy)})
+  ) }, [])
 
-  let [group3, setgroup3] = useState(Basicgroup2)
-  let group3_copy = group3.map(e => e.groupname)
-  let group3_depcopy = [...new Set(group3_copy)]
+  
+  // 부서이름선택
+  let [부서, set부서] = useState(Basicdepmain);
+  let 부서_copy = 부서.map(e => e.dn_ko);
+  let 부서copy = [...new Set(부서_copy)];
+    
+  // 각부서 소그룹이름 선택
+  let [영유아2부, set영유아2부] = useState(Basicgroup);  
+  let 영유아2부copy = 영유아2부.map(e => e.dgn_ko);
+  let 영유아2부ko = [...new Set(영유아2부copy)];
+
+  let [유치2부, set유치2부] = useState(Basicgroup2);
+  let 유치2부copy = 유치2부.map(e => e.dgn_ko);
+  let 유치2부ko = [...new Set(유치2부copy)];
 
 
   // 명단추가 박스
-  let [newid, setnewid] = useState('')
-  let [newgroup, setnewgroup] = useState('')
-  let [newgroupname, setnewgroupname] = useState('')
+  let [부서선택, set부서선택] = useState('')
+  let [소그룹선택, set소그룹선택] = useState('')  
+  let [추가소그룹, set추가소그룹] = useState('');
+  let [추가이름, set추가이름] = useState('');
 
+  var filter = 부서.filter(e => e.dgn_ko === `${추가소그룹}`);
+  var 소그룹number변경 = () => {
+    const number = (filter[0].dgn).split('');
+    return number[2]
+  }
 
-  // 테스트박스
-  let [test1, settest1] = useState('')
-  let [test2, settest2] = useState('')
   
 
-  var depnamechange = (dep) => {
-    if (dep == 'dep1') {return '영유아2부'} 
-    else if (dep == 'dep2') {return '영유아3부'}
-    else if (dep == 'dep3') {return '유치2부'}
-  };
-
-  var depchange_number = (dep) => {
+  
+  var 반이름숫자로변경 = (dep) => {
     if (dep == '영유아2부') {return '1'} 
     else if (dep == '영유아3부') {return '2'}
     else if (dep == '유치2부') {return '3'}
   };
 
   
-  var dep1groupchange_number = (dep) => {
-    if (dep == '1-1') {return '1'} 
-    else if (dep == '1-2') {return '2'}
-    else if (dep == '1-3') {return '3'}
-  };
-
-  var dep3groupchange_number = (dep) => {
-    if (dep == '1-1') {return '1'} 
-    else if (dep == '1-2') {return '2'}
-    else if (dep == '1-3') {return '3'}
-  };
-
   return (
     <div className='nameinput'>
 
       {/* 상단 선택 박스 */}
       <div className='nameinput_wrapper'>
-
-      {/* test 박스 */}
-      <div className='testbox'>
-        <div className='testinpunt2'>
-          <input type="text" onChange={(e)=>{
-            settest1(e.target.value)
-          }}></input>을</div>
-        <div className='testinpunt2'>
-        <input type="text" onChange={(e)=>{
-          settest2(e.target.value)
-        }}></input>으로</div>
-        
-        <button className='testbutton2' 
-        onClick={()=>{
-        axios.post('/testmodify', {
-          testname1 : settest1,
-          testname2 : settest2
-        }).then((결과)=>{})
-        .catch(()=>{
-          console.log('실패함')
-        })
-      }}>테이블 이름 수정하기</button>
-        <div>
-
-        </div>
-      </div>
-
-
-
 
         {/* 각부서 선택 */}
           <div className='nameinput_box1'>
@@ -132,20 +73,20 @@ function NameModify(props) {
           </div>
 
           <div className='nameinput_box2'>
-            <div className='nameinput_content'>부서</div>
+            <div className='nameinput_content'>부서선택</div>
             <div className='nameinput_content'>
               <select className='nameinput_select_dep'
                 onChange={(e)=>{
                 let copy = e.target.value
-                setdepname(copy)
-                let showdata = depchange_number(copy)
-                setshow(showdata)
+                set부서선택(copy)
+                let showdata = 반이름숫자로변경(copy)
+                setshow(showdata) 
               }}>
                 <option>부서</option>
                 {
-                  depcopy.map((a,i)=>{
+                  부서copy.map((a,i)=>{
                     return (
-                    <option>{depnamechange(depcopy[i])}</option>
+                    <option>{부서copy[i]}</option>
                     )
                   })
                 }  
@@ -165,14 +106,13 @@ function NameModify(props) {
                   <select className='nameinput_select_group' 
                     onChange={(e)=>{
                       let copy = e.target.value
-                      console.log(copy)
-                      setnewgroup(copy)
+                      set추가소그룹(copy)
                     }}>
-                    <option>{depname}</option>
+                    <option>{부서선택}</option>
                     {
-                      group1_depcopy.map((a,i)=>{
+                      영유아2부ko.map((a,i)=>{
                         return (
-                        <option>{group1_depcopy[i]}</option>
+                        <option>{영유아2부ko[i]}</option>
                         )
                       })
                     }  
@@ -184,14 +124,13 @@ function NameModify(props) {
                   <select className='nameinput_select_group'
                     onChange={(e)=>{
                       let copy = e.target.value
-                      console.log(copy)
-                      setnewgroup(copy)
+                      set추가소그룹(copy)
                     }}>
-                    <option>{depname}</option>
+                    <option>{부서선택}</option>
                     {
-                      group3_depcopy.map((a,i)=>{
+                      유치2부ko.map((a,i)=>{
                         return (
-                        <option>{group3_depcopy[i]}</option>
+                        <option>{유치2부ko[i]}</option>
                         )
                       })
                     }  
@@ -212,11 +151,11 @@ function NameModify(props) {
         
         <div className='nameinput_inputbox'>
           <div className='text'>소그룹/반</div>
-          <input type="text" className="input" value={newgroup} onChange={(e)=>{setnewgroup(e.target.value)}}/>
+          <input type="text" className="input" value={추가소그룹} onChange={(e)=>{set추가소그룹(e.target.value)}}/>
         </div>
         <div className='nameinput_inputbox'>
           <div className='text'>이름</div>
-          <input type="text" className="input" onChange={(e)=>{setnewgroupname(e.target.value)}}/>
+          <input type="text" className="input" onChange={(e)=>{set추가이름(e.target.value)}}/>
         </div>   
       </div>
 
@@ -224,10 +163,11 @@ function NameModify(props) {
       <button className='nameinput_button' 
         onClick={()=>{
         axios.post('/namemodify', {
-          depnumber : depchange_number(depname),
-          groupnumber : newgroup,
-          newgroup : newgroup,
-          newgroupname : newgroupname,
+          d_number : 반이름숫자로변경(부서선택),
+          g_number : 소그룹number변경(),
+          dg_number : filter[0].dgn,
+          new_g : 추가소그룹,
+          new_gn : 추가이름
         }).then((결과)=>{})
         .catch(()=>{
           console.log('실패함')
@@ -237,27 +177,20 @@ function NameModify(props) {
 
 
 
-      <button className='nameinput_button' 
-        onClick={()=>{
-          navigate('/')
-        }}
-      >돌아가기</button> 
-
       <button className='test_button' 
         onClick={()=>{
-          console.log()
+          console.log(filter[0].dgn)
         }}
+          
+            
+        
       >테스트</button>
 
-      
-  
-
-  
-
-
 
       
-
+      
+      <button className='home_button' onClick={()=>{ navigate('/') }} >홈 돌아가기</button> 
+      <button className='testnamemodify_button' onClick={()=>{ navigate('/testnamemodify') }} >testnamemodify</button>
 
     </div>
   );

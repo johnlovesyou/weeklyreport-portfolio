@@ -18,7 +18,7 @@ function Deptable(props) {
             {
             props.group.map((a,i)=>{
               return (
-                <div className="dep_namebox"><div>{props.group[i].name}</div></div>
+                <div className="dep_namebox"><div>{props.group[i].n}</div></div>
               )})
             }
         </div> 
@@ -28,7 +28,7 @@ function Deptable(props) {
         {
           props.group.map((a,i)=>{
             return (
-              <div id={`nametablebox${i}`} className='dep_nametableboxwrapper'>
+              <div className='dep_nametableboxwrapper'>
                 <div className="dep_deptable_table">
                   <table>
                     <tr>

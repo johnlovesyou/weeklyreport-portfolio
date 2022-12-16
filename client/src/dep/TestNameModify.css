@@ -1,0 +1,20 @@
+.testbox {
+  position: fixed;
+  width: 700px;
+  height: 100px;
+  left: 10px;
+  top: 100px;
+}
+.testbox .testdivbox2 {
+  width: 500px;
+  height: 30px;
+  background-color: rgb(202, 199, 199);
+}
+.testbox input{
+  width: 400px;
+  height: 50px;
+}
+.testbox .testbutton2 {
+  width: 200px;
+  height: 50px;
+}

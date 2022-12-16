@@ -10,6 +10,7 @@ import DateInput from './dep/DateInput';
 import NameModify from './dep/NameModify';
 import LastReport from './pages/LastReport';
 import Uplord from './pages/Uplord';
+import TestNameModify from './dep/TestNameModify';
 
 function App() {
 
@@ -65,6 +66,8 @@ function App() {
 
 
           <Route path="/namemodify" element={<NameModify></NameModify>}/>
+
+          <Route path="/testnamemodify" element={<TestNameModify></TestNameModify>}/>
          
 
         </Routes>

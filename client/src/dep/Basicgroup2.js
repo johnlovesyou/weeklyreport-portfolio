@@ -1,8 +1,8 @@
 let Basicgroup2 = [
   {
     id: 0,
-    groupname: '1-1',
-    name: 'test3-1',
+    gn: '1-1',
+    n: 'test3-1',
     day1: '',
     day2: '',
     day3: '',
@@ -59,8 +59,8 @@ let Basicgroup2 = [
   },
   {
     id: 1,
-    groupname: '1-1',
-    name: 'test3-2',
+    gn: '1-1',
+    n: 'test3-2',
     day1: '',
     day2: '',
     day3: '',
@@ -117,8 +117,8 @@ let Basicgroup2 = [
   },
   {
     id: 2,
-    groupname: '1-1',
-    name: 'test3-3',
+    gn: '1-1',
+    n: 'test3-3',
     day1: '',
     day2: '',
     day3: '',
@@ -175,8 +175,8 @@ let Basicgroup2 = [
   },
   {
     id: 3,
-    groupname: '1-2',
-    name: 'test3-4',
+    gn: '1-2',
+    n: 'test3-4',
     day1: '',
     day2: '',
     day3: '',
@@ -233,8 +233,8 @@ let Basicgroup2 = [
   },
   {
     id: 4,
-    groupname: '1-2',
-    name: 'test3-5',
+    gn: '1-2',
+    n: 'test3-5',
     day1: '',
     day2: '',
     day3: '',
@@ -291,8 +291,8 @@ let Basicgroup2 = [
   },
   {
     id: 5,
-    groupname: '1-2',
-    name: 'test3-6',
+    gn: '1-2',
+    n: 'test3-6',
     day1: '',
     day2: '',
     day3: '',

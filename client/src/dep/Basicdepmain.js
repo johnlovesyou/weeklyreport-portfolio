@@ -1,32 +1,34 @@
 let Basicdepmain = [
   {
-    "depname_main": "dep1",
-    "depgroupname": "1-1"
+    "dn_main": "dep1",
+    "dn_ko": "영유아2부",
+    "dgn": "1-1",
+    "dgn_ko": "첫번째반"
   },
   {
-    "depname_main": "dep1",
-    "depgroupname": "1-2"
+    "dn_main": "dep1",
+    "dn_ko": "영유아2부",
+    "dgn": "1-2",
+    "dgn_ko": "두번째반"
   },
   {
-    "depname_main": "dep1",
-    "depgroupname": "1-3"
+    "dn_main": "dep1",
+    "dn_ko": "영유아2부",
+    "dgn": "1-3",
+    "dgn_ko": "세번째반"
   },
   {
-    "depname_main": "dep2",
-    "depgroupname": "1-1"
+    "dn_main": "dep3",
+    "dn_ko": "유치2부",
+    "dgn": "3-1",
+    "dgn_ko": "첫째요"
   },
   {
-    "depname_main": "dep2",
-    "depgroupname": "1-2"
-  },
-  {
-    "depname_main": "dep3",
-    "depgroupname": "1-1"
-  },
-  {
-    "depname_main": "dep3",
-    "depgroupname": "1-2"
-  },
+    "dn_main": "dep3",
+    "dn_ko": "유치2부",
+    "dgn": "3-2",
+    "dgn_ko": "둘째요"
+  }
 ]
 
 export default Basicdepmain;

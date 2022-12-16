@@ -38,99 +38,46 @@ db.connect();
 
 // dep //
 app.get('/dep/:id', function(요청, 응답) {
+  var id = 요청.params.id
   db.query(`
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group1 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group1.groupname)
+  (select * from d${id} inner join d${id}_g1 on d${id}.dgn = d${id}_g1.gn)
   union
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group2 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group2.groupname)
+  (select * from d${id} inner join d${id}_g2 on d${id}.dgn = d${id}_g2.gn)
   union
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group3 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group3.groupname)
+  (select * from d${id} inner join d${id}_g3 on d${id}.dgn = d${id}_g3.gn)
   union
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group4 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group4.groupname)
+  (select * from d${id} inner join d${id}_g4 on d${id}.dgn = d${id}_g4.gn)
   union
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group5 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group5.groupname)
-  union
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group6 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group6.groupname)
-  union
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group7 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group7.groupname)
-  union
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group8 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group8.groupname)
-  union
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group9 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group9.groupname)
-  union
-  (select * from dep${요청.params.id} inner join dep${요청.params.id}group10 on dep${요청.params.id}.depgroupname = dep${요청.params.id}group10.groupname)
-  order by depgroupname`
-  , function (error, result) {
-    if (error) {console.log(error);}
-    응답.send(result)
-  });
+  (select * from d${id} inner join d${id}_g5 on d${id}.dgn = d${id}_g5.gn)
+  order by dgn
+  `, function (error, result) {if (error) {console.log(error);} 응답.send(result) });  
 })
 
 
-// // namemodify //
+
+// namemodify //
 app.get('/namemodify', function(요청, 응답) {
   db.query(`
-  (select depmain.depname_main, depgroupname from depmain inner join dep1 on depmain.depname_main = dep1.depname)
+  (select dmain.dn_main, dn_ko, dgn, dgn_ko from dmain inner join d1 on dmain.dn_main = d1.dn)
   union
-  (select depmain.depname_main, depgroupname from depmain inner join dep3 on depmain.depname_main = dep3.depname)
-  order by depname_main
-  `
-  , function (error, result) {
-    if (error) {console.log(error);}
-    응답.send(result)
-  });
+  (select dmain.dn_main, dn_ko, dgn, dgn_ko from dmain inner join d3 on dmain.dn_main = d3.dn)
+  order by dn_main
+  `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
 
 
 
-
-
-
-// // namemodify //
-// app.get('/namemodify', function(요청, 응답) {
-//   db.query(`
-//   (select depmain.depname_main, depgroupname from depmain inner join dep1 on depmain.depname_main = dep1.depname)
-//   union
-//   (select depmain.depname_main, depgroupname from depmain inner join dep3 on depmain.depname_main = dep3.depname)
-//   order by depname_main
-//   `
-//   , function (error, result) {
-//     if (error) {console.log(error);}
-//     응답.send(result)
-//   });
-// })
-
-
-
-
-
-
-
-app.post('/testnamemodify', function(요청, 응답){
+app.post('/namemodify', function(요청, 응답){
   console.log(요청.body);
+  var body = 요청.body
   db.query(`
-  ALTER TABLE ${요청.body.testname1} RENAME TO ${요청.body.testname2}`
-  , function(error, result){if(error){throw error}})
+  INSERT INTO d${body.d_number}_g${body.g_number} (gn, n) VALUES ('${body.dg_number}', '${body.new_gn}')
+  `,function(error, result){
+  if(error){
+    throw error;
+  }
+  })
 });
-
-
-
-
-
-
-// app.post('/nameinput', function(요청, 응답){
-//   console.log(요청.body);
-//   db.query(`INSERT INTO group1_1 (dep, name, day1, day2, day3, day4, day5, day6, day7, day8, day9, day10)
-//    VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-//   [요청.body.dep, 요청.body.name, 요청.body.day1, 요청.body.day2, 요청.body.day3, 요청.body.day4,
-//     요청.body.day5, 요청.body.day6, 요청.body.day7, 요청.body.day8, 요청.body.day9, 요청.body.day10], 
-//   function(error, result){
-//   if(error){
-//     throw error;
-//   }
-//   })
-// });
-
-
 
 
 
@@ -147,10 +94,6 @@ app.delete('/dep_delete', function(요청, 응답) {
     function(error, result){if(error){throw error;}})
   }
 })
-
-
-
-
 
 
 
@@ -180,6 +123,44 @@ app.delete('/delete', function(요청, 응답) {
     if(error){throw error;}
   })
 })
+
+
+
+// nameinput
+
+app.post('/nameinput', function(요청, 응답){
+  console.log(요청.body);
+  db.query(`INSERT INTO group1_1 (dep, name, day1, day2, day3, day4, day5, day6, day7, day8, day9, day10)
+   VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+  [요청.body.dep, 요청.body.name, 요청.body.day1, 요청.body.day2, 요청.body.day3, 요청.body.day4,
+    요청.body.day5, 요청.body.day6, 요청.body.day7, 요청.body.day8, 요청.body.day9, 요청.body.day10], 
+  function(error, result){
+  if(error){
+    throw error;
+  }
+  })
+});
+
+
+// testnamemodify //
+app.get('/testnamemodify', function(요청, 응답) { 
+  db.query(`
+  show tables  
+  `
+  , function (error, result) {
+    if (error) {console.log(error);}
+    응답.send(result)
+  });
+})
+
+app.post('/testnamemodify', function(요청, 응답){
+  console.log(요청.body);
+  db.query(`
+  ALTER TABLE ${요청.body.testname1} RENAME TO ${요청.body.testname2};`
+  , function(error, result){if(error){throw error}})
+});
+
+
 
 
 

@@ -2,24 +2,6 @@
   margin: 20px;
 }
 
-.testbox {
-  position: fixed;
-  width: 700px;
-  height: 100px;
-  left: 10px;
-  top: 500px;
-}
-.nameinput input{
-  width: 400px;
-  height: 50px;
-}
-.testbutton2 {
-  width: 200px;
-  height: 50px;
-}
-
-
-
 .nameinput_wrapper {
   left: 0;
   right: 0;
@@ -78,6 +60,9 @@
 .show {
   display: block;
  }
+.nameinput_select_group .nameinput_select_group .depnum_noshow {
+  display: none;
+}
 
 
 
@@ -117,14 +102,21 @@
   background-color: rgb(198, 252, 213);
 }
 
+
 .nameinput_button {
   width: 100px;
   height: 50px;
 }
-
-
-
 .test_button {
+  width: 100px;
+  height: 50px;
   margin: 30px;
 }
-
+.home_button {
+  width: 150px;
+  height: 50px;
+}
+.testnamemodify_button {
+  width: 200px;
+  height: 50px;
+}
