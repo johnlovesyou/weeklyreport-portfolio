@@ -45,14 +45,8 @@ function NameModify(props) {
   let [추가이름, set추가이름] = useState('');
 
   var filter = 부서.filter(e => e.dgn_ko === `${추가소그룹}`);
-  var 소그룹number변경 = () => {
-    const number = (filter[0].dgn).split('');
-    return number[2]
-  }
 
-  
-
-  
+  var 소그룹number변경 = () => {const number = (filter[0].dgn).split(''); return number[2]}
   var 반이름숫자로변경 = (dep) => {
     if (dep == '영유아2부') {return '1'} 
     else if (dep == '영유아3부') {return '2'}
@@ -76,25 +70,15 @@ function NameModify(props) {
             <div className='nameinput_content'>부서선택</div>
             <div className='nameinput_content'>
               <select className='nameinput_select_dep'
-                onChange={(e)=>{
-                let copy = e.target.value
-                set부서선택(copy)
-                let showdata = 반이름숫자로변경(copy)
-                setshow(showdata) 
-              }}>
+                onChange={(e)=>{ let copy = e.target.value; set부서선택(copy);
+                                 let showdata = 반이름숫자로변경(copy); setshow(showdata) }}>
                 <option>부서</option>
-                {
-                  부서copy.map((a,i)=>{
-                    return (
-                    <option>{부서copy[i]}</option>
-                    )
-                  })
-                }  
+                {부서copy.map((a,i)=>{return (<option>{부서copy[i]}</option>)})}  
               </select>
             </div>
           </div>
 
-        {/* 각부서 그룹이름 선택 */}
+        {/* 각부서 소그룹이름 선택 박스 */}
 
           <div className='nameinput_box3'>
             <div className='nameinput_content'>소그룹/반</div>
@@ -104,36 +88,18 @@ function NameModify(props) {
                 {/* 영유아2부 */}
                 <div className={classnames('nameinput_notice_wrapper', {show: show ==='1'})}>
                   <select className='nameinput_select_group' 
-                    onChange={(e)=>{
-                      let copy = e.target.value
-                      set추가소그룹(copy)
-                    }}>
+                    onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
                     <option>{부서선택}</option>
-                    {
-                      영유아2부ko.map((a,i)=>{
-                        return (
-                        <option>{영유아2부ko[i]}</option>
-                        )
-                      })
-                    }  
+                    {영유아2부ko.map((a,i)=>{return (<option>{영유아2부ko[i]}</option>)})}  
                   </select>
                 </div>
         
                 {/* 유치2부 */}
                 <div className={classnames('nameinput_notice_wrapper', {show: show ==='3'})}>
                   <select className='nameinput_select_group'
-                    onChange={(e)=>{
-                      let copy = e.target.value
-                      set추가소그룹(copy)
-                    }}>
+                    onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
                     <option>{부서선택}</option>
-                    {
-                      유치2부ko.map((a,i)=>{
-                        return (
-                        <option>{유치2부ko[i]}</option>
-                        )
-                      })
-                    }  
+                    {유치2부ko.map((a,i)=>{return (<option>{유치2부ko[i]}</option>)})}  
                   </select>
                 </div>
     
@@ -148,14 +114,15 @@ function NameModify(props) {
       {/* 명단 추가 박스 */}
       <div className='nameinput_input'>
         <input type="text" className="input_none" onChange={(e)=>{setnewid(e.target.value)}}/>
-        
+
         <div className='nameinput_inputbox'>
-          <div className='text'>소그룹/반</div>
-          <input type="text" className="input" value={추가소그룹} onChange={(e)=>{set추가소그룹(e.target.value)}}/>
+          <div className='text'>부서</div> <input type="text" className="input" value={부서선택} />
         </div>
         <div className='nameinput_inputbox'>
-          <div className='text'>이름</div>
-          <input type="text" className="input" onChange={(e)=>{set추가이름(e.target.value)}}/>
+          <div className='text'>소그룹/반</div> <input type="text" className="input" value={추가소그룹} />
+        </div>
+        <div className='nameinput_inputbox'>
+          <div className='text'>이름</div> <input type="text" className="input" onChange={(e)=>{set추가이름(e.target.value)}}/>
         </div>   
       </div>
 
@@ -190,7 +157,7 @@ function NameModify(props) {
       
       
       <button className='home_button' onClick={()=>{ navigate('/') }} >홈 돌아가기</button> 
-      <button className='testnamemodify_button' onClick={()=>{ navigate('/testnamemodify') }} >testnamemodify</button>
+      <button className='testnamemodify_button' onClick={()=>{ navigate('/testnamemodify') }} >testname_mdf</button>
 
     </div>
   );
