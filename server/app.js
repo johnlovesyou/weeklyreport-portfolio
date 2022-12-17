@@ -65,8 +65,6 @@ app.get('/namemodify', function(요청, 응답) {
   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
 
-
-
 app.post('/namemodify', function(요청, 응답){
   console.log(요청.body);
   var body = 요청.body

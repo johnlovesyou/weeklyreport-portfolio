@@ -45,8 +45,8 @@ function NameModify(props) {
   let [추가이름, set추가이름] = useState('');
 
   var filter = 부서.filter(e => e.dgn_ko === `${추가소그룹}`);
-
   var 소그룹number변경 = () => {const number = (filter[0].dgn).split(''); return number[2]}
+  
   var 반이름숫자로변경 = (dep) => {
     if (dep == '영유아2부') {return '1'} 
     else if (dep == '영유아3부') {return '2'}

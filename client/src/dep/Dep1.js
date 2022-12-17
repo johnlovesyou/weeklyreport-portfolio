@@ -23,11 +23,7 @@ function Dep1(props) {
 
   let [group, setgroup] = useState(Basicgroup)
   let copy = group.map(e => e.gn)
-  let dep1 = [...new Set(copy)]
-
-  let group1_1 = group.filter(e => e.gn === "1-1") //부서별 수정할 것
-  let group1_2 = group.filter(e => e.gn === "1-2") //부서별 수정할 것
-  
+  let dep = [...new Set(copy)]
 
   return (
     <div className='dep_main'>
@@ -35,8 +31,13 @@ function Dep1(props) {
       
       <div className='dep_main_deptable'>
         <Date></Date>
-        <Deptable dep1={dep1[0]} group={group1_1}></Deptable>
-        <Deptable dep1={dep1[1]} group={group1_2}></Deptable>
+        {
+          dep.map((a,i)=>{
+            return (
+              <Deptable dep={dep[i]} group={group.filter(e => e.gn === `${a}`)}></Deptable>
+            )
+          })  
+        }
       </div>
       
 
@@ -50,7 +51,7 @@ function Dep1(props) {
 
       
         <button className='dep_nameinputtest' onClick={()=>{
-            console.log(dep1)
+            console.log(test())
         }}> 테스트 </button> 
 
     

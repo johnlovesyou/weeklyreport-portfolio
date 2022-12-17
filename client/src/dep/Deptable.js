@@ -13,7 +13,7 @@ function Deptable(props) {
 
       <div className="dep_agenamebox">
         <div className="dep_empty"></div>
-        <div className="dep_group"><div>{props.dep1}</div></div>
+        <div className="dep_group"><div>{props.dep}</div></div>
         <div className="dep_name">
             {
             props.group.map((a,i)=>{
