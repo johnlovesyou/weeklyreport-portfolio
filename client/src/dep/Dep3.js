@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
 import './Dep.css'
 import axios from 'axios'
-import Basicgroup from './Basicgroup.js';
+import Basicgroup2 from './Basicgroup2.js';
 import Date from './Date';
 import Deptable from './Deptable';
 
@@ -21,8 +21,8 @@ function Dep3(props) {
     })
   ) }, [])
 
-  let [group, setgroup] = useState(Basicgroup)
-  let copy = group.map(e => e.gn)
+  let [group, setgroup] = useState(Basicgroup2)
+  let copy = group.map(e => e.dgn_ko)
   let dep = [...new Set(copy)]
 
   return (
@@ -34,7 +34,7 @@ function Dep3(props) {
         {
           dep.map((a,i)=>{
             return (
-              <Deptable dep={dep[i]} group={group.filter(e => e.gn === `${a}`)}></Deptable>
+              <Deptable dep={dep[i]} group={group.filter(e => e.dgn_ko === `${a}`)}></Deptable>
             )
           })  
         }

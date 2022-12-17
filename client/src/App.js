@@ -7,10 +7,10 @@ import { useSelector } from "react-redux"
 import Dep1 from './dep/Dep1';
 import Dep3 from './dep/Dep3';
 import DateInput from './dep/DateInput';
-import NameModify from './dep/NameModify';
+import NameAdd from './dep/NameAdd';
 import LastReport from './pages/LastReport';
 import Uplord from './pages/Uplord';
-import TestNameModify from './dep/TestNameModify';
+import GroupAdd from './dep/GroupAdd';
 
 function App() {
 
@@ -43,7 +43,7 @@ function App() {
               }}> 보고서 </button>
 
               <button className='link_namemodify' onClick={()=>{
-              navigate('/namemodify')
+              navigate('/nameadd')
               }}> 이름입력&삭제 </button>  
 
 
@@ -65,9 +65,9 @@ function App() {
           <Route path="/uplord" element={<Uplord></Uplord>}/>
 
 
-          <Route path="/namemodify" element={<NameModify></NameModify>}/>
+          <Route path="/nameadd" element={<NameAdd></NameAdd>}/>
 
-          <Route path="/testnamemodify" element={<TestNameModify></TestNameModify>}/>
+          <Route path="/groupadd" element={<GroupAdd></GroupAdd>}/>
          
 
         </Routes>

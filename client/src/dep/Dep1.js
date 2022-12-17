@@ -22,7 +22,7 @@ function Dep1(props) {
   ) }, [])
 
   let [group, setgroup] = useState(Basicgroup)
-  let copy = group.map(e => e.gn)
+  let copy = group.map(e => e.dgn_ko)
   let dep = [...new Set(copy)]
 
   return (
@@ -34,7 +34,7 @@ function Dep1(props) {
         {
           dep.map((a,i)=>{
             return (
-              <Deptable dep={dep[i]} group={group.filter(e => e.gn === `${a}`)}></Deptable>
+              <Deptable dep={dep[i]} group={group.filter(e => e.dgn_ko === `${a}`)}></Deptable>
             )
           })  
         }
@@ -51,7 +51,7 @@ function Dep1(props) {
 
       
         <button className='dep_nameinputtest' onClick={()=>{
-            console.log(test())
+            console.log(dep)
         }}> 테스트 </button> 
 
     

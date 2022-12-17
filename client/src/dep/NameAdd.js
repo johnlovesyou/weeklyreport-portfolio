@@ -4,39 +4,32 @@ import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import { useSelector } from "react-redux"
 import axios from 'axios';
 import classnames from 'classnames';
-import './NameModify.css'
+import './NameAdd.css'
 import Basicdepmain from './Basicdepmain.js';
-import Basicgroup from './Basicgroup.js';
-import Basicgroup2 from './Basicgroup2.js';
-import Basicdep from './Basicdep';
 
-function NameModify(props) {
+function NameAdd(props) {
 
   let state = useSelector((state) => { return state } )
   let navigate = useNavigate();
   let [show, setshow] = useState('')
 
   useMemo(()=>{ return (
-    axios.get('/namemodify').then((결과)=>{console.log(결과.data); let copy = [...결과.data]; set부서(copy)}),
-    axios.get('/dep/1').then((결과)=>{console.log(결과.data); let copy = [...결과.data]; set영유아2부(copy)}),
-    axios.get('/dep/3').then((결과)=>{console.log(결과.data); let copy = [...결과.data]; set유치2부(copy)})
+    axios.get('/depmain').then((결과)=>{console.log(결과.data); let copy = [...결과.data]; set부서(copy)})
   ) }, [])
-
   
   // 부서이름선택
   let [부서, set부서] = useState(Basicdepmain);
   let 부서_copy = 부서.map(e => e.dn_ko);
   let 부서copy = [...new Set(부서_copy)];
-    
+  
   // 각부서 소그룹이름 선택
-  let [영유아2부, set영유아2부] = useState(Basicgroup);  
+  let 영유아2부 = 부서.filter(e => e.dn_main === 'dep1')
   let 영유아2부copy = 영유아2부.map(e => e.dgn_ko);
   let 영유아2부ko = [...new Set(영유아2부copy)];
 
-  let [유치2부, set유치2부] = useState(Basicgroup2);
+  let 유치2부 = 부서.filter(e => e.dn_main === 'dep3')
   let 유치2부copy = 유치2부.map(e => e.dgn_ko);
   let 유치2부ko = [...new Set(유치2부copy)];
-
 
   // 명단추가 박스
   let [부서선택, set부서선택] = useState('')
@@ -53,7 +46,6 @@ function NameModify(props) {
     else if (dep == '유치2부') {return '3'}
   };
 
-  
   return (
     <div className='nameinput'>
 
@@ -126,41 +118,28 @@ function NameModify(props) {
         </div>   
       </div>
 
-
       <button className='nameinput_button' 
         onClick={()=>{
-        axios.post('/namemodify', {
-          d_number : 반이름숫자로변경(부서선택),
-          g_number : 소그룹number변경(),
-          dg_number : filter[0].dgn,
-          new_g : 추가소그룹,
-          new_gn : 추가이름
+          axios.post('/nameadd', {
+          d_number : 반이름숫자로변경(부서선택), g_number : 소그룹number변경(), 
+          dg_number : filter[0].dgn, new_g : 추가소그룹, new_gn : 추가이름
         }).then((결과)=>{})
-        .catch(()=>{
-          console.log('실패함')
-        })
+        .catch(()=>{console.log('실패함')})
         navigate('/')
       }}>입력하기</button>
-
-
 
       <button className='test_button' 
         onClick={()=>{
           console.log(filter[0].dgn)
         }}
-          
-            
-        
       >테스트</button>
 
-
-      
-      
+     
       <button className='home_button' onClick={()=>{ navigate('/') }} >홈 돌아가기</button> 
-      <button className='testnamemodify_button' onClick={()=>{ navigate('/testnamemodify') }} >testname_mdf</button>
+      <button className='groupadd_button' onClick={()=>{ navigate('/groupadd') }} >소그룹추가</button>
 
     </div>
   );
 }
 
-export default NameModify;
+export default NameAdd;

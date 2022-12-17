@@ -36,7 +36,7 @@ var db = mysql.createConnection({
 db.connect();
 
 
-// dep //
+// dep부서.get //
 app.get('/dep/:id', function(요청, 응답) {
   var id = 요청.params.id
   db.query(`
@@ -54,9 +54,8 @@ app.get('/dep/:id', function(요청, 응답) {
 })
 
 
-
-// namemodify //
-app.get('/namemodify', function(요청, 응답) {
+// depmain.get //
+app.get('/depmain', function(요청, 응답) {
   db.query(`
   (select dmain.dn_main, dn_ko, dgn, dgn_ko from dmain inner join d1 on dmain.dn_main = d1.dn)
   union
@@ -65,8 +64,8 @@ app.get('/namemodify', function(요청, 응답) {
   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
 
-app.post('/namemodify', function(요청, 응답){
-  console.log(요청.body);
+// nameadd.post //
+app.post('/nameadd', function(요청, 응답){
   var body = 요청.body
   db.query(`
   INSERT INTO d${body.d_number}_g${body.g_number} (gn, n) VALUES ('${body.dg_number}', '${body.new_gn}')
@@ -76,6 +75,20 @@ app.post('/namemodify', function(요청, 응답){
   }
   })
 });
+
+// groupadd.post //
+app.post('/groupadd', function(요청, 응답){
+  console.log(요청.body);
+  var body = 요청.body
+  db.query(`
+  INSERT INTO d${body.dep} (dgn, dgn_ko) values ('${body.g_num}', '${body.new_gn}')
+  `,function(error, result){
+  if(error){
+    throw error;
+  }
+  })
+});
+
 
 
 
@@ -140,8 +153,8 @@ app.post('/nameinput', function(요청, 응답){
 });
 
 
-// testnamemodify //
-app.get('/testnamemodify', function(요청, 응답) { 
+// addnamemodify //
+app.get('/addnamemodify', function(요청, 응답) { 
   db.query(`
   show tables  
   `
@@ -151,7 +164,7 @@ app.get('/testnamemodify', function(요청, 응답) {
   });
 })
 
-app.post('/testnamemodify', function(요청, 응답){
+app.post('/addnamemodify', function(요청, 응답){
   console.log(요청.body);
   db.query(`
   ALTER TABLE ${요청.body.testname1} RENAME TO ${요청.body.testname2};`

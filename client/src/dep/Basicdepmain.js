@@ -28,6 +28,12 @@ let Basicdepmain = [
     "dn_ko": "유치2부",
     "dgn": "3-2",
     "dgn_ko": "둘째요"
+  },
+  {
+    "dn_main": "dep3",
+    "dn_ko": "유치2부",
+    "dgn": "3-3",
+    "dgn_ko": "셋째요"
   }
 ]
 

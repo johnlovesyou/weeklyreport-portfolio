@@ -1,0 +1,51 @@
+.groupadd_addbox {
+  width: 500px;
+  height: 200px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+}
+.groupadd_select_div {
+  margin: 20px;
+}
+.groupadd_select_dep {
+  width: 150px;
+  height: 80px;
+}
+
+.groupadd_select_textinputbox {
+  width: 200px;
+  height: 80px;
+}
+.groupadd_select_button {
+  width: 150px;
+  height: 80px;
+}
+
+
+
+
+
+.addbox .adddivbox2 {
+  width: 500px;
+  height: 30px;
+  background-color: rgb(202, 199, 199);
+}
+.addbox input{
+  width: 400px;
+  height: 50px;
+}
+.addbox .addbutton2 {
+  width: 200px;
+  height: 50px;
+}
+
+.groupadd_addbox .test_button {
+margin-top: 200px;
+}
+
+.back_button {
+  width: 150px;
+  height: 80px;
+}
