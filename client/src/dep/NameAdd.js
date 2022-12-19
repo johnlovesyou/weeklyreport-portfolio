@@ -50,94 +50,99 @@ function NameAdd(props) {
     <div className='nameinput'>
 
       {/* 상단 선택 박스 */}
-      <div className='nameinput_wrapper'>
+      <div className='nameinput_main_wrapper'>
 
-        {/* 각부서 선택 */}
-          <div className='nameinput_box1'>
-            <div className='nameinput_content'></div>
-            <div className='nameinput_content choice'>선택</div>
-          </div>
+        <div className='nameinput_select_wrapper'>
 
-          <div className='nameinput_box2'>
-            <div className='nameinput_content'>부서선택</div>
-            <div className='nameinput_content'>
-              <select className='nameinput_select_dep'
-                onChange={(e)=>{ let copy = e.target.value; set부서선택(copy);
-                                 let showdata = 반이름숫자로변경(copy); setshow(showdata) }}>
-                <option>부서</option>
-                {부서copy.map((a,i)=>{return (<option>{부서copy[i]}</option>)})}  
-              </select>
+          {/* 각부서 선택 */}
+            <div className='nameinput_select_box1'>
+              <div className='nameinput_content'></div>
+              <div className='nameinput_content choice'>선택</div>
             </div>
-          </div>
 
-        {/* 각부서 소그룹이름 선택 박스 */}
+            <div className='nameinput_select_box2'>
+              <div className='nameinput_content'>부서선택</div>
+              <div className='nameinput_content'>
+                <select className='nameinput_select_dep'
+                  onChange={(e)=>{ let copy = e.target.value; set부서선택(copy);
+                                  let showdata = 반이름숫자로변경(copy); setshow(showdata) }}>
+                  <option>부서</option>
+                  {부서copy.map((a,i)=>{return (<option>{부서copy[i]}</option>)})}  
+                </select>
+              </div>
+            </div>
 
-          <div className='nameinput_box3'>
-            <div className='nameinput_content'>소그룹/반</div>
-            <div className='nameinput_content'>
-              <div className='nameinput_notice'>
-            
-                {/* 영유아2부 */}
-                <div className={classnames('nameinput_notice_wrapper', {show: show ==='1'})}>
-                  <select className='nameinput_select_group' 
-                    onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                    <option>{부서선택}</option>
-                    {영유아2부ko.map((a,i)=>{return (<option>{영유아2부ko[i]}</option>)})}  
-                  </select>
-                </div>
+          {/* 각부서 소그룹이름 선택 박스 */}
+
+            <div className='nameinput_select_box3'>
+              <div className='nameinput_content'>소그룹/반</div>
+              <div className='nameinput_content'>
+                <div className='nameinput_notice'>
+              
+                  {/* 영유아2부 */}
+                  <div className={classnames('nameinput_notice_wrapper', {show: show ==='1'})}>
+                    <select className='nameinput_select_group' 
+                      onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
+                      <option>{부서선택}</option>
+                      {영유아2부ko.map((a,i)=>{return (<option>{영유아2부ko[i]}</option>)})}  
+                    </select>
+                  </div>
+          
+                  {/* 유치2부 */}
+                  <div className={classnames('nameinput_notice_wrapper', {show: show ==='3'})}>
+                    <select className='nameinput_select_group'
+                      onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
+                      <option>{부서선택}</option>
+                      {유치2부ko.map((a,i)=>{return (<option>{유치2부ko[i]}</option>)})}  
+                    </select>
+                  </div>
+      
+                </div> 
+
+              </div>
+            </div>
+        </div>
+
         
-                {/* 유치2부 */}
-                <div className={classnames('nameinput_notice_wrapper', {show: show ==='3'})}>
-                  <select className='nameinput_select_group'
-                    onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                    <option>{부서선택}</option>
-                    {유치2부ko.map((a,i)=>{return (<option>{유치2부ko[i]}</option>)})}  
-                  </select>
-                </div>
-    
-              </div> 
 
-            </div>
+        {/* 명단 추가 박스 */}
+        <div className='nameinput_input'>
+          <input type="text" className="input_none" onChange={(e)=>{setnewid(e.target.value)}}/>
+
+          <div className='nameinput_inputbox'>
+            <div className='text'>부서</div> <input type="text" className="input" value={부서선택} />
           </div>
-      </div>
+          <div className='nameinput_inputbox'>
+            <div className='text'>소그룹/반</div> <input type="text" className="input" value={추가소그룹} />
+          </div>
+          <div className='nameinput_inputbox'>
+            <div className='text'>이름</div> <input type="text" className="input" onChange={(e)=>{set추가이름(e.target.value)}}/>
+          </div>   
+        </div>
+
+        <button className='nameinput_button' 
+          onClick={()=>{
+            axios.post('/nameadd', {
+            d_number : 반이름숫자로변경(부서선택), g_number : 소그룹number변경(), 
+            dg_number : filter[0].dgn, new_g : 추가소그룹, new_gn : 추가이름
+          }).then((결과)=>{
+          })
+          .catch(()=>{console.log('실패함')})
+          alert('입력되었습니다.')
+          navigate('/')
+        }}>입력하기</button>
+
+        {/* <button className='test_button' 
+          onClick={()=>{
+            console.log(filter[0].dgn)
+          }}
+        >테스트</button> */}
 
       
-
-      {/* 명단 추가 박스 */}
-      <div className='nameinput_input'>
-        <input type="text" className="input_none" onChange={(e)=>{setnewid(e.target.value)}}/>
-
-        <div className='nameinput_inputbox'>
-          <div className='text'>부서</div> <input type="text" className="input" value={부서선택} />
-        </div>
-        <div className='nameinput_inputbox'>
-          <div className='text'>소그룹/반</div> <input type="text" className="input" value={추가소그룹} />
-        </div>
-        <div className='nameinput_inputbox'>
-          <div className='text'>이름</div> <input type="text" className="input" onChange={(e)=>{set추가이름(e.target.value)}}/>
-        </div>   
-      </div>
-
-      <button className='nameinput_button' 
-        onClick={()=>{
-          axios.post('/nameadd', {
-          d_number : 반이름숫자로변경(부서선택), g_number : 소그룹number변경(), 
-          dg_number : filter[0].dgn, new_g : 추가소그룹, new_gn : 추가이름
-        }).then((결과)=>{})
-        .catch(()=>{console.log('실패함')})
-        navigate('/')
-      }}>입력하기</button>
-
-      <button className='test_button' 
-        onClick={()=>{
-          console.log(filter[0].dgn)
-        }}
-      >테스트</button>
-
-     
-      <button className='home_button' onClick={()=>{ navigate('/') }} >홈 돌아가기</button> 
-      <button className='groupadd_button' onClick={()=>{ navigate('/groupadd') }} >소그룹추가</button>
-
+        <button className='home_button' onClick={()=>{ navigate('/') }} >홈 돌아가기</button> 
+        <button className='groupadd_button' onClick={()=>{ navigate('/groupadd') }} >소그룹추가</button>
+      
+      </div>    
     </div>
   );
 }
