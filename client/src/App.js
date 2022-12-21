@@ -6,11 +6,13 @@ import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import { useSelector } from "react-redux"
 import Dep1 from './dep/Dep1';
 import Dep3 from './dep/Dep3';
-import DateInput from './dep/DateInput';
-import NameAdd from './dep/NameAdd';
-import LastReport from './pages/LastReport';
-import Uplord from './pages/Uplord';
-import GroupAdd from './dep/GroupAdd';
+import DateInput from './depcommon/DateInput';
+import NameAdd from './depcommon/NameAdd';
+import GroupAdd from './depcommon/GroupAdd';
+import Login from './depcommon/Login';
+import LastReport from './report/LastReport';
+import Uplord from './report/Uplord';
+
 
 function App() {
 
@@ -23,7 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={
           
-          <div>
+          <div className='App_main'>
+
             <div className='maintitle'>주일학교 출석 관리</div>
 
             <div className='dep_box'>
@@ -42,10 +45,9 @@ function App() {
               navigate('/lastreport')
               }}> 보고서 </button>
 
-              <button className='link_namemodify' onClick={()=>{
-              navigate('/nameadd')
-              }}> 이름입력&삭제 </button>  
-
+              <button className='link_login' onClick={()=>{
+              navigate('/login')
+              }}> 관리자 </button>  
 
             </div>
 
@@ -54,7 +56,7 @@ function App() {
           }/>
 
           
-
+          <Route path="/login" element={<Login></Login>}/>
 
           <Route path="/dep/1" element={<Dep1></Dep1>}/>
           <Route path="/dep/3" element={<Dep3></Dep3>}/>

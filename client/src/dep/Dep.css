@@ -1,30 +1,56 @@
 .dep_main {
-  
+  height: 95vh;
+  overflow-x: scroll;
 }
-.dep_main_deptable {
-  margin-top: 1rem;
+.dep_main_title {
+  position: relative;
+  width: 1800px;
+  height: 100px;
+  display: flex;
+}
+.dep_main_text {
+  width: 230px;
+  height: 60px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(210, 255, 208);
+  margin-top: 30px;
+  font-size: 2rem;
 }
 .dep_main_button {
-  position: relative;
+  position: absolute;
+  display: flex;
+  right: 0;
 }
 .dep_dateinputbutton,
-.dep_nameinputbutton, 
 .dep_nameinputtest,
 .dep_homebutton {
-  position: absolute;
-  left: 3rem;
-  top: 0;
-  margin-top: 50px;
-  width: 200px;
+  margin-top: 40px;
+  width: 150px;
   height: 50px;
 }
 
-.dep_dateinputbutton {
-  top: 5rem;
+
+
+
+
+.dep_main::-webkit-scrollbar {
+  width: 15px;  /* 세로축 스크롤바 길이 */
+  height: 15px;  /* 가로축 스크롤바 길이 */
 }
-.dep_nameinputtest {
-  top: 10rem;
+.dep_main::-webkit-scrollbar-thumb {
+  width: 50%;
+  height: 50%;
+  border-radius: 8px;
+  background-color: rgb(188, 254, 183);
 }
-.dep_homebutton {
-  top: 15rem;
+
+
+.dep_main_deptable {
+  margin-top: 1rem;
 }
+
+
+

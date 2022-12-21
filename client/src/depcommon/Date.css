@@ -11,7 +11,8 @@ td {
 }
 
 .Date_table1 {
-  position: fixed;
+  position: sticky;
+  left: 0;
   width: 220px;
   height: 60px;
   display: flex;
@@ -27,14 +28,12 @@ td {
 }
 
 .Date_table2 {
-  position: absolute;
+  position: relative;
   width: 1580px;
   height: 60px;
-  left: 220px;
-  
 }
 .Date_table2 .date {
-  background-color: rgb(221, 253, 219);
+  background-color: rgb(217, 253, 214);
   font-size: 1rem;
   height: 59px;
   width: calc(1580px / 52);

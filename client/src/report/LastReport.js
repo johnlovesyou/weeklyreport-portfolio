@@ -187,6 +187,10 @@ function LastReport(props) {
           navigate('/uplord')
         }}>출석현황보기</button>
 
+        <button class="button2 homeButton1" onClick={()=>{
+          navigate('/')
+        }}>홈</button>
+
       </div>
              
 {/*         

@@ -1,11 +1,12 @@
 .dep_wrapper {
-  width: 1900px;
+  width: 1800px;
   display: flex;
   margin-bottom: 10px;
 }
 
 .dep_agenamebox {
-  position: fixed;
+  position: sticky;
+  left: 0;
   display: flex;
   z-index: 9;
   background-color: #fff;
@@ -47,7 +48,6 @@
 .dep_nametablebox {
   position: relative;
   width: 1680px;
-  left: 220px;
 }
 .dep_nametablebox .dep_nametableboxwrapper {
   display: flex;

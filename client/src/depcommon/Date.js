@@ -18,17 +18,17 @@ function Date(props) {
         </table>
       </div>
       <div className="Date_table2">
-      <table>
-        <tr>
-          {
-            state.일요일.map((a,i)=>{
-              return (
-                <td className="date">{state.일요일[i]}</td>      
-              )
-            })
-          }
-        </tr>
-      </table>
+        <table>
+          <tr>
+            {
+              state.일요일.map((a,i)=>{
+                return (
+                  <td className="date">{state.일요일[i]}</td>      
+                )
+              })
+            }
+          </tr>
+        </table>
       </div>
     </div>
   );

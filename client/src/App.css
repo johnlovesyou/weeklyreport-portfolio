@@ -1,32 +1,36 @@
 .App {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
+  height: 1000px;
+}
+.App_main {
+  padding: 1px;
+  width: 1800px;
 }
 .maintitle {
   position: relative;
-  margin: 10rem 0 2rem 0;
+  margin: 160px 0 32px 0;
   width: 100%;
   height: 100%;
-  font-size: 5rem;
+  font-size: 80px;
 }
-
 .dep_box {
   left: 0;
   right: 0;
   margin: auto;
-  width: 60%;
+  width: 1200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 30px;
 }
 .dep_list {
-  margin: 1rem;
-  width: 12rem;
-  height: 9rem;
+  margin: 20px;
+  width: 200px;
+  height: 150px;
   background-color: rgb(194, 224, 204);
   position: relative;
-  border-radius: 0.5rem;
+  border-radius: 10px;
   cursor: pointer;
   box-shadow: 5px 5px 10px 2px grey;
 }
@@ -40,9 +44,9 @@
   top: 0;
   bottom: 0;
   margin: auto;
-  height: 2rem;
+  height: 32px;
   width: fit-content;
-  font-size: 1.5rem;
+  font-size: 26px;
 }
 
 .dep_buttonbox {
@@ -54,19 +58,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 20px;
 }
-.link_lastreport {
-  width: 7rem;
-  height: 5rem;
+
+.link_lastreport,
+.link_login {
+  width: 180px;
+  height: 80px;
   margin-right: 10px;
 }
-.link_namemodify {
-  width: 10rem;
-  height: 5rem;
-}
 .link_lastreport:hover,
-.link_namemodify:hover {
+.link_login:hover {
   background-color: gray;
 }
 

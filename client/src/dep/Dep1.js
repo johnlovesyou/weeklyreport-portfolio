@@ -4,9 +4,9 @@ import { useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
 import './Dep.css'
 import axios from 'axios'
-import Basicgroup from './Basicgroup.js';
-import Date from './Date';
-import Deptable from './Deptable';
+import Basicgroup from '../depdatabasic/Basicgroup'
+import Date from '../depcommon/Date'
+import Deptable from '../depcommon/Deptable';
 
 function Dep1(props) {
 
@@ -28,7 +28,22 @@ function Dep1(props) {
   return (
     <div className='dep_main'>
 
-      
+      <div className='dep_main_title'>
+        <div className='dep_main_text'>영유아2부</div>
+
+        <div className='dep_main_button'>
+          <button className='dep_dateinputbutton' onClick={()=>{
+              navigate('/dateinput')
+              }}> 출석 입력하기 </button>   
+          {/* <button className='dep_nameinputtest' onClick={()=>{
+            }}> 테스트 </button>  */}
+          <button className='dep_homebutton' onClick={()=>{
+              navigate('/')
+              }}> 홈버튼 </button> 
+        </div>
+
+      </div>
+
       <div className='dep_main_deptable'>
         <Date></Date>
         {
@@ -39,27 +54,18 @@ function Dep1(props) {
           })  
         }
       </div>
-      
 
-      영유아2부입니다.
-
-      <div className='dep_main_button'>
-
-        <button className='dep_dateinputbutton' onClick={()=>{
-            navigate('/dateinput')
-            }}> 출석 입력하기 </button>   
-
-      
-        <button className='dep_nameinputtest' onClick={()=>{
-            console.log(dep)
-        }}> 테스트 </button> 
-
-    
-        <button className='dep_homebutton' onClick={()=>{
-            navigate('/')
-            }}> 홈버튼 </button> 
-
+      <div className='dep_main_deptable'>
+        {
+          dep.map((a,i)=>{
+            return (
+              <Deptable dep={dep[i]} group={group.filter(e => e.dgn_ko === `${a}`)}></Deptable>
+            )
+          })  
+        }
       </div>
+      
+      
 
     </div>
   );

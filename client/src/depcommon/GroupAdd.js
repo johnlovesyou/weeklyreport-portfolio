@@ -4,8 +4,8 @@ import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import { useSelector } from "react-redux"
 import axios from 'axios';
 import './GroupAdd.css'
-import Basicdep from './Basicdep';
-import Basicdepmain from './Basicdepmain.js';
+import Basicdep from '../depdatabasic/Basicdep'
+import Basicdepmain from '../depdatabasic/Basicdepmain.js';
 
 function GroupAdd(props) {
 
@@ -84,12 +84,14 @@ function GroupAdd(props) {
                   g_num : 반이름새로만들기(부서선택),
                   new_gn : 소그룹입력
                 }).then((결과)=>{
+                  alert(결과.data);
+                  if (결과.data === "입력 성공!") {
+                    navigate('/nameadd')
+                  } 
                 })
                 .catch(()=>{
                   console.log('실패함')
                 })
-                alert('입력되었습니다.')
-                navigate('/nameadd')
               }}>입력하기</button>
             </div>
 
