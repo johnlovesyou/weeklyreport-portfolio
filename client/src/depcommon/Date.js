@@ -12,7 +12,7 @@ function Date(props) {
         <div className="Date_empty"></div>
         <table>
           <tr>
-            <td className="Date_group">학년/반</td>
+            <td className="Date_group">소그룹/반</td>
             <td className="Date_name">이름</td>
           </tr>
         </table>

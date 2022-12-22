@@ -53,6 +53,11 @@ function Login(props) {
               navigate('/')
           }}>뒤로가기</button>
 
+          <button className='name_button' 
+            onClick={()=>{
+              navigate('/nameadd')
+          }}>nameadd</button>
+
         
 
       </div>
