@@ -105,6 +105,15 @@ function NameAdd(props) {
                       {유치2부_학년ko.map((a,i)=>{return (<option>{유치2부_학년ko[i]}</option>)})}  
                     </select>
                   </div>
+
+                  {/* 유치2부_나이&학년 */}
+                  <div className={classnames('nameinput_notice_wrapper', {show: show ==='3'})}>
+                    <select className='nameinput_select_age'
+                      onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
+                      <option>{부서선택}</option>
+                      {유치2부_학년ko.map((a,i)=>{return (<option>{유치2부_학년ko[i]}</option>)})}  
+                    </select>
+                  </div>
       
                 </div> 
 
