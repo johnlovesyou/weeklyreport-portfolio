@@ -9,6 +9,7 @@ import Basicdepmain from '../depdatabasic/Basicdepmain'
 import Basicgroup from '../depdatabasic/Basicgroup'
 import Date from '../depcommon/Date'
 import Deptable from '../depcommon/Deptable';
+import DateInput from '../depcommon/DateInput';
 
 function Dep1(props) {
 
@@ -36,20 +37,21 @@ function Dep1(props) {
   let 학년copy = 학년.map(e => e.dan_ko)
   let 학년result = [...new Set(학년copy)]
 
-  // 1학년
-  let 학년1_person = 부서.filter(e => e.an === `1-1`)
-  let copy1 = 학년1_person.map(e => e.dgn_ko)
-  let group1 = [...new Set(copy1)]
 
-  // 2학년
-  let 학년2_person = 부서.filter(e => e.an === `1-2`)
-  let copy2 = 학년2_person.map(e => e.dgn_ko)
-  let group2 = [...new Set(copy2)]
+  var 각학년group = (da) => {
+    let 학년group = 부서.filter(e => e.an === `${da}`)
+    let groupcopy = 학년group.map(e => e.dgn_ko)
+    let result = [...new Set(groupcopy)]
+    return result
+  }
 
-  // 3학년
-  let 학년3_person = 부서.filter(e => e.an === `1-3`)
-  let copy3 = 학년3_person.map(e => e.dgn_ko)
-  let group3 = [...new Set(copy3)]
+  var 각소그룹person = (da, da_ko) => {
+    let 소그룹person = 부서.filter(e => e.an === `${da}`)
+    let result = 소그룹person.filter(e => e.dgn_ko === `${da_ko}`)
+    return result
+  }
+  let test = 부서.filter(e => e.an === `1-1`)
+  let testresult =test.filter(e => e.dgn_ko === `1첫번째반`)
 
   // classNames
   let [show, setshow] = useState(`${학년result[0]}`)
@@ -71,9 +73,10 @@ function Dep1(props) {
           <button className={classnames('dep_agebutton', {buttoncolor: color ==='3'})} 
               onClick={()=>{setshow(`${학년result[2]}`); setcolor('3')
               }}> {학년result[2]} </button> 
+
           <button className='dep_agebutton' 
           onClick={()=>{
-              console.log(학년result)
+              console.log(testresult)
               }}> 테스트 </button>     
         </div>
 
@@ -92,9 +95,9 @@ function Dep1(props) {
       <div className={classnames('dep_main_deptable', {show: show === `${학년result[0]}`})}>
         <Date></Date>
         {
-          group1.map((a,i)=>{
+          각학년group(`1-1`).map((a,i)=>{
             return (
-              <Deptable group={group1[i]} person={학년1_person.filter(e => e.dgn_ko === `${a}`)}></Deptable>
+              <Deptable group={각학년group(`1-1`)[i]} person={각소그룹person(`1-1`, `${a}`)}></Deptable>
             )
           })  
         }
@@ -103,9 +106,9 @@ function Dep1(props) {
       <div className={classnames('dep_main_deptable', {show: show === `${학년result[1]}`})}>
         <Date></Date>
         {
-          group2.map((a,i)=>{
+          각학년group(`1-2`).map((a,i)=>{
             return (
-              <Deptable group={group2[i]} person={학년2_person.filter(e => e.dgn_ko === `${a}`)}></Deptable>
+              <Deptable group={각학년group(`1-2`)[i]} person={각소그룹person(`1-2`, `${a}`)}></Deptable>
             )
           })  
         }
@@ -114,15 +117,19 @@ function Dep1(props) {
       <div className={classnames('dep_main_deptable', {show: show === `${학년result[2]}`})}>
         <Date></Date>
         {
-          group3.map((a,i)=>{
+          각학년group(`1-3`).map((a,i)=>{
             return (
-              <Deptable group={group3[i]} person={학년3_person.filter(e => e.dgn_ko === `${a}`)}></Deptable>
+              <Deptable group={각학년group(`1-3`)[i]} person={각소그룹person(`1-3`, `${a}`)}></Deptable>
             )
           })  
         }
       </div>
       
-      
+
+
+      <DateInput group={각학년group(`1-1`)} ></DateInput>
+      <DateInput group={각학년group(`1-2`)} ></DateInput>
+      <DateInput group={각학년group(`1-3`)} ></DateInput>
       
 
     </div>
