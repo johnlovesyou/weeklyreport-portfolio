@@ -116,7 +116,7 @@ function NameAdd(props) {
                       onChange={(e)=>{let copy = e.target.value; set추가학년나이(copy); 
                                       let da_num = da_num_ft(`${추가부서}`, `${copy}`)
                                       setda_num(da_num); setshow2(da_num);}}>
-                      <option>{추가부서}</option>
+                      <option>선택</option>
                       {나이학년선택('dep1').map((a,i)=>{return (<option>{나이학년선택('dep1')[i]}</option>)})}  
                     </select>
                   </div>
@@ -127,7 +127,7 @@ function NameAdd(props) {
                       onChange={(e)=>{let copy = e.target.value; set추가학년나이(copy); 
                                       let da_num = da_num_ft(`${추가부서}`, `${copy}`)
                                       setda_num(da_num); setshow2(da_num);}}>
-                      <option>{추가부서}</option>
+                      <option>선택</option>
                       {나이학년선택('dep3').map((a,i)=>{return (<option>{나이학년선택('dep3')[i]}</option>)})}  
                     </select>
                   </div>
@@ -147,7 +147,7 @@ function NameAdd(props) {
                   <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='1-1'})}>
                     <select className='nameadd_select_group' 
                       onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>{추가학년나이}</option>
+                      <option>선택</option>
                       {소그룹선택('1-1').map((a,i)=>{return (<option>{소그룹선택('1-1')[i]}</option>)})}  
                     </select>
                   </div>
@@ -155,7 +155,7 @@ function NameAdd(props) {
                   <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='1-2'})}>
                     <select className='nameadd_select_group' 
                       onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>{추가학년나이}</option>
+                      <option>선택</option>
                       {소그룹선택('1-2').map((a,i)=>{return (<option>{소그룹선택('1-2')[i]}</option>)})}  
                     </select>
                   </div>
@@ -163,7 +163,7 @@ function NameAdd(props) {
                   <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='1-3'})}>
                     <select className='nameadd_select_group' 
                       onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>{추가학년나이}</option>
+                      <option>선택</option>
                       {소그룹선택('1-3').map((a,i)=>{return (<option>{소그룹선택('1-3')[i]}</option>)})}  
                     </select>
                   </div>
@@ -172,7 +172,7 @@ function NameAdd(props) {
                   <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='3-1'})}>
                     <select className='nameadd_select_group' 
                       onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>{추가학년나이}</option>
+                      <option>선택</option>
                       {소그룹선택('3-1').map((a,i)=>{return (<option>{소그룹선택('3-1')[i]}</option>)})}  
                     </select>
                   </div>
@@ -180,7 +180,7 @@ function NameAdd(props) {
                   <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='3-2'})}>
                     <select className='nameadd_select_group' 
                       onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>{추가학년나이}</option>
+                      <option>선택</option>
                       {소그룹선택('3-2').map((a,i)=>{return (<option>{소그룹선택('3-2')[i]}</option>)})}  
                     </select>
                   </div>
@@ -188,7 +188,7 @@ function NameAdd(props) {
                   <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='3-3'})}>
                     <select className='nameadd_select_group' 
                       onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>{추가학년나이}</option>
+                      <option>선택</option>
                       {소그룹선택('3-3').map((a,i)=>{return (<option>{소그룹선택('3-3')[i]}</option>)})}  
                     </select>
                   </div>

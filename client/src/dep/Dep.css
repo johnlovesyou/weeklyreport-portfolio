@@ -68,7 +68,17 @@
   margin-top: 1rem;
   display: none;
 }
+
+.dep_main_selectbox {
+  display: none;
+}
+.dep_main_personlist {
+  display: none;
+}
 .show {
+  display: block;
+}
+.show2 {
   display: block;
 }
 
