@@ -1,80 +1,39 @@
 /*eslint-disable*/
-import { React, useMemo, useState } from 'react';
-import { Routes, Route, useNavigate, Link } from 'react-router-dom';
-import { useSelector } from "react-redux"
-import axios from 'axios';
+import { React, useState } from 'react';
 import './DateInput.css'
 import classnames from 'classnames';
-import Basicdepmain from '../depdatabasic/Basicdepmain.js';
 
 function DateInput(props) {
 
-  let state = useSelector((state) => { return state } )
-  let navigate = useNavigate();
-  
-  let [group, setgroup] = useState(props.group)
-  let [소그룹선택, set소그룹선택] = useState('')
-  
-  
-    
-  // const 출결체크 = (value) => {
-  //   if (value == true) {
-  //     return 1
-  //   } else if (value == false)
-  //     return 0
-  // };
-
-  
+  let [show2, setshow2] = useState('')
+ 
   return (
     <div className='dateinput'>
-
-      <button className='dateinput_test_button'
-        onClick={()=>{
-         console.log(부서.filter(e => e.dag === `1첫번째반`))
-        }}
-      >테스트</button>
-
-      <div className='dateinput_select'>
-  
+      
         <div className='dateinput_select_box'>
           <div className='dateinput_content'>소그룹/반</div>
           <div className='dateinput_content'>
             <select className='dateinput_select_dep'
               onChange={(e)=>{ let copy = e.target.value; 
-                              set소그룹선택(copy)
+                              console.log(copy);
+                              setshow2(copy);
                               }}>
               <option>선택</option>
-              {group.map((a,i)=>{return (<option>{group[i]}</option>)})}  
+              {props.학년소그룹ko.map((a,i)=>{return (<option>{props.학년소그룹ko[i]}</option>)})}  
             </select>
           </div>
         </div>
-
-        {/* <div className='dateinput_personlist_box'>
-         {
-           personlist.map((a,i)=>{
-            return (
-             <div>{personlist[i]}</div>
-            )})
-         } 
-        </div> */}
-
-
-
-      </div>
+        {/* <div className={classnames('dep_main_personlist', {show2: show2 === `${props.학년소그룹ko[0]}`})}>
+          {props.personlist1.map((a,i)=>{return (<div>{props.personlist1[i]}</div>)})}</div> */}
+        {/* <div className={classnames('dep_main_personlist', {show2: show2 === `${props.학년소그룹ko[1]}`})}>
+          {props.personlist2.map((a,i)=>{return (<div>{props.personlist2[i]}</div>)})}</div>
+        <div className={classnames('dep_main_personlist', {show2: show2 === `${props.학년소그룹ko[2]}`})}>
+          {props.personlist3.map((a,i)=>{return (<div>{props.personlist3[i]}</div>)})}</div> */}
       
-
-      <button className='dateinput_input_button' 
-        onClick={()=>{
-          navigate('/')
-      }}>입력하기</button> 
-
-      <button className='dateinput_home_button'
-        onClick={()=>{
-          navigate('/')
-        }}
-      >돌아가기</button> 
-
-      
+          <button className='dep_agebutton' 
+          onClick={()=>{
+              console.log(props.person)
+              }}> 테스트 </button>  
 
     </div>
   );

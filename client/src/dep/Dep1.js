@@ -72,20 +72,15 @@ function Dep1(props) {
   let 학년3소그룹num = [...new Set(학년3소그룹copy)];
 
   // 각person
-
-  let person1 = 부서.filter(e => e.dgn === `1-1-1`) //부서별 수정할 것
-  let person2 = person1.map(e => e.n)
-  let person3 = 부서.filter(e => e.dgn === `1-1-2`) //부서별 수정할 것
-  let person4 = person3.map(e => e.n)
-  let person5 = 부서.filter(e => e.dgn === `1-1-3`) //부서별 수정할 것
-  let person6 = person5.map(e => e.n)
-  
-  
+  var personlist = (dgn) =>{
+    let person1 = 부서.filter(e => e.dgn === `${dgn}`) //부서별 수정할 것
+    let person2 = person1.map(e => e.n)
+    return person2
+  }  
 
   // classNames
   let [show, setshow] = useState(`${학년ko[0]}`)
-  let [show2, setshow2] = useState('')
-  let [color, setcolor] = useState('1')
+    let [color, setcolor] = useState('1')
 
   return (
     <div className='dep_main'>
@@ -93,7 +88,7 @@ function Dep1(props) {
       <div className='dep_main_title'>
                                   {/* 부서별 수정할 것 */}
         <div className='dep_main_text'>영유아2부</div> 
-
+        {/* 버튼 */}
         <div className='dep_main_button1'>
           <button className={classnames('dep_agebutton', {buttoncolor: color ==='1'})} 
               onClick={()=>{setshow(`${학년ko[0]}`); setcolor('1')
@@ -107,7 +102,7 @@ function Dep1(props) {
 
           <button className='dep_agebutton' 
           onClick={()=>{
-              console.log(학년1소그룹num)
+              console.log(학년1소그룹ko)
               }}> 테스트 </button>     
         </div>
 
@@ -119,118 +114,67 @@ function Dep1(props) {
               navigate('/')
               }}> 홈버튼 </button> 
         </div>
-
       </div>
 
-      
+      {/* 날짜 */}
+      <Date></Date>
+
+      {/* 출석현황 */}
       <div className={classnames('dep_main_deptable', {show: show === `${학년ko[0]}`})}>
-        <Date></Date>
-        {
-          각학년group(`${학년num[0]}`).map((a,i)=>{
-            return (
-              <Deptable 
-              group={각학년group(`${학년num[0]}`)[i]} 
-              person={각소그룹person(`${학년num[0]}`, `${a}`)}></Deptable>
-            )
-          })  
-        }
+        {각학년group(`${학년num[0]}`).map((a,i)=>{
+          return ( <Deptable 
+            group={각학년group(`${학년num[0]}`)[i]} 
+            person={각소그룹person(`${학년num[0]}`, `${a}`)}></Deptable>
+          )})}
       </div>
       
       <div className={classnames('dep_main_deptable', {show: show === `${학년ko[1]}`})}>
-        <Date></Date>
-        {
-          각학년group(`${학년num[1]}`).map((a,i)=>{
-            return (
-              <Deptable 
-              group={각학년group(`${학년num[1]}`)[i]} 
-              person={각소그룹person(`${학년num[1]}`, `${a}`)}></Deptable>
-            )
-          })  
-        }
+        {각학년group(`${학년num[1]}`).map((a,i)=>{
+          return ( <Deptable 
+            group={각학년group(`${학년num[1]}`)[i]} 
+            person={각소그룹person(`${학년num[1]}`, `${a}`)}></Deptable>
+          )})}
       </div>
 
       <div className={classnames('dep_main_deptable', {show: show === `${학년ko[2]}`})}>
-        <Date></Date>
-        {
-          각학년group(`${학년num[2]}`).map((a,i)=>{
-            return (
-              <Deptable 
-              group={각학년group(`${학년num[2]}`)[i]} 
-              person={각소그룹person(`${학년num[2]}`, `${a}`)}></Deptable>
-            )
-          })  
-        }
+        {각학년group(`${학년num[2]}`).map((a,i)=>{
+          return (<Deptable 
+            group={각학년group(`${학년num[2]}`)[i]} 
+            person={각소그룹person(`${학년num[2]}`, `${a}`)}></Deptable>
+          )})}
       </div>
       
+      {/* 출석기입 */}
 
       <div className={classnames('dep_main_selectbox', {show: show === `${학년ko[0]}`})}>
-        <div className='dateinput_select_box'>
-          <div className='dateinput_content'>소그룹/반</div>
-          <div className='dateinput_content'>
-            <select className='dateinput_select_dep'
-              onChange={(e)=>{ let copy = e.target.value; 
-                              console.log(copy);
-                              setshow2(copy);
-                              }}>
-              <option>선택</option>
-              {각학년group('1-1').map((a,i)=>{return (<option>{각학년group('1-1')[i]}</option>)})}  
-            </select>
-          </div>
-        </div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${학년1소그룹ko[0]}`})}>
-          {person2.map((a,i)=>{return (<div>{person2[i]}</div>)})}</div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${학년1소그룹ko[1]}`})}>
-          {person4.map((a,i)=>{return (<div>{person4[i]}</div>)})}</div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${학년1소그룹ko[2]}`})}>
-          {person5.map((a,i)=>{return (<div>{person6[i]}</div>)})}</div>
+        <DateInput 
+                학년소그룹ko = {학년1소그룹ko}
+                ></DateInput>
       </div>
 
-      <div className={classnames('dep_main_selectbox', {show: show === `${학년ko[1]}`})}>
-        
-      <div className='dateinput_select_box'>
-          <div className='dateinput_content'>소그룹/반</div>
-          <div className='dateinput_content'>
-            <select className='dateinput_select_dep'
-              onChange={(e)=>{ let copy = e.target.value; 
-                              console.log(copy);
-                              setshow2(copy);
-                              }}>
-              <option>선택</option>
-              {각학년group('1-2').map((a,i)=>{return (<option>{각학년group('1-2')[i]}</option>)})}  
-            </select>
-          </div>
-        </div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${학년2소그룹ko[0]}`})}>
-          {person2.map((a,i)=>{return (<div>{person2[i]}</div>)})}</div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${학년2소그룹ko[1]}`})}>
-          {person4.map((a,i)=>{return (<div>{person4[i]}</div>)})}</div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${학년2소그룹ko[2]}`})}>
-          {person5.map((a,i)=>{return (<div>{person6[i]}</div>)})}</div>
-
+      {/* <div className={classnames('dep_main_selectbox', {show: show === `${학년ko[1]}`})}>
+        <DateInput 학년ko = {학년ko} 각학년group ={각학년group('1-2')}
+                  personlist1={personlist('1-2-1')}
+                  personlist2={personlist('1-2-2')}
+                  personlist3={personlist('1-2-3')}
+                  학년소그룹ko={학년1소그룹ko}
+                  ></DateInput>
       </div>
+
       <div className={classnames('dep_main_selectbox', {show: show === `${학년ko[2]}`})}>
+        <DateInput 학년ko = {학년ko} 각학년group ={각학년group('1-3')}
+                  personlist1={personlist('1-3-1')}
+                  personlist2={personlist('1-3-2')}
+                  personlist3={personlist('1-3-3')}
+                  학년소그룹ko={학년1소그룹ko}
+                  ></DateInput> */}
+      {/* </div> */}
+
+
+
+
       
-        <div className='dateinput_select_box'>
-          <div className='dateinput_content'>소그룹/반</div>
-          <div className='dateinput_content'>
-            <select className='dateinput_select_dep'
-              onChange={(e)=>{ let copy = e.target.value; 
-                              console.log(copy);
-                              setshow2(copy);
-                              }}>
-              <option>선택</option>
-              {각학년group('1-3').map((a,i)=>{return (<option>{각학년group('1-3')[i]}</option>)})}  
-            </select>
-          </div>
-        </div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${학년3소그룹ko[0]}`})}>
-          {person2.map((a,i)=>{return (<div>{person2[i]}</div>)})}</div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${학년3소그룹ko[1]}`})}>
-          {person4.map((a,i)=>{return (<div>{person4[i]}</div>)})}</div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${학년3소그룹ko[2]}`})}>
-          {person5.map((a,i)=>{return (<div>{person6[i]}</div>)})}</div>
-      </div> 
-      
+
       
       
       
