@@ -11,30 +11,28 @@ function DateInput(props) {
     <div className='dateinput'>
       
         <div className='dateinput_select_box'>
-          <div className='dateinput_content'>소그룹/반</div>
-          <div className='dateinput_content'>
-            <select className='dateinput_select_dep'
-              onChange={(e)=>{ let copy = e.target.value; 
-                              console.log(copy);
-                              setshow2(copy);
-                              }}>
-              <option>선택</option>
-              {props.학년소그룹ko.map((a,i)=>{return (<option>{props.학년소그룹ko[i]}</option>)})}  
-            </select>
+          <div className='dateinput_content1'>{props.group}</div>
+          <div className='dateinput_content2'>
+             { props.person.map((a,i)=>{return (
+              <div className='dateinput_namebox'>
+                <label className='dateinput_name_label'>
+                  <div className='dateinput_name_name'>{props.person[i].n}</div>
+                  <div><input type='checkbox' className='dateinput_name_input'/></div>
+                </label>
+              </div>
+             )})}  
           </div>
         </div>
-        {/* <div className={classnames('dep_main_personlist', {show2: show2 === `${props.학년소그룹ko[0]}`})}>
-          {props.personlist1.map((a,i)=>{return (<div>{props.personlist1[i]}</div>)})}</div> */}
-        {/* <div className={classnames('dep_main_personlist', {show2: show2 === `${props.학년소그룹ko[1]}`})}>
-          {props.personlist2.map((a,i)=>{return (<div>{props.personlist2[i]}</div>)})}</div>
-        <div className={classnames('dep_main_personlist', {show2: show2 === `${props.학년소그룹ko[2]}`})}>
-          {props.personlist3.map((a,i)=>{return (<div>{props.personlist3[i]}</div>)})}</div> */}
-      
-          <button className='dep_agebutton' 
-          onClick={()=>{
-              console.log(props.person)
-              }}> 테스트 </button>  
+       
+        <div className='dateinput_testbox_warpper'>
+        <div className='dateinput_testbox'><input type='checkbox' className='dateinput_test' id="1"/></div>
+        <div className='dateinput_testbox'><input type='checkbox' className='dateinput_test' id="2"/></div>
+        <div className='dateinput_testbox'><input type='checkbox' className='dateinput_test' id="3"/></div>
+        </div>
+        
 
+        
+        
     </div>
   );
 }
