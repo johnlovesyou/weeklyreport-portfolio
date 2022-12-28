@@ -58,64 +58,41 @@ app.post('/login', function(요청, 응답) {
   }
 });
 
+// depmain.get //
+app.get('/depmain', function(요청, 응답) {
+  db.query(`
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a1 on dmain.dan = d1_a1.an) union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a2 on dmain.dan = d1_a2.an) union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a3 on dmain.dan = d1_a3.an) union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a1 on dmain.dan = d3_a1.an) union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a2 on dmain.dan = d3_a2.an) union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a3 on dmain.dan = d3_a3.an) order by dgn
+  `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
+})
 
-// dep부서.1학년.get //
+// dep부서.get //
 app.get('/dep/:id', function(요청, 응답) {
   var id = 요청.params.id
   console.log(id)
   var command = `
-    (select * from d${id}_a1 inner join d${id}_a1_g1 on d${id}_a1.dgn = d${id}_a1_g1.gn)
-    union
-    (select * from d${id}_a1 inner join d${id}_a1_g2 on d${id}_a1.dgn = d${id}_a1_g2.gn)
-    union
-    (select * from d${id}_a1 inner join d${id}_a1_g3 on d${id}_a1.dgn = d${id}_a1_g3.gn)
-    union
-    (select * from d${id}_a1 inner join d${id}_a1_g4 on d${id}_a1.dgn = d${id}_a1_g4.gn)
-    union
-    (select * from d${id}_a1 inner join d${id}_a1_g5 on d${id}_a1.dgn = d${id}_a1_g5.gn)
-    union
-    (select * from d${id}_a2 inner join d${id}_a2_g1 on d${id}_a2.dgn = d${id}_a2_g1.gn)
-    union
-    (select * from d${id}_a2 inner join d${id}_a2_g2 on d${id}_a2.dgn = d${id}_a2_g2.gn)
-    union
-    (select * from d${id}_a2 inner join d${id}_a2_g3 on d${id}_a2.dgn = d${id}_a2_g3.gn)
-    union
-    (select * from d${id}_a2 inner join d${id}_a2_g4 on d${id}_a2.dgn = d${id}_a2_g4.gn)
-    union
-    (select * from d${id}_a2 inner join d${id}_a2_g5 on d${id}_a2.dgn = d${id}_a2_g5.gn)
-    union
-    (select * from d${id}_a3 inner join d${id}_a3_g1 on d${id}_a3.dgn = d${id}_a3_g1.gn)
-    union
-    (select * from d${id}_a3 inner join d${id}_a3_g2 on d${id}_a3.dgn = d${id}_a3_g2.gn)
-    union
-    (select * from d${id}_a3 inner join d${id}_a3_g3 on d${id}_a3.dgn = d${id}_a3_g3.gn)
-    union
-    (select * from d${id}_a3 inner join d${id}_a3_g4 on d${id}_a3.dgn = d${id}_a3_g4.gn)
-    union
-    (select * from d${id}_a3 inner join d${id}_a3_g5 on d${id}_a3.dgn = d${id}_a3_g5.gn)
-    order by dgn`
+    (select * from d${id}_a1 inner join d${id}_a1_g1 on d${id}_a1.dgn = d${id}_a1_g1.gn) union
+    (select * from d${id}_a1 inner join d${id}_a1_g2 on d${id}_a1.dgn = d${id}_a1_g2.gn) union
+    (select * from d${id}_a1 inner join d${id}_a1_g3 on d${id}_a1.dgn = d${id}_a1_g3.gn) union
+    (select * from d${id}_a1 inner join d${id}_a1_g4 on d${id}_a1.dgn = d${id}_a1_g4.gn) union
+    (select * from d${id}_a1 inner join d${id}_a1_g5 on d${id}_a1.dgn = d${id}_a1_g5.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g1 on d${id}_a2.dgn = d${id}_a2_g1.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g2 on d${id}_a2.dgn = d${id}_a2_g2.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g3 on d${id}_a2.dgn = d${id}_a2_g3.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g4 on d${id}_a2.dgn = d${id}_a2_g4.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g5 on d${id}_a2.dgn = d${id}_a2_g5.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g1 on d${id}_a3.dgn = d${id}_a3_g1.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g2 on d${id}_a3.dgn = d${id}_a3_g2.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g3 on d${id}_a3.dgn = d${id}_a3_g3.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g4 on d${id}_a3.dgn = d${id}_a3_g4.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g5 on d${id}_a3.dgn = d${id}_a3_g5.gn) order by dgn`
     db.query(command, function (error, result) {if (error) {console.log(error);} 응답.send(result) 
   });  
 })
-
-// depmain.get //
-app.get('/depmain', function(요청, 응답) {
-  db.query(`
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a1 on dmain.dan = d1_a1.an)
-  union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a2 on dmain.dan = d1_a2.an)
-  union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a3 on dmain.dan = d1_a3.an)
-  union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a1 on dmain.dan = d3_a1.an)
-  union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a2 on dmain.dan = d3_a2.an)
-  union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a3 on dmain.dan = d3_a3.an)
-  order by dgn
-  `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
-})
-
 
 // nameadd.post //
 app.post('/nameadd', function(요청, 응답){

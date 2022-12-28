@@ -1,7 +1,6 @@
 /*eslint-disable*/
 import { React, useState } from 'react';
 import './DateInput.css'
-import classnames from 'classnames';
 
 function DateInput(props) {
 
@@ -15,7 +14,11 @@ function DateInput(props) {
           <div className='dateinput_content2'>
              { props.person.map((a,i)=>{return (
               <div className='dateinput_namebox'>
-                <label className='dateinput_name_label'>
+                <label 
+                  onClick={(e)=>{
+                    if (e.target.checked === true) { console.log(props.person[i].n) }
+                  }}
+                   className='dateinput_name_label'>
                   <div className='dateinput_name_name'>{props.person[i].n}</div>
                   <div><input type='checkbox' className='dateinput_name_input'/></div>
                 </label>
@@ -24,14 +27,7 @@ function DateInput(props) {
           </div>
         </div>
        
-        <div className='dateinput_testbox_warpper'>
-        <div className='dateinput_testbox'><input type='checkbox' className='dateinput_test' id="1"/></div>
-        <div className='dateinput_testbox'><input type='checkbox' className='dateinput_test' id="2"/></div>
-        <div className='dateinput_testbox'><input type='checkbox' className='dateinput_test' id="3"/></div>
-        </div>
-        
-
-        
+   
         
     </div>
   );
