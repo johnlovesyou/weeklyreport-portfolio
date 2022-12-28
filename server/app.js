@@ -70,29 +70,60 @@ app.get('/depmain', function(요청, 응답) {
   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
 
+
+
+app.get('/test', function(요청, 응답) {
+  for (var i = 1; i<4; i++) {
+  var command = `(select * from d1_a${i})`
+  if (i<3) {
+    var command2 = ''
+    var command2 = command2 + command + 'union'
+  } else {
+    var command2 = command2 + command + 'order by dgn'
+  }
+  }
+  db.query(command2, function (error, result) {if (error) {console.log(error);} 응답.send(result) 
+});
+})
+
 // dep부서.get //
 app.get('/dep/:id', function(요청, 응답) {
   var id = 요청.params.id
-  console.log(id)
   var command = `
     (select * from d${id}_a1 inner join d${id}_a1_g1 on d${id}_a1.dgn = d${id}_a1_g1.gn) union
     (select * from d${id}_a1 inner join d${id}_a1_g2 on d${id}_a1.dgn = d${id}_a1_g2.gn) union
     (select * from d${id}_a1 inner join d${id}_a1_g3 on d${id}_a1.dgn = d${id}_a1_g3.gn) union
     (select * from d${id}_a1 inner join d${id}_a1_g4 on d${id}_a1.dgn = d${id}_a1_g4.gn) union
     (select * from d${id}_a1 inner join d${id}_a1_g5 on d${id}_a1.dgn = d${id}_a1_g5.gn) union
+    (select * from d${id}_a1 inner join d${id}_a1_g6 on d${id}_a1.dgn = d${id}_a1_g6.gn) union
+    (select * from d${id}_a1 inner join d${id}_a1_g7 on d${id}_a1.dgn = d${id}_a1_g7.gn) union
+    (select * from d${id}_a1 inner join d${id}_a1_g8 on d${id}_a1.dgn = d${id}_a1_g8.gn) union
+    (select * from d${id}_a1 inner join d${id}_a1_g9 on d${id}_a1.dgn = d${id}_a1_g9.gn) union
+    (select * from d${id}_a1 inner join d${id}_a1_g10 on d${id}_a1.dgn = d${id}_a1_g10.gn) union
     (select * from d${id}_a2 inner join d${id}_a2_g1 on d${id}_a2.dgn = d${id}_a2_g1.gn) union
     (select * from d${id}_a2 inner join d${id}_a2_g2 on d${id}_a2.dgn = d${id}_a2_g2.gn) union
     (select * from d${id}_a2 inner join d${id}_a2_g3 on d${id}_a2.dgn = d${id}_a2_g3.gn) union
     (select * from d${id}_a2 inner join d${id}_a2_g4 on d${id}_a2.dgn = d${id}_a2_g4.gn) union
     (select * from d${id}_a2 inner join d${id}_a2_g5 on d${id}_a2.dgn = d${id}_a2_g5.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g6 on d${id}_a2.dgn = d${id}_a2_g6.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g7 on d${id}_a2.dgn = d${id}_a2_g7.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g8 on d${id}_a2.dgn = d${id}_a2_g8.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g9 on d${id}_a2.dgn = d${id}_a2_g9.gn) union
+    (select * from d${id}_a2 inner join d${id}_a2_g10 on d${id}_a2.dgn = d${id}_a2_g10.gn) union
     (select * from d${id}_a3 inner join d${id}_a3_g1 on d${id}_a3.dgn = d${id}_a3_g1.gn) union
     (select * from d${id}_a3 inner join d${id}_a3_g2 on d${id}_a3.dgn = d${id}_a3_g2.gn) union
     (select * from d${id}_a3 inner join d${id}_a3_g3 on d${id}_a3.dgn = d${id}_a3_g3.gn) union
     (select * from d${id}_a3 inner join d${id}_a3_g4 on d${id}_a3.dgn = d${id}_a3_g4.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g5 on d${id}_a3.dgn = d${id}_a3_g5.gn) order by dgn`
+    (select * from d${id}_a3 inner join d${id}_a3_g5 on d${id}_a3.dgn = d${id}_a3_g5.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g6 on d${id}_a3.dgn = d${id}_a3_g6.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g7 on d${id}_a3.dgn = d${id}_a3_g7.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g8 on d${id}_a3.dgn = d${id}_a3_g8.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g9 on d${id}_a3.dgn = d${id}_a3_g9.gn) union
+    (select * from d${id}_a3 inner join d${id}_a3_g10 on d${id}_a3.dgn = d${id}_a3_g10.gn) order by dgn`
     db.query(command, function (error, result) {if (error) {console.log(error);} 응답.send(result) 
   });  
 })
+
 
 // nameadd.post //
 app.post('/nameadd', function(요청, 응답){
