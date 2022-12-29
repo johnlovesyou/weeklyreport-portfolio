@@ -10,6 +10,7 @@ import Basicgroup from '../depdatabasic/Basicgroup'
 import Date from '../depcommon/Date'
 import Deptable from '../depcommon/Deptable';
 import DateInput from '../depcommon/DateInput';
+import BasicDatedata from '../depdatabasic/BasicDatedata'
 
 function Dep1(props) {
 
@@ -31,7 +32,12 @@ function Dep1(props) {
 
   let [dmain, set_dmain] = useState(Basicdepmain)
   let [부서, set부서] = useState(Basicgroup)
-  
+  let [date_data, setdate_data] = useState(BasicDatedata)
+
+  // 지정날짜
+  let [date, setdate] = useState('1 / 1')
+  let date_origin = BasicDatedata.filter(e => e.date === `${date}`)
+  let date_result = date_origin[0].day
 
   // 각y_이름
   let y_main = dmain.filter(e => e.dn === `dep1`) //부서별 수정할 것
@@ -109,7 +115,7 @@ function Dep1(props) {
 
           <button className='dep_agebutton' 
           onClick={()=>{
-              console.log(각소그룹person(`${y_num[0]}`, '1년첫번째반'))
+              console.log('')
               }}> 테스트 </button>     
         </div>
 
@@ -142,17 +148,27 @@ function Dep1(props) {
       
       {/* 출석기입 */}
       <div className='dep_main_text'>출석입력하기</div> 
+      
+      <select className='date_select' 
+        onChange={(e)=>{let copy = e.target.value; setdate(copy) }}>
+        <option>선택</option>
+        {  date_data.map((a,i)=>{return (<option>{date_data[i].date}</option>)})}  
+      </select>
 
       {
         [1,2,3].map((a1,i1)=>{
           return (
             <div className={classnames('dep_main_selectbox', {show: show === `${y_ko[i1]}`})}>
             { 각y_group(`${y_num[i1]}`).map((a2,i2)=>{
-              return ( <DateInput group={각y_group(`${y_num[i1]}`)[i2]} 
+              return ( <DateInput date_result={date_result}
+                                  group={각y_group(`${y_num[i1]}`)[i2]}  
+                                  group_num={각소그룹person_num(`${y_num[i1]}`)[i2]}
                                   person={각소그룹person(`${y_num[i1]}`, `${a2}`)}></DateInput>)})}
             </div> 
           )})
       }
+
+      
  
 
     </div>

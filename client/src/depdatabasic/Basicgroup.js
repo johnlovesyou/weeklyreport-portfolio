@@ -63,7 +63,7 @@ let Basicgroup = [
     day52: '', day53: ''
   },
   {
-    id: 8, dn: 'dep1', dn_ko: '영유아2부', an: '1-1', dgn: '1-1-2', dgn_ko: '1년세번째반', gn: '1-1', n: '학생8',
+    id: 8, dn: 'dep1', dn_ko: '영유아2부', an: '1-1', dgn: '1-1-3', dgn_ko: '1년세번째반', gn: '1-1', n: '학생8',
     day1: '', day2: '', day3: '', day4: '', day5: '', day6: '', day7: '', day8: '', day9: '', day10: '',
     day11: '', day12: '', day13: '', day14: '', day15: '', day16: '', day17: '', day18: '', day19: '', day20: '',
     day21: '', day22: '', day23: '', day24: '', day25: '', day26: '', day27: '', day28: '', day29: '', day30: '',
@@ -135,7 +135,7 @@ let Basicgroup = [
     day52: '', day53: ''
   },
   {
-    id: 8, dn: 'dep1', dn_ko: '영유아2부', an: '1-2', dgn: '1-2-2', dgn_ko: '2년세번]]째반', gn: '1-2', n: '학생8',
+    id: 8, dn: 'dep1', dn_ko: '영유아2부', an: '1-2', dgn: '1-2-3', dgn_ko: '2년세번]]째반', gn: '1-2', n: '학생8',
     day1: '', day2: '', day3: '', day4: '', day5: '', day6: '', day7: '', day8: '', day9: '', day10: '',
     day11: '', day12: '', day13: '', day14: '', day15: '', day16: '', day17: '', day18: '', day19: '', day20: '',
     day21: '', day22: '', day23: '', day24: '', day25: '', day26: '', day27: '', day28: '', day29: '', day30: '',
@@ -207,7 +207,7 @@ let Basicgroup = [
     day52: '', day53: ''
   },
   {
-    id: 8, dn: 'dep1', dn_ko: '영유아2부', an: '1-3', dgn: '1-3-2', dgn_ko: '3년세번%%째반', gn: '1-3', n: '학생8',
+    id: 8, dn: 'dep1', dn_ko: '영유아2부', an: '1-3', dgn: '1-3-3', dgn_ko: '3년세번%%째반', gn: '1-3', n: '학생8',
     day1: '', day2: '', day3: '', day4: '', day5: '', day6: '', day7: '', day8: '', day9: '', day10: '',
     day11: '', day12: '', day13: '', day14: '', day15: '', day16: '', day17: '', day18: '', day19: '', day20: '',
     day21: '', day22: '', day23: '', day24: '', day25: '', day26: '', day27: '', day28: '', day29: '', day30: '',

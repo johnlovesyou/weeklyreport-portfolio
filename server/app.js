@@ -71,21 +71,6 @@ app.get('/depmain', function(요청, 응답) {
 })
 
 
-
-app.get('/test', function(요청, 응답) {
-  for (var i = 1; i<4; i++) {
-  var command = `(select * from d1_a${i})`
-  if (i<3) {
-    var command2 = ''
-    var command2 = command2 + command + 'union'
-  } else {
-    var command2 = command2 + command + 'order by dgn'
-  }
-  }
-  db.query(command2, function (error, result) {if (error) {console.log(error);} 응답.send(result) 
-});
-})
-
 // dep부서.get //
 app.get('/dep/:id', function(요청, 응답) {
   var id = 요청.params.id
@@ -125,6 +110,26 @@ app.get('/dep/:id', function(요청, 응답) {
 })
 
 
+// dateinput
+app.post('/dateinput', function(요청, 응답){
+  console.log(요청.body);
+  var day = 요청.body.day
+  var dep = 요청.body.dep
+  var age = 요청.body.age
+  var group = 요청.body.group
+  var person = 요청.body.person
+  console.log(day)
+  var command = `UPDATE d${dep}_a${age}_g${group} SET day${day} = '1' WHERE (n = '${person}');`
+  db.query(command, 
+    function(error, result){
+  if(error){
+    throw error;
+  }
+  })
+});
+
+
+
 // nameadd.post //
 app.post('/nameadd', function(요청, 응답){
   console.log(요청.body)
@@ -161,24 +166,6 @@ app.post('/groupadd', function(요청, 응답){
   })
 });
 
-
-// dateinput
-app.post('/dateinput', function(요청, 응답){
-  console.log(요청.body);
-  var id = 요청.body.id
-  var day = 요청.body.day
-  var dep = 요청.body.dep
-  var depgroup = 요청.body.depgroup
-  var name = 요청.body.name
-  db.query(`
-  UPDATE d${dep}_g${group} SET day${day} = '1' WHERE (name = '${name}');
-   `,
-    function(error, result){
-  if(error){
-    throw error;
-  }
-  })
-});
 
 
 app.delete('/dep_delete', function(요청, 응답) {
