@@ -24,21 +24,7 @@ function DateInput(props) {
                   onClick={(e)=>{
                     if (e.target.checked === true) {
                       console.log(props.person[i].n)
-                    }
-
-                    axios.post('/dateinput', {
-                      day : props.date_result,
-                      dep :  result_d_num,
-                      age :  result_a_num,
-                      group :  result_g_num,
-                      person : props.person[i].n  
-                    }).then((결과)=>{
-                      alert(결과.data);
-                      if (결과.data === "입력 성공!") {
-                        navigate('/')
-                      } 
-                    })
-                    .catch(()=>{console.log('실패함')})
+                    }                   
 
                   }}
                    className='dateinput_name_label'>
@@ -54,6 +40,21 @@ function DateInput(props) {
        
         <button onClick={()=>{
           console.log(props.date)
+
+          axios.post('/dateinput', {
+            day : props.date_result,
+            dep : result_d_num,
+            age : result_a_num,
+            group : result_g_num,
+            person : ['이요한', '강신애', '이예지']
+          }).then((결과)=>{
+            alert(결과.data);
+            if (결과.data === "입력 성공!") {
+              navigate('/')
+            } 
+          })
+          .catch(()=>{console.log('실패함')})
+
         }}>테스트</button>
    
         

@@ -118,8 +118,15 @@ app.post('/dateinput', function(요청, 응답){
   var age = 요청.body.age
   var group = 요청.body.group
   var person = 요청.body.person
-  console.log(day)
-  var command = `UPDATE d${dep}_a${age}_g${group} SET day${day} = '1' WHERE (n = '${person}');`
+  for (var i = 1; i<person.length; i++) {
+    var command = `UPDATE d${dep}_a${age}_g${group} SET day${day} = '1' WHERE (n = '${person[i]}');`
+    var result = result + command
+  }
+
+// update d1_a1_g1 SET day1 = CASE name when '이요한' then '1' when '강신애' then '1' end where name in ('이요한', '강신애')
+   
+  console.log(result)
+
   db.query(command, 
     function(error, result){
   if(error){
