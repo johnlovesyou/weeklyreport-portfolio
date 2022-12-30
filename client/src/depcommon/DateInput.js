@@ -10,6 +10,8 @@ function DateInput(props) {
   let result_d_num = dgn_num_ft[0]
   let result_a_num = dgn_num_ft[2]
   let result_g_num = dgn_num_ft[4]
+
+  let [test, settest] = useState('')
   
 
   return (
@@ -20,16 +22,16 @@ function DateInput(props) {
           <div className='dateinput_content2'>
              { props.person.map((a,i)=>{return (
               <div className='dateinput_namebox'>
-                <label id='checkbox'
+                <label
                   onClick={(e)=>{
                     if (e.target.checked === true) {
-                      console.log(props.person[i].n)
-                    }                   
-
-                  }}
+                      let copy = {...test};
+                      let copy2 = copy + props.person[i].n
+                      console.log(copy2)
+                      }}}
                    className='dateinput_name_label'>
                   <div className='dateinput_name_name'>{props.person[i].n}</div>
-                  <div><input type='checkbox' className='dateinput_name_input'/></div>
+                  <div><input id='checkbox' type='checkbox' className='dateinput_name_input'/></div>
                 </label>
               </div>
              )})} 
@@ -39,8 +41,8 @@ function DateInput(props) {
         </div>
        
         <button onClick={()=>{
-          console.log(props.date)
-
+          // console.log(props.date)
+          $("input:checkbox[id='checkbox']").prop("checked", false);
           axios.post('/dateinput', {
             day : props.date_result,
             dep : result_d_num,
@@ -54,6 +56,12 @@ function DateInput(props) {
             } 
           })
           .catch(()=>{console.log('실패함')})
+
+        }}>입력</button>
+
+
+        <button onClick={()=>{
+          console.log(test)
 
         }}>테스트</button>
    
