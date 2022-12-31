@@ -48,7 +48,7 @@ function DateInput(props) {
           )})} 
         
         
-          {/* 입력버튼 */}
+          {/* 입력(+)버튼 */}
           <div className='dateinput_content3'>  
             <button className='dateinput_button'
             onClick={()=>{ addperson.shift(); setaddperson(['']); setaddpersoncopy(addperson);
@@ -69,9 +69,14 @@ function DateInput(props) {
 
         {/* 출석적용현황 */}
         <div className='dateinput_content4'>
+          <div className='dateinput_state_box1'> {/* 가로360px이하 보임 */}
+            <div className='dateinput_state_text'></div> 
+          </div>
+          <div className='dateinput_state_box2'>
           {addpersoncopy.map((a,i)=>{return (
-              <p className='dateinput_content4_text'>{addpersoncopy[i]}</p>
-          )})}  
+              <p className='dateinput_state_content'>{addpersoncopy[i]}</p>
+          )})} 
+          </div> 
         </div>
 
       </div>

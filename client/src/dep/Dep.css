@@ -1,8 +1,9 @@
 .dep_main {
-  height: 95vh;
-  overflow-x: scroll;
-}
 
+}
+.dep_main button:hover {
+  cursor: pointer;
+}
 /* 출석현황 */
 .dep_main_presentCondition {
 
@@ -13,6 +14,7 @@
   width: 1800px;
   height: 100px;
   display: flex;
+  margin-bottom: 80px;
 }
 
 /* 1) 타이틀 */
@@ -32,42 +34,54 @@
   position: absolute;
   display: flex;
   left: 20px;
+  top: 100px;
 }
 .dep_agebutton {
-  margin-top: 40px;
-  width: 100px;
+  width: 80px;
   height: 50px;
 }
 .dep_main_buttonright {
   position: absolute;
   display: flex;
   right: 0;
+  top: 100px;
 }
 .buttoncolor {
   background-color: grey;
 }
 .dep_dateinputbutton,
 .dep_homebutton {
-  margin-top: 40px;
-  width: 150px;
+  width: 100px;
   height: 50px;
 }
-
-
-.dep_main::-webkit-scrollbar {
-  width: 15px;  /* 세로축 스크롤바 길이 */
-  height: 15px;  /* 가로축 스크롤바 길이 */
+.dep_agebutton:hover {
+  background-color: rgb(74, 74, 74);
 }
-.dep_main::-webkit-scrollbar-thumb {
+
+
+/* 3) 출석현황 */
+.dep_main_presentlist {
+  margin-top: 30px;
+  overflow-x: scroll;
+}
+/* 날짜 */
+.dep_main_present_date {
+  width: 1800px;
+}
+/* 현황 */
+.dep_main_deptable {
+  margin-top: 1rem;
+  display: none;
+}
+
+.dep_main_presentlist::-webkit-scrollbar {
+  height: 20px;  /* 가로축 스크롤바 길이 */
+}
+.dep_main_presentlist::-webkit-scrollbar-thumb {
   width: 50%;
   height: 50%;
   border-radius: 8px;
   background-color: rgb(188, 254, 183);
-}
-
-.dep_main_deptable {
-  margin-top: 1rem;
-  display: none;
 }
 
 
@@ -76,6 +90,7 @@
 /* 출석기입 */
 .dep_main_presentInput {
   position: relative;
+  width: 1800px;
 }
 /* 1) 타이틀 */
 /* 위와 동일 */
@@ -83,7 +98,7 @@
 /* 2) 날짜선택 */
 .dep_main_dateselect_wrapper {
   position: absolute;
-  top: 10px;
+  top: 30px;
   left: 30px;
   display: flex;
   height: 40px;
@@ -109,10 +124,10 @@
   justify-content: center;
   font-size: 18px;
 }
-/* 3) 현황 */
+/* 3) 현황버튼 */
 .dep_main_inputstate {
   position: absolute;
-  top: 10px;
+  top: 30px;
   right: 300px;
   display: flex;
 }
@@ -134,7 +149,11 @@
 
 
 /* 4) 출석입력 */
+.dep_main_dateinputbox {
+
+}
 .dep_main_selectbox {
+  margin-top: 30px;
   display: none;
 }
 .show {
@@ -142,11 +161,101 @@
 }
 
 /* 5) 적용버튼 */
+.dep_main_lastbutton_box {
+  margin-bottom: 50px;
+  height: 150px;
+}
 .dep_main_lastbutton {
   position: absolute;
   right: 20px;
-  width: 170px;
+  width: 120px;
   height: 70px;
 }
 
 
+@media screen and (max-width : 1500px) { 
+  .dep_main_title {
+    width: 1400px;
+  }
+  .dep_main_presentInput {
+    width: 1400px;
+  }
+  .dep_main_inputstate {
+    top: 30px;
+    right: 200px;
+  }
+}
+
+
+@media screen and (max-width : 1000px) { 
+  .dep_main_title {
+    width: 950px;
+  }
+  .dep_main_presentInput {
+    width: 950px;
+  }
+  .dep_main_inputstate {
+    top: 30px;
+    right: 50px;
+  }
+  .dep_main_inputstate_text1 {
+    margin-right: 50px;
+  }
+  .dep_main_dateselect_text2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width : 600px) { 
+  /* 출석현황 */
+  .dep_main_title {
+    width: 580px;
+    margin-bottom: 130px;
+    padding: 1px;
+  }
+  .dep_main_text {
+    position: absolute;
+    left: 20px;
+  }
+  .dep_main_buttonright {
+    top: 160px;
+    left: 20px;
+  }
+
+  /* 출석기입 */
+  .dep_main_presentInput {
+    width: 580px;
+    padding: 1px;
+  }
+  /* 2) 날짜선택 */
+  .dep_main_dateselect_wrapper {
+    margin: 80px 0;
+  }
+
+  /* 3) 현황버튼 */
+  .dep_main_inputstate {
+    margin: 130px 60px 0 0;
+  }
+  .dep_main_dateselect_text2 {
+    margin-top: 10px;
+    display: block;
+    font-size: 15px;
+  }
+  .dep_main_inputstate_text2 {
+    display: none;
+  }
+  
+  /* 4) 출석입력 */
+  .dep_main_dateinputbox {
+    margin-top: 150px;
+    padding-top: 1px;
+  }
+
+  /* 5) 적용버튼 */
+  .dep_main_lastbutton {
+    left: 20px;
+    margin-top: 20px;
+    width: 120px;
+    height: 60px;
+  }
+}

@@ -1,6 +1,5 @@
 .dateinput {
   margin: 10px 20px;
-  
 }
 .dateinput_wrapper {
  display: flex;
@@ -72,7 +71,7 @@ input[type="checkbox"]:checked::after {
   display: block;
 }    
 
-/* 입력버튼 */
+/* 입력(+)버튼 */
 .dateinput_content3 {
 
 }
@@ -91,6 +90,80 @@ input[type="checkbox"]:checked::after {
   align-items: center;
   justify-content: center;
 }
-.dateinput_content4_text {
+.dateinput_state_box1 {
+  display: none;
+}
+.dateinput_state_text { /* 가로360px이하 보임 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 45px;
+  background-color: rgb(188, 254, 183);
+}
+.dateinput_state_box2 {
+  width: 570px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.dateinput_state_content {
   margin: 2px;
+}
+
+@media screen and (max-width : 1500px) { 
+  .dateinput_content1 {
+    width: 150px;
+  }
+  .dateinput_content2 {
+    width: 800px;
+  }
+  .dateinput_button {
+    width: 50px;
+  }
+  .dateinput_content4 {
+    width: 500px;
+  }
+
+}
+
+@media screen and (max-width : 1000px) { 
+  .dateinput {
+    font-size: 14px;
+  }
+  .dateinput_content1 {
+    width: 100px;
+  }
+  .dateinput_content2 {
+    width: 600px;
+  }
+  .dateinput_name_label {
+    width: 60px;
+  }
+  .dateinput_content4 {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width : 600px) { 
+  .dateinput_wrapper {
+    display: block;
+  }
+  .dateinput_name_label {
+    width: 50px;
+  }
+  .dateinput_button {
+    width: 40px;
+  }
+  .dateinput_content4 {
+    width: 400px;
+  }
+  .dateinput_state_box1 {
+    display: block;
+    width: 50px;
+  }
+  .dateinput_content1,
+  .dateinput_content2 {
+    margin: 10px 0;
+  }
 }

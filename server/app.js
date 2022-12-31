@@ -156,7 +156,7 @@ app.post('/nameadd', function(요청, 응답){
   var g_num = 요청.body.g_num;
   var new_n = 요청.body.new_n;
   db.query(`
-  INSERT IGNORE INTO d${d_num}_a${a_num}_g${g_num} (n) VALUES ('${new_n}')
+  INSERT IGNORE INTO d${d_num}_a${a_num}_g${g_num} (n) VALUES ('${new_n}');
   `,function(error, result){
   if (error) {throw error}
   if (result.affectedRows > 0) {            

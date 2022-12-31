@@ -110,6 +110,8 @@ function NameAdd(props) {
               <div className='nameadd_content'>
                 <div className='nameadd_notice'>
               
+                  
+                 
                   {/* 영유아2부_나이&학년 */}
                   <div className={classnames('nameadd_notice_wrapper', {show: show ==='1'})}>
                     <select className='nameadd_select_age' 
@@ -241,7 +243,7 @@ function NameAdd(props) {
 
         <button className='test_button' 
           onClick={()=>{
-            console.log(da_num)
+            console.log(부서)
           }}
         >테스트</button>
 

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
 import './Dep.css'
 import axios from 'axios'
+import $ from "jquery";
 import classnames from 'classnames';
 import Basicdepmain from '../depdatabasic/Basicdepmain'
 import Basicgroup from '../depdatabasic/Basicgroup'
@@ -117,17 +118,22 @@ function Dep1(props) {
           </div>
           <div className='dep_main_buttonright'>
             <button className='dep_dateinputbutton' onClick={()=>{
-                }}> 출석 입력하기 </button>   
+              let location_Aboutme = $('#Aboutme').offset().top - 20
+              window.scroll({top: location_Aboutme, behavior:'smooth'});
+                }}> 출석입력 </button>   
             <button className='dep_homebutton' onClick={()=>{
                 navigate('/')
-                }}> 홈버튼 </button> 
+                }}> home </button> 
           </div>
         </div>
 
-        {/* 3) 날짜 */}
-        <Date></Date>
-
-        {/* 4) 출석현황 */}
+        {/* 3) 출석현황 */}
+        <div className='dep_main_presentlist'>
+          {/* 날짜 */}
+          <div className='dep_main_present_date'>
+            <Date></Date>
+          </div>
+          {/* 출석현황 */}
         {
           [1,2,3,4].map((a1,i1)=>{
             return ( 
@@ -138,19 +144,20 @@ function Dep1(props) {
             </div>
             )})
         }
+        </div>
 
       </div>
       
       {/* 출석기입 */}
       <div className='dep_main_presentInput'>
         {/* 1) 타이틀 */}
-        <div className='dep_main_text'>출석입력하기</div> 
+        <div className='dep_main_text' id="Aboutme">출석입력하기</div> 
         {/* 2) 날짜선택 */}
         <div className='dep_main_dateselect_wrapper'>
           <div className='dep_main_dateselect_text1'>날짜선택</div>
           <select className='dep_main_dateselect_box' 
             onChange={(e)=>{
-              if (e.target.value === '선택') {alert('날짜를 선택하세요')
+              if (e.target.value === '선택') {
               } else {let copy = e.target.value; setdate(copy)
               }}}>
             <option>선택</option>
@@ -158,12 +165,13 @@ function Dep1(props) {
           </select>
           <div className='dep_main_dateselect_text2'>← 날짜를 선택하세요</div>
         </div>
-        {/* 3) 현황 */}
+        {/* 3) 현황버튼 */}
         <div className='dep_main_inputstate'>
-          <div className='dep_main_inputstate_text1'>날짜:  {date}</div>
+          <div className='dep_main_inputstate_text1'>[ 날짜:  {date} ]</div>
           <div className='dep_main_inputstate_text2'>입력현황</div>
         </div>
         {/* 4) 출석입력 */}
+        <div className='dep_main_dateinputbox'>
         {
           [1,2,3].map((a1,i1)=>{
             return (
@@ -176,12 +184,15 @@ function Dep1(props) {
               </div> 
             )})
         }
-
+        </div>
+        
         {/* 5) 적용버튼 */}
-        <button className='dep_main_lastbutton'
-        onClick={()=>{
-          navigate('/')
-        }}>적용하고 나가기</button>
+        <div className='dep_main_lastbutton_box'>
+          <button className='dep_main_lastbutton'
+          onClick={()=>{
+            navigate('/')
+          }}>확인 & home</button>
+        </div>
 
       </div>
 
