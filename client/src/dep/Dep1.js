@@ -98,81 +98,92 @@ function Dep1(props) {
   return (
     <div className='dep_main'>
 
-      <div className='dep_main_title'>
-                                  {/* 부서별 수정할 것 */}
-        <div className='dep_main_text'>영유아2부</div> 
-        {/* 버튼 */}
-        <div className='dep_main_button1'>
-
-          {
-          [1,2,3].map((a,i)=>{
-            return ( 
-              <button className={classnames('dep_agebutton', {buttoncolor: color === `${i+1}`})} 
-              onClick={()=>{setshow(`${y_ko[i]}`); setcolor(`${i+1}`)
-              }}> {y_ko[i]} </button>   
-            )})
-          }
-
-          <button className='dep_agebutton' 
-          onClick={()=>{
-              console.log('')
-              }}> 테스트 </button>     
-        </div>
-
-
-        <div className='dep_main_button2'>
-          <button className='dep_dateinputbutton' onClick={()=>{
-              navigate('/dateinput')
-              }}> 출석 입력하기 </button>   
-          <button className='dep_homebutton' onClick={()=>{
-              navigate('/')
-              }}> 홈버튼 </button> 
-        </div>
-      </div>
-
-      {/* 날짜 */}
-      <Date></Date>
-
       {/* 출석현황 */}
-      {
-        [1,2,3,4].map((a1,i1)=>{
-          return ( 
-          <div className={classnames('dep_main_deptable', {show: show === `${y_ko[i1]}`})}>
-            {각y_group(`${y_num[i1]}`).map((a2,i2)=>{
-            return ( <Deptable group={각y_group(`${y_num[i1]}`)[i2]} 
-                              person={각소그룹person(`${y_num[i1]}`, `${a2}`)}></Deptable>)})}
+      <div className='dep_main_presentCondition'>
+
+        <div className='dep_main_title'>
+          {/* 1) 타이틀 */}           {/* 부서별 수정할 것 */}
+          <div className='dep_main_text'>영유아2부</div> 
+          {/* 2) 버튼 */}
+          <div className='dep_main_buttonleft'>
+            {
+            [1,2,3].map((a,i)=>{
+              return ( 
+                <button className={classnames('dep_agebutton', {buttoncolor: color === `${i+1}`})} 
+                onClick={()=>{setshow(`${y_ko[i]}`); setcolor(`${i+1}`)
+                }}> {y_ko[i]} </button>   
+              )})
+            }
           </div>
-          )})
-      }
-    
+          <div className='dep_main_buttonright'>
+            <button className='dep_dateinputbutton' onClick={()=>{
+                }}> 출석 입력하기 </button>   
+            <button className='dep_homebutton' onClick={()=>{
+                navigate('/')
+                }}> 홈버튼 </button> 
+          </div>
+        </div>
+
+        {/* 3) 날짜 */}
+        <Date></Date>
+
+        {/* 4) 출석현황 */}
+        {
+          [1,2,3,4].map((a1,i1)=>{
+            return ( 
+            <div className={classnames('dep_main_deptable', {show: show === `${y_ko[i1]}`})}>
+              {각y_group(`${y_num[i1]}`).map((a2,i2)=>{
+              return ( <Deptable group={각y_group(`${y_num[i1]}`)[i2]} 
+                                person={각소그룹person(`${y_num[i1]}`, `${a2}`)}></Deptable>)})}
+            </div>
+            )})
+        }
+
+      </div>
       
       {/* 출석기입 */}
-      <div className='dep_main_text'>출석입력하기</div> 
-      
-      <select className='dep_main_dateselect' 
-        onChange={(e)=>{let copy = e.target.value; setdate(copy) }}>
-        <option>선택</option>
-        {  date_data.map((a,i)=>{return (<option>{date_data[i].date}</option>)})}  
-      </select>
+      <div className='dep_main_presentInput'>
+        {/* 1) 타이틀 */}
+        <div className='dep_main_text'>출석입력하기</div> 
+        {/* 2) 날짜선택 */}
+        <div className='dep_main_dateselect_wrapper'>
+          <div className='dep_main_dateselect_text1'>날짜선택</div>
+          <select className='dep_main_dateselect_box' 
+            onChange={(e)=>{
+              if (e.target.value === '선택') {alert('날짜를 선택하세요')
+              } else {let copy = e.target.value; setdate(copy)
+              }}}>
+            <option>선택</option>
+            {  date_data.map((a,i)=>{return (<option>{date_data[i].date}</option>)})}  
+          </select>
+          <div className='dep_main_dateselect_text2'>← 날짜를 선택하세요</div>
+        </div>
+        {/* 3) 현황 */}
+        <div className='dep_main_inputstate'>
+          <div className='dep_main_inputstate_text1'>날짜:  {date}</div>
+          <div className='dep_main_inputstate_text2'>입력현황</div>
+        </div>
+        {/* 4) 출석입력 */}
+        {
+          [1,2,3].map((a1,i1)=>{
+            return (
+              <div className={classnames('dep_main_selectbox', {show: show === `${y_ko[i1]}`})}>
+              { 각y_group(`${y_num[i1]}`).map((a2,i2)=>{
+                return ( <DateInput date_result={date_result}
+                                    group={각y_group(`${y_num[i1]}`)[i2]}  
+                                    group_num={각소그룹person_num(`${y_num[i1]}`)[i2]}
+                                    person={각소그룹person(`${y_num[i1]}`, `${a2}`)}></DateInput>)})}
+              </div> 
+            )})
+        }
 
-      {
-        [1,2,3].map((a1,i1)=>{
-          return (
-            <div className={classnames('dep_main_selectbox', {show: show === `${y_ko[i1]}`})}>
-            { 각y_group(`${y_num[i1]}`).map((a2,i2)=>{
-              return ( <DateInput date_result={date_result}
-                                  group={각y_group(`${y_num[i1]}`)[i2]}  
-                                  group_num={각소그룹person_num(`${y_num[i1]}`)[i2]}
-                                  person={각소그룹person(`${y_num[i1]}`, `${a2}`)}></DateInput>)})}
-            </div> 
-          )})
-      }
+        {/* 5) 적용버튼 */}
+        <button className='dep_main_lastbutton'
+        onClick={()=>{
+          navigate('/')
+        }}>적용하고 나가기</button>
 
-      
-      <button className='dep_main_lastbutton'
-      onClick={()=>{
-         navigate('/')
-      }}>적용하고 나가기</button>
+      </div>
 
     </div>
   );

@@ -2,12 +2,20 @@
   height: 95vh;
   overflow-x: scroll;
 }
+
+/* 출석현황 */
+.dep_main_presentCondition {
+
+}
+
 .dep_main_title {
   position: relative;
   width: 1800px;
   height: 100px;
   display: flex;
 }
+
+/* 1) 타이틀 */
 .dep_main_text {
   width: 230px;
   height: 60px;
@@ -19,7 +27,8 @@
   margin-top: 30px;
   font-size: 2rem;
 }
-.dep_main_button1 {
+/*  2) 버튼 */
+.dep_main_buttonleft {
   position: absolute;
   display: flex;
   left: 20px;
@@ -29,27 +38,20 @@
   width: 100px;
   height: 50px;
 }
-
-
-.dep_main_button2 {
+.dep_main_buttonright {
   position: absolute;
   display: flex;
   right: 0;
 }
+.buttoncolor {
+  background-color: grey;
+}
 .dep_dateinputbutton,
-.dep_nameinputtest,
 .dep_homebutton {
   margin-top: 40px;
   width: 150px;
   height: 50px;
 }
-
-.buttoncolor {
-  background-color: grey;
-}
-
-
-
 
 
 .dep_main::-webkit-scrollbar {
@@ -63,32 +65,88 @@
   background-color: rgb(188, 254, 183);
 }
 
-.dep_main_dateselect {
-  position: relative;
-}
-
-
 .dep_main_deptable {
   margin-top: 1rem;
   display: none;
 }
 
-.dep_main_selectbox {
-  display: none;
+
+
+
+/* 출석기입 */
+.dep_main_presentInput {
+  position: relative;
 }
-.dep_main_personlist {
+/* 1) 타이틀 */
+/* 위와 동일 */
+
+/* 2) 날짜선택 */
+.dep_main_dateselect_wrapper {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  display: flex;
+  height: 40px;
+}
+.dep_main_dateselect_text1 {
+  width: 115px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(188, 254, 183);
+}
+.dep_main_dateselect_box { 
+  width: 100px;
+  height: 100%;
+  font-size: 18px;
+}
+.dep_main_dateselect_text2 {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+/* 3) 현황 */
+.dep_main_inputstate {
+  position: absolute;
+  top: 10px;
+  right: 300px;
+  display: flex;
+}
+.dep_main_inputstate_text1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 100px;
+  font-size: 20px;
+}
+.dep_main_inputstate_text2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  background-color: rgb(188, 254, 183);
+}
+
+
+/* 4) 출석입력 */
+.dep_main_selectbox {
   display: none;
 }
 .show {
   display: block;
 }
-.show2 {
-  display: block;
-}
 
+/* 5) 적용버튼 */
 .dep_main_lastbutton {
-  width: 150px;
-  height: 80px;
+  position: absolute;
+  right: 20px;
+  width: 170px;
+  height: 70px;
 }
 
 

@@ -2,23 +2,23 @@
   margin: 10px 20px;
   
 }
-.dateinput_select_box {
+.dateinput_wrapper {
  display: flex;
 }
+
+/* 소그룹명 */
 .dateinput_content1 {
   width: 120px;
   height: 30px;
   position: relative;
   top: 10px;
 }
+
+/* 학생선택박스 */
 .dateinput_content2 {
   display: flex;
   width: 1000px;
   height: 40px;
-  /* background-color: blue; */
-}
-.dateinput_content2_wrapper{
-  display: flex;
 }
 .dateinput_namebox {
   position: relative;
@@ -27,7 +27,7 @@
 }
 .dateinput_name_label {
   float: left;
-  width: 120px;
+  width: 80px;
 }
 .dateinput_name_name {
   position: absolute;
@@ -41,14 +41,9 @@
 .dateinput_name_input {
   position: absolute;
   left: 0;
-  width: 100px;
-  height: 100px;
+  width: 100%;
   border: 1px solid #333; 
 }  
-.dateinput_name2 {
-  
-}
-
 
 
 input[type="checkbox"] {
@@ -77,20 +72,25 @@ input[type="checkbox"]:checked::after {
   display: block;
 }    
 
-
+/* 입력버튼 */
 .dateinput_content3 {
 
 }
 .dateinput_button {
-  width: 100px;
-  height: 50px;
+  margin: 0 3px;
+  width: 80px;
+  height: 40px;
 }
 
+/* 출석적용현황 */
 .dateinput_content4 {
-  width: 500px;
+  width: 700px;
   height: 50px;
   border: 1px solid #333; 
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.dateinput_content4_text {
+  margin: 2px;
 }
