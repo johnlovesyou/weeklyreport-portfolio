@@ -63,6 +63,10 @@
   background-color: rgb(188, 254, 183);
 }
 
+.dep_main_dateselect {
+  position: relative;
+}
+
 
 .dep_main_deptable {
   margin-top: 1rem;
@@ -82,5 +86,9 @@
   display: block;
 }
 
+.dep_main_lastbutton {
+  width: 150px;
+  height: 80px;
+}
 
 

@@ -13,8 +13,12 @@
 }
 .dateinput_content2 {
   display: flex;
+  width: 1000px;
   height: 40px;
   /* background-color: blue; */
+}
+.dateinput_content2_wrapper{
+  display: flex;
 }
 .dateinput_namebox {
   position: relative;
@@ -23,7 +27,7 @@
 }
 .dateinput_name_label {
   float: left;
-  width: 100px;
+  width: 120px;
 }
 .dateinput_name_name {
   position: absolute;
@@ -44,18 +48,7 @@
 .dateinput_name2 {
   
 }
-.dateinput_testbox_warpper {
-  display: flex;
-}
-.dateinput_testbox {
-  width: 100px;
-  height: 100px;
-  border: 1px solid #333;
-}
-.dateinput_test {
-  width: 100px;
-  height: 100px;
-}
+
 
 
 input[type="checkbox"] {
@@ -84,3 +77,20 @@ input[type="checkbox"]:checked::after {
   display: block;
 }    
 
+
+.dateinput_content3 {
+
+}
+.dateinput_button {
+  width: 100px;
+  height: 50px;
+}
+
+.dateinput_content4 {
+  width: 500px;
+  height: 50px;
+  border: 1px solid #333; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

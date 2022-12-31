@@ -149,7 +149,7 @@ function Dep1(props) {
       {/* 출석기입 */}
       <div className='dep_main_text'>출석입력하기</div> 
       
-      <select className='date_select' 
+      <select className='dep_main_dateselect' 
         onChange={(e)=>{let copy = e.target.value; setdate(copy) }}>
         <option>선택</option>
         {  date_data.map((a,i)=>{return (<option>{date_data[i].date}</option>)})}  
@@ -169,7 +169,10 @@ function Dep1(props) {
       }
 
       
- 
+      <button className='dep_main_lastbutton'
+      onClick={()=>{
+         navigate('/')
+      }}>적용하고 나가기</button>
 
     </div>
   );

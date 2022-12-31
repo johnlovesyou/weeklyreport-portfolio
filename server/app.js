@@ -118,25 +118,31 @@ app.post('/dateinput', function(요청, 응답){
   var age = 요청.body.age
   var group = 요청.body.group
   var person = 요청.body.person
-  for (var i = 1; i<person.length; i++) {
-    var command = `
-    update d1_a1_g1 set 
-    day6 = case when n='이요한' then '1' else day5 end, 
-    day6 = case when n='강신애' then '1' else day5 end 
-    where n in ('이요한', '강신애');
-    `
-    var result = result + command
-  }
-
-  
-   
-  console.log(result)
-
-  db.query(command, 
-    function(error, result){
-  if(error){
-    throw error;
-  }
+  var command = `
+  update d${dep}_a${age}_g${group} set 
+  day${day} = case when n='${person[0]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[1]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[2]}' then '1' else day${day} end,
+  day${day} = case when n='${person[3]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[4]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[5]}' then '1' else day${day} end,
+  day${day} = case when n='${person[6]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[7]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[8]}' then '1' else day${day} end,
+  day${day} = case when n='${person[9]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[10]}' then '1' else day${day} end
+  where n in ('${person[0]}', '${person[1]}', '${person[2]}', 
+  '${person[3]}', '${person[4]}', '${person[5]}', '${person[6]}', 
+  '${person[7]}', '${person[8]}', '${person[9]}', '${person[10]}');
+  `
+  db.query(command, function(error, result){
+  if (error) {throw error}
+  if (result.affectedRows > 0) {            
+    응답.send("입력 성공!");
+    응답.end();
+  } else {
+    응답.send("중복된 이름이 있거나 입력 정보가 올바르지 않습니다.");  
+  }  
   })
 });
 
