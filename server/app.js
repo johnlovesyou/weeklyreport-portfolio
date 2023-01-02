@@ -59,6 +59,13 @@ app.post('/login', function(요청, 응답) {
 });
 
 // depmain.get //
+app.get('/date', function(요청, 응답) {
+  db.query(`
+  select * from date
+  `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
+})
+
+// depmain.get //
 app.get('/depmain', function(요청, 응답) {
   db.query(`
   (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a1 on dmain.dan = d1_a1.an) union

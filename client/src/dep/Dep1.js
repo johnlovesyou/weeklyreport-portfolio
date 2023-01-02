@@ -11,6 +11,7 @@ import Basicgroup from '../depdatabasic/Basicgroup'
 import Date from '../depcommon/Date'
 import Deptable from '../depcommon/Deptable';
 import DateInput from '../depcommon/DateInput';
+import Stats from '../depcommon/Stats';
 import BasicDatedata from '../depdatabasic/BasicDatedata'
 
 function Dep1(props) {
@@ -19,6 +20,11 @@ function Dep1(props) {
   let navigate = useNavigate();
 
   useMemo(()=>{ return (
+    axios.get(`/date`).then((결과)=>{ //부서별 수정할 것
+      console.log(결과.data)
+      let copy = [...결과.data]
+      setdate_data(copy)
+    }),
     axios.get(`/depmain`).then((결과)=>{ //부서별 수정할 것
       console.log(결과.data)
       let copy = [...결과.data]
@@ -37,7 +43,7 @@ function Dep1(props) {
 
   // 지정날짜
   let [date, setdate] = useState('1 / 1')
-  let date_origin = BasicDatedata.filter(e => e.date === `${date}`)
+  let date_origin = date_data.filter(e => e.date === `${date}`)
   let date_result = date_origin[0].day
 
   // 각y_이름
@@ -69,6 +75,10 @@ function Dep1(props) {
     return result
   }
 
+  // 통계
+  let stats = 부서.filter(e => e.day1 === 1)
+
+
   // classNames
   let [show, setshow] = useState(`${y_ko[0]}`)
   let [color, setcolor] = useState('1')
@@ -92,6 +102,9 @@ function Dep1(props) {
                 }}> {y_ko[i]} </button>   
               )})
             }
+            <button className='dep_agebutton' onClick={()=>{
+                console.log(stats)
+                }}> test </button> 
           </div>
           <div className='dep_main_buttonright'>
             <button className='dep_dateinputbutton' onClick={()=>{
@@ -108,20 +121,26 @@ function Dep1(props) {
         <div className='dep_main_presentlist'>
           {/* 날짜 */}
           <div className='dep_main_present_date'>
-            <Date></Date>
+            <Date date={date_data}></Date>
           </div>
           {/* 출석현황 */}
-        {
-          [1,2,3,4].map((a1,i1)=>{
-            return ( 
-            <div className={classnames('dep_main_deptable', {show: show === `${y_ko[i1]}`})}>
-              {각y_group(`${y_num[i1]}`).map((a2,i2)=>{
-              return ( <Deptable group={각y_group(`${y_num[i1]}`)[i2]} 
-                                person={각소그룹person(`${y_num[i1]}`, `${a2}`)}></Deptable>)})}
-            </div>
-            )})
-        }
+          {
+            [1,2,3].map((a1,i1)=>{
+              return ( 
+              <div className={classnames('dep_main_deptable', {show: show === `${y_ko[i1]}`})}>
+                {각y_group(`${y_num[i1]}`).map((a2,i2)=>{
+                return ( <Deptable group={각y_group(`${y_num[i1]}`)[i2]} 
+                                  person={각소그룹person(`${y_num[i1]}`, `${a2}`)}></Deptable>)})}
+              </div>
+              )})
+          }
+          {/* 통계 */}
+          <div className='dep_main_stats'>
+            <Stats date={date_data} 부서={부서}></Stats>
+          </div>
         </div>
+
+        
 
       </div>
       

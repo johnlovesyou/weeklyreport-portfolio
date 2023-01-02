@@ -1,9 +1,9 @@
-import { React }  from "react";
+import { React, useState }  from "react";
 import { useSelector } from "react-redux"
 import "./Date.css"
 
 function Date(props) {
-  
+
   let state = useSelector((state) => { return state } )
 
   return (
@@ -21,9 +21,9 @@ function Date(props) {
         <table>
           <tr>
             {
-              state.일요일.map((a,i)=>{
+              props.date.map((a,i)=>{
                 return (
-                  <td className="date">{state.일요일[i]}</td>      
+                  <td className="date">{props.date[i].date}</td>
                 )
               })
             }
