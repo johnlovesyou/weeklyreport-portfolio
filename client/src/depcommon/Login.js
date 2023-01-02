@@ -35,30 +35,19 @@ function Login(props) {
         <button className='login_button' 
             onClick={()=>{
               axios.post('/login', {
-              username : 이름,
-              password : 비번
+              username : 이름, password : 비번
             }).then((결과)=>{
               alert(결과.data)
-              if (결과.data === "로그인 성공!") {
-                navigate('/nameadd')
-              } 
+              if (결과.data === "로그인 성공!") {navigate('/nameadd')} 
             })
-            .catch((error)=>{
-              console.log(error)
-            })
+            .catch((error)=>{console.log(error)})
           }}>로그인</button>
 
           <button className='home_button' 
             onClick={()=>{
               navigate('/')
           }}>뒤로가기</button>
-
-          <button className='name_button' 
-            onClick={()=>{
-              navigate('/nameadd')
-          }}>nameadd</button>
-
-        
+       
 
       </div>
     </div>

@@ -1,44 +1,65 @@
 /*eslint-disable*/
 import { React, useMemo, useState } from 'react';
-import { Routes, Route, useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux"
 import axios from 'axios';
+import classnames from 'classnames';
 import './GroupAdd.css'
-import Basicdep from '../depdatabasic/Basicdep'
 import Basicdepmain from '../depdatabasic/Basicdepmain.js';
 
 function GroupAdd(props) {
 
-  let state = useSelector((state) => { return state } )
   let navigate = useNavigate();
+  let [show, setshow] = useState('1')
 
   useMemo(()=>{ return (
     axios.get('/depmain').then((결과)=>{console.log(결과.data); let copy = [...결과.data]; set부서(copy)})
   ) }, [])
 
-  // 테스트박스
   let [부서, set부서] = useState(Basicdepmain);
   let 부서copy = 부서.map(e => e.dn_ko);
   let 부서ko = [...new Set(부서copy)];
 
-  
-  let [부서선택, set부서선택] = useState("")
-  let [소그룹입력, set소그룹입력] = useState("")
+  var d_num_ft = (num) => { // ex) 영유아2부 : 1, 유치2부 : 3
+    let filter = 부서.filter(e => e.dn_ko === `${num}`)
+    let result_num = filter[0].dan
+    let result_num2 = result_num.split('');
+    return result_num2[0]
+  }
 
-  var filter = 부서.filter(e => e.dn_ko === `${부서선택}`);
-  let 부서number = filter.map(e => e.dgn);
+  // 각부서 나이&학년 선택
+  let [da_num, setda_num] = useState('');
 
-  var 반이름새로만들기 = (dep) => {
-    if (dep == '영유아2부') {return `1-${부서number.length+1}`} 
-    else if (dep == '영유아3부') {return `2-${부서number.length+1}`}
-    else if (dep == '유치2부') {return `3-${부서number.length+1}`}
+  var 나이학년선택  = (depnum) => { // ex) 3세, 4세, 5세
+    let 각부서학년 = 부서.filter(e => e.dn === `${depnum}`)
+    let 각부서학년copy = 각부서학년.map(e => e.dan_ko);
+    let 각부서학년ko = [...new Set(각부서학년copy)];
+    return 각부서학년ko
   };
 
-  var 반이름숫자로변경 = (dep) => {
-    if (dep == '영유아2부') {return '1'} 
-    else if (dep == '영유아3부') {return '2'}
-    else if (dep == '유치2부') {return '3'}
-  };
+  var da_num_ft = (s1, s2) => { // ex) 영유아2부 : 1-1, 유치2부 : 3-1
+    let filter1 = 부서.filter(e => e.dn_ko === `${s1}`)
+    let filter2 = filter1.filter(e => e.dan_ko === `${s2}`)
+    let result_num = filter2[0].dan
+    return result_num
+  }
+
+  // 소그룹 넘버
+  var dag_num_ft_plus1 = (dep, age) => { // ex) 1-1-1, 1-2-1
+    let filter1 = 부서.filter(e => e.dn_ko === `${dep}`)
+    let filter2 = filter1.filter(e => e.dan_ko === `${age}`)
+    let result = filter2.length+1
+    return result
+  }
+
+  let [추가부서, set추가부서] = useState('')
+  let [추가학년나이, set추가학년나이] = useState('');  
+  let [추가소그룹, set추가소그룹] = useState('');
+
+  var dan_num_ft = da_num.split('');
+  let result_d_num = dan_num_ft[0]
+  let result_a_num = dan_num_ft[2]
+  let [result_g_numplus1, set_g_numplus1] = useState('');
 
   return (
     <div className='groupadd'>
@@ -46,33 +67,48 @@ function GroupAdd(props) {
       {/* groupadd 박스 */}
       <div className='groupadd_wrapper'>
           <div className='groupadd_addbox1'>
-
-            <div className='groupadd_select_div1'>
-            부서</div>
-            <div className='groupadd_select_div1'>
-            소그룹명</div>
-
+            <div className='groupadd_select_div1'>부서</div>
+            <div className='groupadd_select_div1'>학년/나이</div>
+            <div className='groupadd_select_div1'>소그룹명</div>
           </div>
 
+          {/* 부서선택 */}
           <div className='groupadd_addbox2'>
-          
             <div className='groupadd_select_div2'>
-              <select className='groupadd_select_dep'
+              <select className='groupadd_select_dep1'
                 onChange={(e)=>{ let copy = e.target.value; 
-                        set부서선택(copy)}}>
+                        set추가부서(copy); setshow(d_num_ft(copy))}}>
                 <option>부서</option>
                 {부서copy.map((a,i)=>{return (<option>{부서ko[i]}</option>)})}  
               </select>
             </div>
             
+            {
+              [1,2,3].map((a1,i1)=>{
+                return (
+                  <div className={classnames('groupadd_select_div3', {show: show === `${a1}`})}>
+                    <select className='groupadd_select_dep2'
+                      onChange={(e)=>{ let copy = e.target.value; set추가학년나이(copy)
+                            let copy2 = da_num_ft(`${추가부서}`, `${copy}`)
+                            let copy3 = dag_num_ft_plus1(`${추가부서}`, `${copy}`)
+                            setda_num(copy2); set_g_numplus1(copy3)
+                            }}>
+                            <option>선택</option>
+                            {나이학년선택(`dep${a1}`).map((a,i)=>{return (<option>{나이학년선택(`dep${a1}`)[i]}</option>)})} 
+                    </select>
+                  </div>
+                )
+              })
+            } 
+
             <div className='groupadd_select_div2'>
               <input className='groupadd_select_textinputbox'
               type="text" onChange={(e)=>{
-                set소그룹입력(e.target.value)
+                set추가소그룹(e.target.value)
               }}></input>
             </div>
                     
-          </div>
+          </div> 
 
 
           <div className='groupadd_button_div'>
@@ -80,18 +116,13 @@ function GroupAdd(props) {
               <button className='groupadd_input_button'
                 onClick={()=>{
                 axios.post('/groupadd', {
-                  dep : 반이름숫자로변경(부서선택),
-                  g_num : 반이름새로만들기(부서선택),
-                  new_gn : 소그룹입력
+                  d_num : result_d_num, a_num : result_a_num,
+                  g_numplus1 : result_g_numplus1, new_gn : 추가소그룹
                 }).then((결과)=>{
                   alert(결과.data);
-                  if (결과.data === "입력 성공!") {
-                    navigate('/nameadd')
-                  } 
+                  if (결과.data === "입력 성공!") { navigate('/nameadd')} 
                 })
-                .catch(()=>{
-                  console.log('실패함')
-                })
+                .catch(()=>{console.log('실패함')})
               }}>입력하기</button>
             </div>
 
@@ -103,51 +134,8 @@ function GroupAdd(props) {
               >뒤로가기</button>
             </div>
 
-            {/* <div>
-              <button className='groupadd_test_button' 
-                onClick={()=>{
-                  console.log('')
-                }}
-              >테스트</button>
-            </div> */}
-
           </div>
-        {/*       
-          <div>
-            <button className='addbutton2' 
-              onClick={()=>{
-                axios.get('/namemodify').then((결과)=>{
-                  console.log(결과.data)
-                  let copy = [...결과.data]
-                  setadd3(copy)
-                })
-              }}>데이터 불러오기</button>
-
-            <div className='addinpunt2'>
-              <input type="text" onChange={(e)=>{
-                setadd1(e.target.value)
-              }}></input>을</div>
-            <div className='addinpunt2'>
-            <input type="text" onChange={(e)=>{
-              setadd2(e.target.value)
-            }}></input>으로</div>
             
-            <button className='addbutton2' 
-              onClick={()=>{
-              axios.post('/groupadd', {
-                addname1 : add1,
-                addname2 : add2
-              }).then((결과)=>{})
-              .catch(()=>{
-                console.log('실패함')
-              })
-            }}>테이블 이름 수정하기</button>
-            <div>
-
-            </div>
-          </div> */}
-
-        
       </div>
     </div>
   );

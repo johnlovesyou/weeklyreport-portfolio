@@ -54,43 +54,20 @@ function Dep1(props) {
     let result = [...new Set(groupcopy)]
     return result
    } 
-   // '1-1'입력시 ['1년첫번째반', '1년두번째반', '1년세번째반']
-   // '1-2'입력시 ['2년첫번째반', '2년두번째반', '2년세번째반']
-   // '1-3'입력시 ['3년첫번째반', '3년두번째반', '3년세번째반']
-
+  
    var 각소그룹person_num = (da) => {
     let y_소그룹 = 부서.filter(e => e.an === `${da}`)
     let y_소그룹copy = y_소그룹.map(e => e.dgn)
     let result = [...new Set(y_소그룹copy)];
     return result
    }
-    // '1-1'입력시 ['1-1-1', '1-1-2']
-    // '1-2'입력시 ['1-2-1', '1-2-2']
-    // '1-3'입력시 ['1-3-1', '1-3-2']
 
-
-  // 각소그룹person
+   // 각소그룹person
   var 각소그룹person = (da, da_ko) => {
     let 소그룹person = 부서.filter(e => e.an === `${da}`)
     let result = 소그룹person.filter(e => e.dgn_ko === `${da_ko}`)
     return result
   }
-  // '1-1', '1년첫번째반' 입력시 
-  // 0: {id: 1, dn: 'dep1', dn_ko: '영유아2부', an: '1-1', dgn: '1-1-1', …}
-  // 1: {id: 2, dn: 'dep1', dn_ko: '영유아2부', an: '1-1', dgn: '1-1-1', …}
-  // 2: {id: 3, dn: 'dep1', dn_ko: '영유아2부', an: '1-1', dgn: '1-1-1', …}
-  // 3: {id: 4, dn: 'dep1', dn_ko: '영유아2부', an: '1-1', dgn: '1-1-1', …}
-  
-
-  // 각person
-  var personlist = (dgn) =>{
-    let person1 = 부서.filter(e => e.dgn === `${dgn}`) //부서별 수정할 것
-    let person2 = person1.map(e => e.n)
-    return person2
-  }  
-  // '1-1-1' 입력시 ['영유아부학생1', '영유아부학생2', '영유아부학생3', '영유아부학생4']
-  // '1-1-2' 입력시 ['영유아부학생5', '영유아부학생6', '영유아부학생7', '영유아부학생8']
-
 
   // classNames
   let [show, setshow] = useState(`${y_ko[0]}`)
@@ -123,7 +100,7 @@ function Dep1(props) {
                 }}> 출석입력 </button>   
             <button className='dep_homebutton' onClick={()=>{
                 navigate('/')
-                }}> home </button> 
+                }}> Home </button> 
           </div>
         </div>
 
@@ -165,6 +142,8 @@ function Dep1(props) {
           </select>
           <div className='dep_main_dateselect_text2'>← 날짜를 선택하세요</div>
         </div>
+        {/* 안내메시지 */}
+        <div className='dep_main_noitce_text'>-  ↓ 학생 선택 후 +버튼을 누르면 입력됩니다.  -</div>
         {/* 3) 현황버튼 */}
         <div className='dep_main_inputstate'>
           <div className='dep_main_inputstate_text1'>[ 날짜:  {date} ]</div>
@@ -191,7 +170,7 @@ function Dep1(props) {
           <button className='dep_main_lastbutton'
           onClick={()=>{
             navigate('/')
-          }}>확인 & home</button>
+          }}>확인 & Home</button>
         </div>
 
       </div>

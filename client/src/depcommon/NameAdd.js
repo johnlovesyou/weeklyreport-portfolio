@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import { React, useMemo, useState } from 'react';
-import { Routes, Route, useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux"
 import axios from 'axios';
 import classnames from 'classnames';
@@ -34,7 +34,6 @@ function NameAdd(props) {
   
   // 각부서 나이&학년 선택
   let [da_num, setda_num] = useState('');
-  let [dag_num, setdag_num] = useState('');
 
   var 나이학년선택  = (depnum) => { // ex) 3세, 4세, 5세
     let 각부서학년 = 부서.filter(e => e.dn === `${depnum}`)
@@ -50,21 +49,23 @@ function NameAdd(props) {
     return result_num
   }
 
-  var dag_num_ft = (depname) => { // ex) 영2부_2세 : 1-1-1, 영2부_3세 : 1-2-1
-    let filter1 = 부서.filter(e => e.dn_ko === `${depname}`)
-    let result_num1 = filter1[0].dan
-    let filter2 = 부서.filter(e => e.dan === `${result_num1}`)
-    let result_num2 = filter2[0].dgn
-    return result_num2
-  }
-
   // 각 부서 소그룹 선택
+  let [dag_num, setdag_num] = useState('');
+
   var 소그룹선택  = (g_num) => { // ex) 첫번째반, 두번째반
     let 소그룹 = 부서.filter(e => e.dan === `${g_num}`)
     let 소그룹copy = 소그룹.map(e => e.dgn_ko);
     let 소그룹ko = [...new Set(소그룹copy)];
     return 소그룹ko
   };
+
+  var dag_num_ft = (dep, age, group) => { // ex) 1-1-1, 1-2-1
+    let filter1 = 부서.filter(e => e.dn_ko === `${dep}`)
+    let filter2 = filter1.filter(e => e.dan_ko === `${age}`)
+    let filter3 = filter2.filter(e => e.dgn_ko === `${group}`)
+    let result = filter3[0].dgn
+    return result
+  }
 
   // 명단추가 박스
   let [추가부서, set추가부서] = useState('')
@@ -109,33 +110,23 @@ function NameAdd(props) {
               <div className='nameadd_content'>학년/나이</div>
               <div className='nameadd_content'>
                 <div className='nameadd_notice'>
-              
-                  
-                 
-                  {/* 영유아2부_나이&학년 */}
-                  <div className={classnames('nameadd_notice_wrapper', {show: show ==='1'})}>
-                    <select className='nameadd_select_age' 
-                      onChange={(e)=>{let copy = e.target.value; set추가학년나이(copy); 
-                                      let da_num = da_num_ft(`${추가부서}`, `${copy}`)
-                                      setda_num(da_num); setshow2(da_num);}}>
-                      <option>선택</option>
-                      {나이학년선택('dep1').map((a,i)=>{return (<option>{나이학년선택('dep1')[i]}</option>)})}  
-                    </select>
-                  </div>
-          
-                  {/* 유치2부_나이&학년 */}
-                  <div className={classnames('nameadd_notice_wrapper', {show: show ==='3'})}>
-                    <select className='nameadd_select_age'
-                      onChange={(e)=>{let copy = e.target.value; set추가학년나이(copy); 
-                                      let da_num = da_num_ft(`${추가부서}`, `${copy}`)
-                                      setda_num(da_num); setshow2(da_num);}}>
-                      <option>선택</option>
-                      {나이학년선택('dep3').map((a,i)=>{return (<option>{나이학년선택('dep3')[i]}</option>)})}  
-                    </select>
-                  </div>
-      
+                  {/* 각부서_나이&학년 선택*/}
+                  {
+                    [1,2,3].map((a1,i1)=>{
+                      return (
+                        <div className={classnames('nameadd_notice_wrapper', {show: show ===`${a1}`})}>
+                          <select className='nameadd_select_age' 
+                            onChange={(e)=>{let copy = e.target.value; set추가학년나이(copy); 
+                                            let da_num = da_num_ft(`${추가부서}`, `${copy}`)
+                                            setda_num(da_num); setshow2(da_num);}}>
+                            <option>선택</option>
+                            {나이학년선택(`dep${a1}`).map((a,i)=>{return (<option>{나이학년선택(`dep${a1}`)[i]}</option>)})}  
+                          </select>
+                        </div>
+                      )
+                    })
+                  }
                 </div> 
-
               </div>
             </div>
 
@@ -144,65 +135,25 @@ function NameAdd(props) {
               <div className='nameadd_content'>소그룹/반</div>
               <div className='nameadd_content'>
                 <div className='nameadd_notice'>
-
                   {/* 영유아2부_학년별_소그룹선택 */}
-                  <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='1-1'})}>
-                    <select className='nameadd_select_group' 
-                      onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>선택</option>
-                      {소그룹선택('1-1').map((a,i)=>{return (<option>{소그룹선택('1-1')[i]}</option>)})}  
-                    </select>
-                  </div>
-
-                  <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='1-2'})}>
-                    <select className='nameadd_select_group' 
-                      onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>선택</option>
-                      {소그룹선택('1-2').map((a,i)=>{return (<option>{소그룹선택('1-2')[i]}</option>)})}  
-                    </select>
-                  </div>
-
-                  <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='1-3'})}>
-                    <select className='nameadd_select_group' 
-                      onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>선택</option>
-                      {소그룹선택('1-3').map((a,i)=>{return (<option>{소그룹선택('1-3')[i]}</option>)})}  
-                    </select>
-                  </div>
-
-                  {/* 유치2부_학년별_소그룹선택 */}
-                  <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='3-1'})}>
-                    <select className='nameadd_select_group' 
-                      onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>선택</option>
-                      {소그룹선택('3-1').map((a,i)=>{return (<option>{소그룹선택('3-1')[i]}</option>)})}  
-                    </select>
-                  </div>
-
-                  <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='3-2'})}>
-                    <select className='nameadd_select_group' 
-                      onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>선택</option>
-                      {소그룹선택('3-2').map((a,i)=>{return (<option>{소그룹선택('3-2')[i]}</option>)})}  
-                    </select>
-                  </div>
-
-                  <div className={classnames('nameadd_notice_wrapper', {show: show2 ==='3-3'})}>
-                    <select className='nameadd_select_group' 
-                      onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)}}>
-                      <option>선택</option>
-                      {소그룹선택('3-3').map((a,i)=>{return (<option>{소그룹선택('3-3')[i]}</option>)})}  
-                    </select>
-                  </div>
-
-                </div>
+                  {
+                    ['1-1', '1-2', '1-3', '2-1', '2-2', '2-3', '3-1', '3-2', '3-3'].map((a1,i1)=>{
+                      return (
+                        <div className={classnames('nameadd_notice_wrapper', {show: show2 ===`${a1}`})}>
+                          <select className='nameadd_select_group' 
+                            onChange={(e)=>{let copy = e.target.value; set추가소그룹(copy)
+                              let copy2= dag_num_ft(`${추가부서}`, `${추가학년나이}`, `${copy}`)
+                              setdag_num(copy2)}}>
+                            <option>선택</option>
+                            {소그룹선택(`${a1}`).map((a,i)=>{return (<option>{소그룹선택(`${a1}`)[i]}</option>)})}  
+                          </select>
+                        </div>
+                      )
+                    })
+                  }
+                 </div>
               </div>
             </div>  
-
-
-            
-
-
         </div>
 
         
@@ -210,7 +161,6 @@ function NameAdd(props) {
         {/* 명단 추가 박스 */}
         <div className='nameadd_input'>
           <input type="text" className="input_none" onChange={(e)=>{setnewid(e.target.value)}}/>
-
           <div className='nameadd_inputbox'>
             <div className='text'>부서</div> <input type="text" className="input" value={추가부서} />
           </div>
@@ -228,10 +178,8 @@ function NameAdd(props) {
         <button className='nameadd_button' 
           onClick={()=>{
             axios.post('/nameadd', {
-            d_num : result_d_num,
-            a_num : result_a_num,
-            g_num : result_g_num,
-            new_n : 추가이름
+            d_num : result_d_num, a_num : result_a_num,
+            g_num : result_g_num, new_n : 추가이름
           }).then((결과)=>{
             alert(결과.data);
             if (결과.data === "입력 성공!") {
@@ -241,14 +189,8 @@ function NameAdd(props) {
           .catch(()=>{console.log('실패함')})
         }}>입력하기</button>
 
-        <button className='test_button' 
-          onClick={()=>{
-            console.log(부서)
-          }}
-        >테스트</button>
-
-      
-        <button className='home_button' onClick={()=>{ navigate('/') }} >홈 돌아가기</button> 
+     
+        <button className='home_button' onClick={()=>{ navigate('/') }} >Home</button> 
         <button className='groupadd_button' onClick={()=>{ navigate('/groupadd') }} >소그룹추가</button>
       
       </div>    

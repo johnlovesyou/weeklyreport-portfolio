@@ -5,7 +5,7 @@
   padding-top: 1px;
 }
 .groupadd_wrapper {
-  width: 500px;
+  width: 700px;
   height: 380px;
   margin: auto;
   background-color: #FFF;
@@ -16,7 +16,7 @@
 }
 .groupadd_addbox1,
 .groupadd_addbox2 {
-  width: 430px;
+  width: 640px;
   height: 100px;
   left: 0;
   right: 0;
@@ -24,7 +24,8 @@
   display: flex;
 }
 .groupadd_select_div1,
-.groupadd_select_div2 {
+.groupadd_select_div2,
+.groupadd_select_div3 {
   width: 200px;
   height: 80px;
   left: 0;
@@ -41,11 +42,19 @@
   font-size: 1.5rem;
   text-align: center;
 }
+.groupadd_select_div3{
+  display: none;
+}
+.show {
+  display: block;
+}
 
-.groupadd_select_dep {
+.groupadd_select_dep1,
+.groupadd_select_dep2 {
   width: 200px;
   height: 80px;
 }
+
 .groupadd_select_textinputbox {
   width: 200px;
   height: 80px;

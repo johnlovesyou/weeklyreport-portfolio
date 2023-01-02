@@ -1,9 +1,6 @@
 /*eslint-disable*/
-import { React, useState, useMemo }  from "react";
-import { useSelector } from "react-redux"
+import { React }  from "react";
 import "./Deptable.css"
-import axios from 'axios'
-import $ from 'jquery'
 
 function Deptable(props) {
 
@@ -93,10 +90,6 @@ function Deptable(props) {
           })
         }
       </div>
-
-
-     
-      
     </div>
     
   );

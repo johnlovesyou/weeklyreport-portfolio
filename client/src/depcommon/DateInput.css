@@ -80,6 +80,9 @@ input[type="checkbox"]:checked::after {
   width: 80px;
   height: 40px;
 }
+.dateinput_button:hover {
+  background-color: rgb(189, 188, 188);
+}
 
 /* 출석적용현황 */
 .dateinput_content4 {

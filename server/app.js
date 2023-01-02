@@ -64,6 +64,9 @@ app.get('/depmain', function(요청, 응답) {
   (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a1 on dmain.dan = d1_a1.an) union
   (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a2 on dmain.dan = d1_a2.an) union
   (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a3 on dmain.dan = d1_a3.an) union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d2_a1 on dmain.dan = d2_a1.an) union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d2_a2 on dmain.dan = d2_a2.an) union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d2_a3 on dmain.dan = d2_a3.an) union
   (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a1 on dmain.dan = d3_a1.an) union
   (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a2 on dmain.dan = d3_a2.an) union
   (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a3 on dmain.dan = d3_a3.an) order by dgn
@@ -156,7 +159,7 @@ app.post('/nameadd', function(요청, 응답){
   var g_num = 요청.body.g_num;
   var new_n = 요청.body.new_n;
   db.query(`
-  INSERT IGNORE INTO d${d_num}_a${a_num}_g${g_num} (n) VALUES ('${new_n}');
+  INSERT IGNORE INTO d${d_num}_a${a_num}_g${g_num} (gn, n) VALUES ('${d_num}-${a_num}-${g_num}', '${new_n}');
   `,function(error, result){
   if (error) {throw error}
   if (result.affectedRows > 0) {            
@@ -170,9 +173,13 @@ app.post('/nameadd', function(요청, 응답){
 
 // groupadd.post //
 app.post('/groupadd', function(요청, 응답){
-  var body = 요청.body
+  console.log(요청.body)
+  var d_num = 요청.body.d_num;
+  var a_num = 요청.body.a_num;
+  var g_numplus1 = 요청.body.g_numplus1;
+  var new_gn = 요청.body.new_gn;
   db.query(`
-  INSERT IGNORE INTO d${body.dep} (dgn, dgn_ko) values ('${body.g_num}', '${body.new_gn}')
+  INSERT IGNORE INTO d${d_num}_a${a_num} (dgn, dgn_ko) values ('${d_num}-${a_num}-${g_numplus1}', '${new_gn}')
   `,function(error, result){
   if (error) {throw error}
   if (result.affectedRows > 0) {            
