@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import { React, useMemo, useState } from 'react';
-import { useSelector } from "react-redux"
+// import { useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
 import './Dep.css'
 import axios from 'axios'
@@ -16,7 +16,7 @@ import BasicDatedata from '../depdatabasic/BasicDatedata'
 
 function Dep1(props) {
 
-  let state = useSelector((state) => { return state } )
+  // let state = useSelector((state) => { return state } )
   let navigate = useNavigate();
 
   useMemo(()=>{ return (
@@ -76,7 +76,9 @@ function Dep1(props) {
   }
 
   // 통계
-  let stats = 부서.filter(e => e.day1 === 1)
+  let stats1 = 부서.filter(e => e.an === '1-1')
+  let stats2 = 부서.filter(e => e.an === '1-2')
+  let stats3 = 부서.filter(e => e.an === '1-3')
 
 
   // classNames
@@ -103,7 +105,7 @@ function Dep1(props) {
               )})
             }
             <button className='dep_agebutton' onClick={()=>{
-                console.log(stats)
+                console.log('')
                 }}> test </button> 
           </div>
           <div className='dep_main_buttonright'>
@@ -136,7 +138,14 @@ function Dep1(props) {
           }
           {/* 통계 */}
           <div className='dep_main_stats'>
-            <Stats date={date_data} 부서={부서}></Stats>
+            {
+            [1,2,3].map((a1,i1)=>{
+              return ( 
+              <div className={classnames('dep_main_statsbox', {show: show === `${y_ko[i1]}`})}>
+                <Stats date={date_data} 나이={y_ko[i1]} 부서통계={부서.filter(e => e.an === `${y_num[i1]}`)}></Stats>
+              </div>
+              )})
+            }
           </div>
         </div>
 

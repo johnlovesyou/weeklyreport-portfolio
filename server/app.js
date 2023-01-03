@@ -156,8 +156,6 @@ app.post('/dateinput', function(요청, 응답){
   })
 });
 
-
-
 // nameadd.post //
 app.post('/nameadd', function(요청, 응답){
   console.log(요청.body)
@@ -198,8 +196,6 @@ app.post('/groupadd', function(요청, 응답){
   })
 });
 
-
-
 app.delete('/dep_delete', function(요청, 응답) {
   console.log(요청.body);
   if (요청.body.groupname == '1-1') {
@@ -214,9 +210,22 @@ app.delete('/dep_delete', function(요청, 응답) {
   }
 })
 
+app.delete('/delete', function(요청, 응답) {
+  db.query(`DELETE FROM result 
+  WHERE date='${요청.body.date}' AND title='${요청.body.title}' AND number='${요청.body.number}'`, 
+  function(error, result){
+    if(error){throw error;}
+  })
+})
 
 
+// report
 
+// depmain.get //
+app.get('/report', function(요청, 응답) {
+  db.query(`select * from info;
+  `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
+})
 
 
 app.get('/uplord', function(요청, 응답) {
@@ -238,13 +247,7 @@ app.post('/uplord', function(요청, 응답){
 });
 
 
-app.delete('/delete', function(요청, 응답) {
-  db.query(`DELETE FROM result 
-  WHERE date='${요청.body.date}' AND title='${요청.body.title}' AND number='${요청.body.number}'`, 
-  function(error, result){
-    if(error){throw error;}
-  })
-})
+
 
 
 

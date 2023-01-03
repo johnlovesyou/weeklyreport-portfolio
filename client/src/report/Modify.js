@@ -121,7 +121,7 @@ function Modify(props) {
 
   
         <button class="button2 savebutton" onClick={()=>{
-          navigate('/save')
+          navigate('/lastreport/result')
         }}>저장하기</button>
 
       </div>

@@ -86,6 +86,10 @@
   background-color: rgb(188, 254, 183);
 }
 
+.dep_main_statsbox {
+  margin-top: 1rem;
+  display: none;
+}
 
 
 

@@ -38,7 +38,7 @@ function Uplord () {
           <div className='delete'>삭제</div>
         </div>
       </div>
-        
+         
       <div className='repeatbox'>
         {
           storage.map((a, i)=>{
@@ -69,13 +69,12 @@ function Uplord () {
               </div>
             )
           })
-        }
+        } 
 
-      </div> 
+      </div>  
 
       <button class="button5 homeButton" onClick={()=>{
             navigate('/')
-            window.location.reload();
             }}>처음으로</button>
 
     </div>

@@ -13,8 +13,6 @@ function Result(props) {
   let 결석자관리 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
     21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
     41,42,43,44,45,46,47,48]
- 
-
 
   let arr = {
     부서: props.부서, 년: props.년, 월 : props.월, 일 : props.일, 째주 : props.째주, 
@@ -31,7 +29,7 @@ function Result(props) {
 
   return (
     <div class='result' id='result'>
-
+      
       <span className="result부서">{storage.부서}</span>
       <span className="result날짜 년">{storage.년}</span>
       <span className="result날짜 월">{storage.월}</span>
@@ -104,42 +102,37 @@ function Result(props) {
               <span className={"result결석자 결석_" + a}>{storage.결석[a]}</span>
           )
         })
-      }
+      } 
 
-      <button class="button3 captureButton" onClick={()=>{
+     <button class="button3 captureButton" onClick={()=>{
               html2canvas(document.querySelector('#result')).then((canvas)=>{ //document에서 body 부분을 스크린샷을 함.
                 drawImg(canvas.toDataURL('image/png')); //canvas 결과값을 drawImg 함수를 통해서 결과를 canvas 넘어줌.
                 saveAs(canvas.toDataURL(),`${props.year}년${props.month}월${props.day}일 ${props.부서}.png`); 
               }).catch(function (err) {
                 console.log(err);
               })
-
               axios.post('/uplord', {
                 date : storage.년 + '' + storage.월 + '' +  storage.일,
                 title : storage.부서,
                 number : storage.총계
               }).then((결과)=>{
-
-              })
-              .catch(()=>{
+              }).catch(()=>{
                 console.log('실패함')
               })
-
-              alert('업로드완료');
 
             }}>업로드&<br></br>
               캡처하기</button>
 
-      <button class="button3 uplordButton2" onClick={()=>{
-             navigate('/uplord')
+     <button class="button3 uplordButton2" onClick={()=>{
+             navigate('/lastreport/uplord')
             }}>출석현황보기</button>
 
       <button class="button3 modifyButton" onClick={()=>{
-            navigate('/modify')
+            navigate('/lastreport/modify')
             }}>수정하기</button>
 
       <button class="button3 newButton" onClick={()=>{
-              navigate('/')
+              navigate('/lastreport')
               window.location.reload();
             }}>다시작성하기</button>
 
