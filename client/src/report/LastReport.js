@@ -9,6 +9,7 @@ import Modify from './Modify';
 import Uplord from './Uplord';
 import Basicinfo from '../depdatabasic/Basicinfo';
 import Basicgroup from '../depdatabasic/Basicgroup';
+import BasicDatedata from '../depdatabasic/BasicDatedata'
 
 function LastReport(props) {
   
@@ -33,32 +34,29 @@ function LastReport(props) {
     })
   ) }, [])
 
+  let [dateseclet, setdateseclet] = useState(BasicDatedata)
+
+  // 통계숫자
   let [info, setinfo] = useState(Basicinfo)
   let [부서data, set부서data] = useState(Basicgroup)
 
   let y_numcopy = 부서data.map(e => e.an)
   let y_num = [...new Set(y_numcopy)] // ex) ['1-1', '1-2', '1-3']
   
-  let y1_main = 부서data.filter(e => e.an === `1-1`)
-  let y1_copy = y1_main.map(e => e.dgn_ko)
-  let y1name = [...new Set(y1_copy)] // '1년 첫번째반, 1년 두번째반
+  var an_gko_ft = (an) => { // 1-1 -> '1년 첫번째반, 1년 두번째반 / 1-2 -> '2년 첫번째반, 2년 두번째반
+    let y_main = 부서data.filter(e => e.an === `${an}`)
+    let y_copy = y_main.map(e => e.dgn_ko)
+    let result = [...new Set(y_copy)]
+    return result
+  }
+  
+  var stats_ft = (an, dgn_ko, day) => { 
+    let y_main = 부서data.filter(e => e.an === `${an}`)
+    let y1_copy2 = y_main.filter(e => e.dgn_ko === `${dgn_ko}`)
+    let result =  y1_copy2.filter(e => eval("e.day"+(day)) === '1').length
+    return result
+  }
 
-  let y2_main = 부서data.filter(e => e.an === `1-2`)
-  let y2_copy = y2_main.map(e => e.dgn_ko)
-  let y2name = [...new Set(y2_copy)] // '2년 첫번째반, 2년 두번째반
-
-  let y3_main = 부서data.filter(e => e.an === `1-3`)
-  let y3_copy = y3_main.map(e => e.dgn_ko)
-  let y3name = [...new Set(y3_copy)] // '3년 첫번째반, 3년 두번째반
-
-  // 통계숫자
-  let y1_main2_1 = 부서data.filter(e => e.an === `1-1`)
-  let y1_copy2_1 = y1_main2_1.filter(e => e.dgn_ko === `1년첫번째반`)
-  let result2_1 =  y1_copy2_1.filter(e => eval("e.day"+(1)) === '1').length
-
-  let y1_main2_2 = 부서data.filter(e => e.an === `1-1`)
-  let y1_copy2_2 = y1_main2_2.filter(e => e.dgn_ko === `1년두번째반`)
-  let result2_2 =  y1_copy2_2.filter(e => eval("e.day"+(1)) === '1').length
 
 
   let [부서, 부서변경] = useState('')
@@ -106,8 +104,10 @@ function LastReport(props) {
     <div className='LastReport'>
 
       <button onClick={()=>{
-            console.log(result)
+            console.log(stats_ft('1-1', `${an_gko_ft('1-1')[0]}`, '1'))
           }}>테스트</button>
+
+
     <Routes>
       <Route path="/" element={
 
@@ -119,11 +119,20 @@ function LastReport(props) {
               state.부서info.map((a, i)=>{
                 return (
                   <button className='button1' onClick={()=>{
+
+                    axios.get(`/dep/${i+1}`).then((결과)=>{ 
+                      console.log(결과.data)
+                      let copy = [...결과.data]
+                      set부서data(copy)
+                    })
+
                     부서변경(state.부서info[i].dep)
                     설교자변경(state.부서info[i].ministry)
                     반변경(state.각부서반[i])
                     학년변경(state.각부서학년[i])
                     재적변경(info[i].all_num)
+
+                    
                   }}>{state.부서info[i].dep}</button>
                 )
               })
@@ -178,7 +187,8 @@ function LastReport(props) {
               출석.map((a)=>{
                 return (
                   <input type="text" className={"출석1 출석1-" + a}
-                  onInput={(e)=>{let copy = {...출석1}; copy[a] = e.target.value; 출석1변경(copy)}}
+                    onInput={(e)=>{ let copy = {...출석1}; copy[a] = e.target.value; 출석1변경(copy)}}
+                    // defaultValue={}
                   ></input>      
                 )
               })
