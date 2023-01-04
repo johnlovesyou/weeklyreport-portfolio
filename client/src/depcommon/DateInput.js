@@ -6,6 +6,7 @@ import $ from 'jquery'
 
 function DateInput(props) {
 
+  let date = props.date_result
   var dgn_num_ft = props.group_num.split('');
   let result_d_num = dgn_num_ft[0]
   let result_a_num = dgn_num_ft[2]
@@ -55,7 +56,7 @@ function DateInput(props) {
             $("input:checkbox[id='checkbox']").prop("checked", false);
 
             axios.post('/dateinput', {
-              day : props.date_result, dep : result_d_num, age : result_a_num,
+              day : date, dep : result_d_num, age : result_a_num,
               group : result_g_num, person : addperson
             }).then((결과)=>{
               if (결과.data === "입력 성공!") {alert(addperson);} 
@@ -64,6 +65,10 @@ function DateInput(props) {
 
             }}>+</button>
           </div>
+
+          <button onClick={()=>{
+            console.log(date)
+          }}>test</button>
         
         </div>
 

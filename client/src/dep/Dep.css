@@ -1,9 +1,16 @@
 .dep_main {
-
 }
 .dep_main button:hover {
   cursor: pointer;
 }
+.dep_main_inner {
+  position: relative;
+  width: 1800px;  
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 /* 출석현황 */
 .dep_main_presentCondition {
 
@@ -11,7 +18,6 @@
 
 .dep_main_title {
   position: relative;
-  width: 1800px;
   height: 100px;
   display: flex;
   margin-bottom: 80px;

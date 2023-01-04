@@ -14,3 +14,5 @@ let Basicinfo = [
 ]
 
 export default Basicinfo;
+
+

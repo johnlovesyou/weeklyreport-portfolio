@@ -6,6 +6,9 @@
 }
 
 .nameadd_main_wrapper {
+  position: relative;
+  left: 0;
+  right: 0;
   width: 900px;
   height: 480px;
   margin: auto;

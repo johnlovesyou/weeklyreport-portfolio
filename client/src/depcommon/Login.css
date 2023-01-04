@@ -6,9 +6,12 @@
 }
 
 .login_main_wrapper {
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
   width: 500px;
   height: 380px;
-  margin: auto;
   padding: 30px;
   background-color: #FFF;
   margin-top: 200px;

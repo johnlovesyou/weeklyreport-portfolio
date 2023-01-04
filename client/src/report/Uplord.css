@@ -1,7 +1,11 @@
 div {
   text-align: center;
 }
-
+.uplord {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .inner {
   position: relative;
   left: 0;
@@ -22,13 +26,11 @@ div {
 
 .inner .titlebox {
   display: block;
-  width: 1700px;
   margin-bottom: 20px;
 }
 
 .inner .repeatbox {
   display: block;
-  width: 1700px;
 }
 
 .tablebox {

@@ -57,7 +57,20 @@ function LastReport(props) {
     return result
   }
 
-
+  var stats_ft2 = (an) => {
+    let num1 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[0]}`, '1')
+    let num2 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[1]}`, '1')
+    let num3 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[2]}`, '1')
+    let num4 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[3]}`, '1')
+    let num5 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[4]}`, '1')
+    let num6 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[5]}`, '1')
+    let num7 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[6]}`, '1')
+    let num8 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[7]}`, '1')
+    let num9 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[8]}`, '1')
+    let num10 = stats_ft(`${an}`, `${an_gko_ft(`${an}`)[9]}`, '1')
+    let result = {1:num1, 2:num2, 3:num3, 4:num4, 5:num5, 6:num6, 7:num7, 8:num8, 9:num9, 10:num10}
+    return result
+  }
 
   let [부서, 부서변경] = useState('')
   let [반, 반변경] = useState('')
@@ -87,24 +100,32 @@ function LastReport(props) {
   
   let [총계, 총계변경] = useState('')
   총계 = parseInt(출석1합계 || 0)+parseInt(출석2합계 || 0)+parseInt(출석3합계 || 0)
-
   let 출석 = [1,2,3,4,5,6,7,8,9,10]
-  let 결석자관리 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-    21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-    41,42,43,44,45,46,47,48]
   
-  let [결석, 결석변경] = useState({
-    1:'', 2:'', 3:'', 4:'', 5:'', 6:'', 7:'', 8:'', 9:'', 10:'', 11:'', 12:'', 13:'', 14:'', 15:'', 16:'',
-    17:'', 18:'', 19:'', 20:'', 21:'', 22:'', 23:'', 24:'', 25:'', 26:'', 27:'', 28:'', 29:'', 30:'', 31:'', 32:'',
-    33:'', 34:'', 35:'', 36:'', 37:'', 38:'', 39:'', 40:'', 41:'', 42:'', 43:'', 44:'', 45:'', 46:'', 47:'', 48:'',
-  })
+  // let 결석자관리 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+  //   21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+  //   41,42,43,44,45,46,47,48]
   
+  // let [결석, 결석변경] = useState({
+  //   1:'', 2:'', 3:'', 4:'', 5:'', 6:'', 7:'', 8:'', 9:'', 10:'', 11:'', 12:'', 13:'', 14:'', 15:'', 16:'',
+  //   17:'', 18:'', 19:'', 20:'', 21:'', 22:'', 23:'', 24:'', 25:'', 26:'', 27:'', 28:'', 29:'', 30:'', 31:'', 32:'',
+  //   33:'', 34:'', 35:'', 36:'', 37:'', 38:'', 39:'', 40:'', 41:'', 42:'', 43:'', 44:'', 45:'', 46:'', 47:'', 48:'',
+  // })
+  '1-1'
+  // 출석인원가져오기 함수
+  var stats = () => {
+    let copy1 = {...출석1}; copy1 = stats_ft2(`${y_num[0]}`); 출석1변경(copy1);
+    let copy2 = {...출석2}; copy2 = stats_ft2(`${y_num[1]}`); 출석2변경(copy2);
+    let copy3 = {...출석3}; copy3 = stats_ft2(`${y_num[2]}`); 출석3변경(copy3);
+  }
+  
+
 
   return (
     <div className='LastReport'>
 
       <button onClick={()=>{
-            console.log(stats_ft('1-1', `${an_gko_ft('1-1')[0]}`, '1'))
+          console.log( stats_ft(`1-1`, `1년첫번째반`, '1'))
           }}>테스트</button>
 
 
@@ -131,8 +152,8 @@ function LastReport(props) {
                     반변경(state.각부서반[i])
                     학년변경(state.각부서학년[i])
                     재적변경(info[i].all_num)
-
                     
+                    stats()
                   }}>{state.부서info[i].dep}</button>
                 )
               })
@@ -184,12 +205,12 @@ function LastReport(props) {
 
             {/* 출석현황 출석1 */}
             {
-              출석.map((a)=>{
+              출석.map((a, i)=>{
                 return (
                   <input type="text" className={"출석1 출석1-" + a}
+                    defaultValue={출석1[a]}
                     onInput={(e)=>{ let copy = {...출석1}; copy[a] = e.target.value; 출석1변경(copy)}}
-                    // defaultValue={}
-                  ></input>      
+                  >{}</input>      
                 )
               })
             }
@@ -200,6 +221,7 @@ function LastReport(props) {
               출석.map((a)=>{
                 return (
                   <input type="text" className={"출석2 출석2-" + a + " green"}
+                  defaultValue={출석2[a]}
                   onInput={(e)=>{let copy = {...출석2}; copy[a] = e.target.value; 출석2변경(copy)}}
                   ></input>      
                 )
@@ -212,6 +234,7 @@ function LastReport(props) {
               출석.map((a)=>{
                 return (
                   <input type="text" className={"출석3 출석3-" + a}
+                  defaultValue={출석3[a]}
                   onInput={(e)=>{let copy = {...출석3}; copy[a] = e.target.value; 출석3변경(copy)}}
                   ></input>      
                 )
@@ -223,7 +246,7 @@ function LastReport(props) {
             <input type="text" className="출석총원-계" value={총계}/>
 
             {/* 결석 */}
-            {
+            {/* {
               결석자관리.map((a)=>{
                 return (
                   <input type="text" className={"결석자 결석_" + a}
@@ -231,7 +254,7 @@ function LastReport(props) {
                   ></input>      
                 )
               })
-            }
+            } */}
 
             
           </div>
@@ -261,7 +284,7 @@ function LastReport(props) {
             출석1합계={출석1합계} 출석2합계={출석2합계} 출석3합계={출석3합계}
             출석1={출석1} 출석2={출석2} 출석3={출석3} 
             재적={재적} 총계={총계}
-            결석={결석}
+            // 결석={결석}
           ></Result>
         }/>
 
@@ -280,7 +303,7 @@ function LastReport(props) {
             출석1합계={출석1합계} 출석2합계={출석2합계} 출석3합계={출석3합계}
             출석1변경={출석1변경} 출석2변경={출석2변경} 출석3변경={출석3변경} 
             출석1={출석1} 출석2={출석2} 출석3={출석3} 
-            결석={결석} 결석변경={결석변경}
+            // 결석={결석} 결석변경={결석변경}
         ></Modify>}/> 
 
 
