@@ -37,9 +37,9 @@ function App() {
           <div className='App_main'>
             <div className='maintitle'>주일학교 출석 관리</div>
             <div className='dep_box'>
-              {info.map((a, i)=>{
+              { state.부서info.map((a, i)=>{
                   return (
-                    <div className='dep_list' onClick={()=>{navigate(`/dep/${i+1}`)}}><p>{info[i].dep}</p></div>           
+                    <div className='dep_list' onClick={()=>{navigate(`/dep/${i+1}`)}}><p>{ state.부서info[i].dep}</p></div>           
                   )
                 })}
             </div>

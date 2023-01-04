@@ -221,11 +221,19 @@ app.delete('/delete', function(요청, 응답) {
 
 // report
 
+
 // depmain.get //
 app.get('/report', function(요청, 응답) {
   db.query(`select * from info;
   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
+
+// app.get('/report', function(요청, 응답) {
+//   db.query(`
+//   SELECT n,day1 from d1_a1_g1 where day1=1;
+//   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
+// })
+
 
 
 app.get('/uplord', function(요청, 응답) {

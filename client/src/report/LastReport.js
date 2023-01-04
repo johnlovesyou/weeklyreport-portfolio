@@ -41,7 +41,25 @@ function LastReport(props) {
   
   let y1_main = 부서data.filter(e => e.an === `1-1`)
   let y1_copy = y1_main.map(e => e.dgn_ko)
-  let y1name = [...new Set(y1_copy)]
+  let y1name = [...new Set(y1_copy)] // '1년 첫번째반, 1년 두번째반
+
+  let y2_main = 부서data.filter(e => e.an === `1-2`)
+  let y2_copy = y2_main.map(e => e.dgn_ko)
+  let y2name = [...new Set(y2_copy)] // '2년 첫번째반, 2년 두번째반
+
+  let y3_main = 부서data.filter(e => e.an === `1-3`)
+  let y3_copy = y3_main.map(e => e.dgn_ko)
+  let y3name = [...new Set(y3_copy)] // '3년 첫번째반, 3년 두번째반
+
+  // 통계숫자
+  let y1_main2_1 = 부서data.filter(e => e.an === `1-1`)
+  let y1_copy2_1 = y1_main2_1.filter(e => e.dgn_ko === `1년첫번째반`)
+  let result2_1 =  y1_copy2_1.filter(e => eval("e.day"+(1)) === '1').length
+
+  let y1_main2_2 = 부서data.filter(e => e.an === `1-1`)
+  let y1_copy2_2 = y1_main2_2.filter(e => e.dgn_ko === `1년두번째반`)
+  let result2_2 =  y1_copy2_2.filter(e => eval("e.day"+(1)) === '1').length
+
 
   let [부서, 부서변경] = useState('')
   let [반, 반변경] = useState('')
@@ -88,26 +106,25 @@ function LastReport(props) {
     <div className='LastReport'>
 
       <button onClick={()=>{
-            console.log(y1name)
+            console.log(result)
           }}>테스트</button>
     <Routes>
       <Route path="/" element={
 
         <div className='main'>
         
-
           {/* 부서 초기화 버튼 */}
           <div className='buttons'>
             {
-              info.map((a, i)=>{
+              state.부서info.map((a, i)=>{
                 return (
                   <button className='button1' onClick={()=>{
-                    부서변경(info[i].dep)
-                    설교자변경(info[i].ministry)
+                    부서변경(state.부서info[i].dep)
+                    설교자변경(state.부서info[i].ministry)
                     반변경(state.각부서반[i])
                     학년변경(state.각부서학년[i])
                     재적변경(info[i].all_num)
-                  }}>{info[i].dep}</button>
+                  }}>{state.부서info[i].dep}</button>
                 )
               })
             }

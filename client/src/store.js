@@ -1,5 +1,21 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
+let 부서info = createSlice({
+  name : '부서info',
+  initialState : [
+    {id: 1, dep: '영유아2부', ministry: '우덕인전도사', all_num: '21'},
+    {id: 2, dep: '영유아3부', ministry: '우덕인전도사', all_num: '31'},
+    {id: 3, dep: '유치2부', ministry: '이송혜전도사', all_num: '34'}, 
+    {id: 4, dep: '유치3부', ministry: '이송혜전도사', all_num: '61'},
+    {id: 5, dep: '유년2부', ministry: '조효정전도사', all_num: '50'},
+    {id: 6, dep: '유년3부', ministry: '조효정전도사', all_num: '98'},
+    {id: 7, dep: '초등2부', ministry: '이효복목사', all_num: '79'},
+    {id: 8, dep: '초등3부', ministry: '이효복목사', all_num: '121'},
+    {id: 9, dep: '중등부', ministry: '김예찬강도사', all_num: '139'}, 
+    {id: 10, dep: '고등부', ministry: '이요한목사', all_num: '87'}
+  ]
+})  
+
 let 각부서학년 = createSlice({
   name : '각부서학년',
   initialState : [
@@ -42,6 +58,7 @@ let 각부서재적 = createSlice({
 
 export default configureStore({
   reducer: {
+    부서info : 부서info.reducer,
     각부서반 : 각부서반.reducer,
     각부서학년 : 각부서학년.reducer,
     각부서재적 : 각부서재적.reducer
