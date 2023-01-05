@@ -1,24 +1,9 @@
-.dateinput {
-  margin: 10px 20px;
-}
-.dateinput_wrapper {
- display: flex;
-}
 
 /* 소그룹명 */
-.dateinput_content1 {
-  width: 120px;
-  height: 30px;
-  position: relative;
-  top: 10px;
-}
+
 
 /* 학생선택박스 */
-.dateinput_content2 {
-  display: flex;
-  width: 1000px;
-  height: 40px;
-}
+
 .dateinput_namebox {
   position: relative;
   display: flex;

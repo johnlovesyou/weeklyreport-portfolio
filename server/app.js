@@ -68,53 +68,17 @@ app.get('/date', function(요청, 응답) {
 // depmain.get //
 app.get('/depmain', function(요청, 응답) {
   db.query(`
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a1 on dmain.dan = d1_a1.an) union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a2 on dmain.dan = d1_a2.an) union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1_a3 on dmain.dan = d1_a3.an) union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d2_a1 on dmain.dan = d2_a1.an) union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d2_a2 on dmain.dan = d2_a2.an) union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d2_a3 on dmain.dan = d2_a3.an) union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a1 on dmain.dan = d3_a1.an) union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a2 on dmain.dan = d3_a2.an) union
-  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a3 on dmain.dan = d3_a3.an) order by dgn
+  select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1 on dmain.dan = d1.an;
   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
 
+// (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a3 on dmain.dan = d3_a3.an) order by dgn
 
 // dep부서.get //
 app.get('/dep/:id', function(요청, 응답) {
   var id = 요청.params.id
   var command = `
-    (select * from d${id}_a1 inner join d${id}_a1_g1 on d${id}_a1.dgn = d${id}_a1_g1.gn) union
-    (select * from d${id}_a1 inner join d${id}_a1_g2 on d${id}_a1.dgn = d${id}_a1_g2.gn) union
-    (select * from d${id}_a1 inner join d${id}_a1_g3 on d${id}_a1.dgn = d${id}_a1_g3.gn) union
-    (select * from d${id}_a1 inner join d${id}_a1_g4 on d${id}_a1.dgn = d${id}_a1_g4.gn) union
-    (select * from d${id}_a1 inner join d${id}_a1_g5 on d${id}_a1.dgn = d${id}_a1_g5.gn) union
-    (select * from d${id}_a1 inner join d${id}_a1_g6 on d${id}_a1.dgn = d${id}_a1_g6.gn) union
-    (select * from d${id}_a1 inner join d${id}_a1_g7 on d${id}_a1.dgn = d${id}_a1_g7.gn) union
-    (select * from d${id}_a1 inner join d${id}_a1_g8 on d${id}_a1.dgn = d${id}_a1_g8.gn) union
-    (select * from d${id}_a1 inner join d${id}_a1_g9 on d${id}_a1.dgn = d${id}_a1_g9.gn) union
-    (select * from d${id}_a1 inner join d${id}_a1_g10 on d${id}_a1.dgn = d${id}_a1_g10.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g1 on d${id}_a2.dgn = d${id}_a2_g1.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g2 on d${id}_a2.dgn = d${id}_a2_g2.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g3 on d${id}_a2.dgn = d${id}_a2_g3.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g4 on d${id}_a2.dgn = d${id}_a2_g4.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g5 on d${id}_a2.dgn = d${id}_a2_g5.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g6 on d${id}_a2.dgn = d${id}_a2_g6.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g7 on d${id}_a2.dgn = d${id}_a2_g7.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g8 on d${id}_a2.dgn = d${id}_a2_g8.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g9 on d${id}_a2.dgn = d${id}_a2_g9.gn) union
-    (select * from d${id}_a2 inner join d${id}_a2_g10 on d${id}_a2.dgn = d${id}_a2_g10.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g1 on d${id}_a3.dgn = d${id}_a3_g1.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g2 on d${id}_a3.dgn = d${id}_a3_g2.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g3 on d${id}_a3.dgn = d${id}_a3_g3.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g4 on d${id}_a3.dgn = d${id}_a3_g4.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g5 on d${id}_a3.dgn = d${id}_a3_g5.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g6 on d${id}_a3.dgn = d${id}_a3_g6.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g7 on d${id}_a3.dgn = d${id}_a3_g7.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g8 on d${id}_a3.dgn = d${id}_a3_g8.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g9 on d${id}_a3.dgn = d${id}_a3_g9.gn) union
-    (select * from d${id}_a3 inner join d${id}_a3_g10 on d${id}_a3.dgn = d${id}_a3_g10.gn) order by dgn`
+    select * from d${id}_a1`
     db.query(command, function (error, result) {if (error) {console.log(error);} 응답.send(result) 
   });  
 })

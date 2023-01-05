@@ -55,35 +55,65 @@ function Dep1(props) {
 
   // 각소그룹
   var 각y_group = (da) => {
-    let y_group = 부서.filter(e => e.an === `${da}`)
-    let groupcopy = y_group.map(e => e.dgn_ko)
+    let y_group = 부서.filter(e => e.da === `${da}`)
+    let groupcopy = y_group.map(e => e.dag_ko)
     let result = [...new Set(groupcopy)]
     return result
    } 
   
    var 각소그룹person_num = (da) => {
-    let y_소그룹 = 부서.filter(e => e.an === `${da}`)
-    let y_소그룹copy = y_소그룹.map(e => e.dgn)
+    let y_소그룹 = 부서.filter(e => e.da === `${da}`)
+    let y_소그룹copy = y_소그룹.map(e => e.dag)
     let result = [...new Set(y_소그룹copy)];
     return result
    }
 
    // 각소그룹person
   var 각소그룹person = (da, da_ko) => {
-    let 소그룹person = 부서.filter(e => e.an === `${da}`)
-    let result = 소그룹person.filter(e => e.dgn_ko === `${da_ko}`)
+    let 소그룹person = 부서.filter(e => e.da === `${da}`)
+    let result = 소그룹person.filter(e => e.dag_ko === `${da_ko}`)
+    return result
+  }
+
+  var 각소그룹person_name = (da, da_ko) => {
+    let 소그룹person = 부서.filter(e => e.da === `${da}`)
+    let copy = 소그룹person.filter(e => e.dag_ko === `${da_ko}`)
+    let copy2 = copy.map(e => e.n)
+    let result = [...new Set(copy2)];
     return result
   }
 
   // 통계
-  let stats1 = 부서.filter(e => e.an === '1-1')
-  let stats2 = 부서.filter(e => e.an === '1-2')
-  let stats3 = 부서.filter(e => e.an === '1-3')
+  // let stats1 = 부서.filter(e => e.an === '1-1')
+  // let stats2 = 부서.filter(e => e.an === '1-2')
+  // let stats3 = 부서.filter(e => e.an === '1-3')
 
 
   // classNames
   let [show, setshow] = useState(`${y_ko[0]}`)
   let [color, setcolor] = useState('1')
+
+
+  const [addperson, setaddperson] = useState(['']);
+  const [addpersoncopy, setaddpersoncopy] = useState(['']);
+
+  // let date = props.date_result
+  // var dgn_num_ft = props.group_num.split('');
+  // let result_d_num = dgn_num_ft[0]
+  // let result_a_num = dgn_num_ft[2]
+  // let result_g_num = dgn_num_ft[4]
+
+  var addname = (name) => {
+    let result = addperson.concat(name);
+    setaddperson(result);
+  }
+
+  var removename = (name2) => {
+    let indexnum = addperson.indexOf(name2);
+    addperson.splice(indexnum, 1);
+    let result2 = addperson.sort();
+    setaddperson(result2);
+  }
 
   return (
     <div className='dep_main'>
@@ -104,6 +134,13 @@ function Dep1(props) {
                   }}> {y_ko[i]} </button>   
                 )})
               }
+
+
+                <button className='dep_testbutton' onClick={()=>{
+                  console.log(각소그룹person('1-1', '1년첫번째반'))
+                  }}> test </button> 
+
+
             </div>
             <div className='dep_main_buttonright'>
               <button className='dep_dateinputbutton' onClick={()=>{
@@ -180,19 +217,82 @@ function Dep1(props) {
             <div className='dep_main_inputstate_text2'>입력현황</div>
           </div>
           {/* 4) 출석입력 */}
-          <div className='dep_main_dateinputbox'>
-          {
-            [1,2,3].map((a1,i1)=>{
-              return (
-                <div className={classnames('dep_main_selectbox', {show: show === `${y_ko[i1]}`})}>
-                { 각y_group(`${y_num[i1]}`).map((a2,i2)=>{
-                  return ( <DateInput date_result={date_result}
-                                      group={각y_group(`${y_num[i1]}`)[i2]}  
-                                      group_num={각소그룹person_num(`${y_num[i1]}`)[i2]}
-                                      person={각소그룹person(`${y_num[i1]}`, `${a2}`)}></DateInput>)})}
+          <div className='dep_main_dateinput'>
+
+            <div className='dep_main_input_wrapper'>
+              {
+                각y_group('1-1').map((a, i)=>{
+                  return (
+                    <div className='dep_main_dateinput_box'>
+                      <div className='dep_main_dateinput_content1'>{각y_group('1-1')[i]}</div>
+                      <div className='dep_main_dateinput_content2'>
+                        {각소그룹person_name('1-1', `${각y_group('1-1')[i]}`).map((a2,i2)=>{
+                          return (
+                          <div className='dateinput_namebox'>
+                            <label className='dateinput_name_label'
+                              onClick={(e)=>{
+                                let copy = 각소그룹person_name('1-1', `${각y_group('1-1')[i]}`)[i2]
+                                if (e.target.checked === true) { addname(copy)} 
+                                else if (e.target.checked === false) { removename(copy)}
+                                }}>
+                              <div className='dateinput_name_name'>{각소그룹person_name('1-1', `${각y_group('1-1')[i]}`)[i2]}</div>
+                              <div><input id='checkbox' type='checkbox' className='dateinput_name_input'/></div>
+                            </label>
+                          </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )
+                })
+              }  
+            </div>
+
+                          
+              {/* 입력(+)버튼 */}
+              <div className='dateinput_content3'>  
+                <button className='dateinput_button'
+                onClick={()=>{ addperson.shift(); setaddperson(['']); setaddpersoncopy(addperson);
+                $("input:checkbox[id='checkbox']").prop("checked", false);
+
+                // axios.post('/dateinput', {
+                //   day : date, dep : result_d_num, age : result_a_num,
+                //   group : result_g_num, person : addperson
+                // }).then((결과)=>{
+                //   if (결과.data === "입력 성공!") {alert(addperson);} 
+                //   else {alert(결과.data);}})
+                // .catch(()=>{console.log('실패함')})
+
+                }}>+</button>
+              </div>
+
+                    
+              
+
+              {/* 출석적용현황 */}
+              {/* <div className='dateinput_content4'>
+                <div className='dateinput_state_box1'> 
+                  <div className='dateinput_state_text'></div> 
+                </div>
+                <div className='dateinput_state_box2'>
+                 {addpersoncopy.map((a,i)=>{return (
+                    <p className='dateinput_state_content'>{addpersoncopy[i]}</p>
+                )})}  
                 </div> 
-              )})
-          }
+              </div> */}
+
+            {/* {
+              [1,2,3].map((a1,i1)=>{
+                return (
+                  <div className={classnames('dep_main_selectbox', {show: show === `${y_ko[i1]}`})}>
+                  { 각y_group(`${y_num[i1]}`).map((a2,i2)=>{
+                    return ( <DateInput date_result={date_result}
+                                        group={각y_group(`${y_num[i1]}`)[i2]}  
+                                        group_num={각소그룹person_num(`${y_num[i1]}`)[i2]}
+                                        person={각소그룹person(`${y_num[i1]}`, `${a2}`)}></DateInput>)})}
+                  </div> 
+                )})
+            } */}
           </div>
           
           {/* 5) 적용버튼 */}
