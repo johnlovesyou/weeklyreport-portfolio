@@ -16,25 +16,25 @@ app.use(cors());
 
 
 // 클라우드 업로드용 (naver)
-// var mysql = require('mysql');
-// var db = mysql.createPool({
-//   host     : 'localhost',
-//   port     : '3306',
-//   user     : 'root',
-//   password : 'gksksla6985!',
-//   database : 'report'
-// });
-
-// 내 컴퓨터 용
 var mysql = require('mysql');
-const { request } = require('https');
-var db = mysql.createConnection({
+var db = mysql.createPool({
   host     : 'localhost',
+  port     : '3306',
   user     : 'root',
-  password : 'gksksla',
+  password : 'gksksla6985!',
   database : 'report'
 });
-db.connect();
+
+// 내 컴퓨터 용
+// var mysql = require('mysql');
+// const { request } = require('https');
+// var db = mysql.createConnection({
+//   host     : 'localhost',
+//   user     : 'root',
+//   password : 'gksksla',
+//   database : 'report'
+// });
+// db.connect();
 
 
 ///////////// 로그인
@@ -68,7 +68,26 @@ app.get('/date', function(요청, 응답) {
 // depmain.get //
 app.get('/depmain', function(요청, 응답) {
   db.query(`
-  select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1 on dmain.dan = d1.an;
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d1 on dmain.dan = d1.an)
+  union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d2 on dmain.dan = d2.an)
+  union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3 on dmain.dan = d3.an)
+  union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d4 on dmain.dan = d4.an)
+  union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d5 on dmain.dan = d5.an)
+  union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d6 on dmain.dan = d6.an)
+  union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d7 on dmain.dan = d7.an)
+  union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d8 on dmain.dan = d8.an)
+  union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d9 on dmain.dan = d9.an)
+  union
+  (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d10 on dmain.dan = d10.an)
+  order by dgn
   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
 
@@ -81,7 +100,7 @@ app.get('/dep/:id', function(요청, 응답) {
     union
     (select * from d${id}_a2) 
     union
-    (select * from d${id}_a3) 
+    (select * from d${id}_a3)
     order by dag
     `
     db.query(command, function (error, result) {if (error) {console.log(error);} 응답.send(result) 

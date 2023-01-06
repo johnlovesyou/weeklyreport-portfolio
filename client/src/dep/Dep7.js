@@ -13,13 +13,13 @@ import Deptable from '../depcommon/Deptable';
 import Stats from '../depcommon/Stats';
 import BasicDatedata from '../depdatabasic/BasicDatedata'
 
-function Dep1(props) {
+function Dep7(props) {
 
   // let state = useSelector((state) => { return state } )
   let navigate = useNavigate();
 
   useMemo(()=>{ return (
-    axios.get(`/date`).then((결과)=>{ 
+    axios.get(`/date`).then((결과)=>{
       console.log(결과.data)
       let copy = [...결과.data]
       setdate_data(copy)
@@ -29,7 +29,7 @@ function Dep1(props) {
       let copy = [...결과.data]
       set_dmain(copy)
     }),
-    axios.get(`/dep/1`).then((결과)=>{ //부서별 수정할 것
+    axios.get(`/dep/7`).then((결과)=>{ //부서별 수정할 것
       console.log(결과.data)
       let copy = [...결과.data]
       set부서(copy)
@@ -53,7 +53,7 @@ function Dep1(props) {
   
 
   // 각y_이름
-  let y_main = dmain.filter(e => e.dn === `dep1`) //부서별 수정할 것
+  let y_main = dmain.filter(e => e.dn === `dep7`) //부서별 수정할 것
   let y_copy = y_main.map(e => e.dan_ko)
   let y_ko = [...new Set(y_copy)] // ['1~2세', '3세', '4세']
   let y_copy2 = y_main.map(e => e.dan)
@@ -115,7 +115,7 @@ function Dep1(props) {
 
           <div className='dep_main_title'>
             {/* 1) 타이틀 */}           {/* 부서별 수정할 것 */}
-            <div className='dep_main_text'>영유아2부</div> 
+            <div className='dep_main_text'>초등2부</div> 
             {/* 2) 버튼 */}
             <div className='dep_main_buttonleft'>
               {
@@ -330,4 +330,4 @@ function Dep1(props) {
   );
 }
 
-export default Dep1;
+export default Dep7;
