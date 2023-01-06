@@ -72,17 +72,21 @@ app.get('/depmain', function(요청, 응답) {
   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
 
-// (select dmain.dn, dmain.dn_ko, dan, dan_ko, dgn, dgn_ko from dmain inner join d3_a3 on dmain.dan = d3_a3.an) order by dgn
-
 // dep부서.get //
 app.get('/dep/:id', function(요청, 응답) {
+  console.log(요청.params.id)
   var id = 요청.params.id
   var command = `
-    select * from d${id}_a1`
+    (select * from d${id}_a1) 
+    union
+    (select * from d${id}_a2) 
+    union
+    (select * from d${id}_a3) 
+    order by dag
+    `
     db.query(command, function (error, result) {if (error) {console.log(error);} 응답.send(result) 
   });  
 })
-
 
 // dateinput
 app.post('/dateinput', function(요청, 응답){
@@ -90,10 +94,9 @@ app.post('/dateinput', function(요청, 응답){
   var day = 요청.body.day
   var dep = 요청.body.dep
   var age = 요청.body.age
-  var group = 요청.body.group
   var person = 요청.body.person
   var command = `
-  update d${dep}_a${age}_g${group} set 
+  update d${dep}_a${age} set 
   day${day} = case when n='${person[0]}' then '1' else day${day} end, 
   day${day} = case when n='${person[1]}' then '1' else day${day} end, 
   day${day} = case when n='${person[2]}' then '1' else day${day} end,
@@ -104,10 +107,51 @@ app.post('/dateinput', function(요청, 응답){
   day${day} = case when n='${person[7]}' then '1' else day${day} end, 
   day${day} = case when n='${person[8]}' then '1' else day${day} end,
   day${day} = case when n='${person[9]}' then '1' else day${day} end, 
-  day${day} = case when n='${person[10]}' then '1' else day${day} end
+  day${day} = case when n='${person[10]}' then '1' else day${day} end,
+  day${day} = case when n='${person[11]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[12]}' then '1' else day${day} end,
+  day${day} = case when n='${person[13]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[14]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[15]}' then '1' else day${day} end,
+  day${day} = case when n='${person[16]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[17]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[18]}' then '1' else day${day} end,
+  day${day} = case when n='${person[19]}' then '1' else day${day} end, 
+  day${day} = case when n='${person[20]}' then '1' else day${day} end
   where n in ('${person[0]}', '${person[1]}', '${person[2]}', 
   '${person[3]}', '${person[4]}', '${person[5]}', '${person[6]}', 
-  '${person[7]}', '${person[8]}', '${person[9]}', '${person[10]}');
+  '${person[7]}', '${person[8]}', '${person[9]}', '${person[10]}',
+  '${person[11]}', '${person[12]}', 
+  '${person[13]}', '${person[14]}', '${person[15]}', '${person[16]}', 
+  '${person[17]}', '${person[18]}', '${person[19]}', '${person[20]}');
+  `
+  db.query(command, function(error, result){
+  if (error) {throw error}
+  if (result.affectedRows > 0) {            
+    응답.send("입력 성공!");
+    응답.end();
+  } else {
+    응답.send("중복된 이름이 있거나 입력 정보가 올바르지 않습니다.");  
+  }  
+  })
+});
+
+app.post('/datedelete', function(요청, 응답){
+  console.log(요청.body);
+  var day = 요청.body.day
+  var dep = 요청.body.dep
+  var age = 요청.body.age
+  var person = 요청.body.person
+  var command = `
+  update d${dep}_a${age} set 
+  day${day} = case when n='${person[0]}' then '0' else day${day} end, 
+  day${day} = case when n='${person[1]}' then '0' else day${day} end, 
+  day${day} = case when n='${person[2]}' then '0' else day${day} end,
+  day${day} = case when n='${person[3]}' then '0' else day${day} end, 
+  day${day} = case when n='${person[4]}' then '0' else day${day} end, 
+  day${day} = case when n='${person[5]}' then '0' else day${day} end
+  where n in ('${person[0]}', '${person[1]}', '${person[2]}', 
+  '${person[3]}', '${person[4]}', '${person[5]}');
   `
   db.query(command, function(error, result){
   if (error) {throw error}
@@ -126,18 +170,36 @@ app.post('/nameadd', function(요청, 응답){
   var d_num = 요청.body.d_num;
   var a_num = 요청.body.a_num;
   var g_num = 요청.body.g_num;
+  var g_ko = 요청.body.g_ko;
   var new_n = 요청.body.new_n;
   db.query(`
-  INSERT IGNORE INTO d${d_num}_a${a_num}_g${g_num} (gn, n) VALUES ('${d_num}-${a_num}-${g_num}', '${new_n}');
+  INSERT IGNORE INTO d${d_num}_a${a_num} (dag, dag_ko, n) VALUES ('${d_num}-${a_num}-${g_num}', '${g_ko}', '${new_n}');
   `,function(error, result){
   if (error) {throw error}
   if (result.affectedRows > 0) {            
-    응답.send("입력 성공!");
+    응답.send("입력되었습니다!");
     응답.end();
   } else {
     응답.send("중복된 이름이 있거나 입력 정보가 올바르지 않습니다.");  
-  }  
-  })
+  }})
+});
+
+// namedelete //
+app.post('/namedelete', function(요청, 응답){
+  console.log(요청.body)
+  var d_num = 요청.body.d_num;
+  var a_num = 요청.body.a_num;
+  var delete_n = 요청.body.delete_n;
+  db.query(`
+  delete from d${d_num}_a${a_num} where n = '${delete_n}';
+  `,function(error, result){
+  if (error) {throw error}
+  if (result.affectedRows > 0) {            
+    응답.send("삭제되었습니다!");
+    응답.end();
+  } else {
+    응답.send("이름이 없거나 정보가 올바르지 않습니다.");  
+  }})
 });
 
 // groupadd.post //
@@ -148,11 +210,11 @@ app.post('/groupadd', function(요청, 응답){
   var g_numplus1 = 요청.body.g_numplus1;
   var new_gn = 요청.body.new_gn;
   db.query(`
-  INSERT IGNORE INTO d${d_num}_a${a_num} (dgn, dgn_ko) values ('${d_num}-${a_num}-${g_numplus1}', '${new_gn}')
+  INSERT IGNORE INTO d${d_num} (an, dgn, dgn_ko) values ('${d_num}-${a_num}', '${d_num}-${a_num}-${g_numplus1}', '${new_gn}')
   `,function(error, result){
   if (error) {throw error}
   if (result.affectedRows > 0) {            
-    응답.send("입력 성공!");
+    응답.send("입력되었습니다!");
     응답.end();
   } else {
     응답.send("중복된 이름이 있거나 입력 정보가 올바르지 않습니다.");  
@@ -160,37 +222,35 @@ app.post('/groupadd', function(요청, 응답){
   })
 });
 
-app.delete('/dep_delete', function(요청, 응답) {
-  console.log(요청.body);
-  if (요청.body.groupname == '1-1') {
-    db.query(`DELETE FROM group1_1
-    WHERE id='${요청.body.id}' AND groupname='${요청.body.groupname}' AND name='${요청.body.name}'`,
-    function(error, result){if(error){throw error;}})
-  }
-  else if (요청.body.groupname == '1-2') {
-    db.query(`DELETE FROM group1_2
-    WHERE id='${요청.body.id}' AND groupname='${요청.body.groupname}' AND name='${요청.body.name}'`,
-    function(error, result){if(error){throw error;}})
-  }
-})
-
-app.delete('/delete', function(요청, 응답) {
-  db.query(`DELETE FROM result 
-  WHERE date='${요청.body.date}' AND title='${요청.body.title}' AND number='${요청.body.number}'`, 
-  function(error, result){
-    if(error){throw error;}
+// groupdelete //
+app.post('/groupdelete', function(요청, 응답){
+  console.log(요청.body)
+  var d_num = 요청.body.d_num;
+  var a_num = 요청.body.a_num;
+  var delete_gn = 요청.body.delete_gn;
+  db.query(`
+  delete from d${d_num} where an = '${d_num}-${a_num}' and dgn_ko = '${delete_gn}';
+  `,function(error, result){
+  if (error) {throw error}
+  if (result.affectedRows > 0) {            
+    응답.send("삭제되었습니다!");
+    응답.end();
+  } else {
+    응답.send("중복된 이름이 있거나 입력 정보가 올바르지 않습니다.");  
+  }  
   })
-})
+});
 
 
-// report
 
+
+// # report #
 
 // depmain.get //
-app.get('/report', function(요청, 응답) {
-  db.query(`select * from info;
-  `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
-})
+// app.get('/report', function(요청, 응답) {
+//   db.query(`select * from info;
+//   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
+// })
 
 // app.get('/report', function(요청, 응답) {
 //   db.query(`
@@ -198,51 +258,51 @@ app.get('/report', function(요청, 응답) {
 //   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 // })
 
+// result.부서별총계입력
+app.post('/uplord', function(요청, 응답){
+  console.log(요청.body)
+  var month = 요청.body.month;
+  var day = 요청.body.day;
+  var dep = 요청.body.dep;
+  var num = 요청.body.num;
+  db.query(`
+  UPDATE result SET ${dep} = ${num} WHERE month = '${month}' and day = '${day}';
+  `,function(error, result){
+  if (error) {throw error}
+  if (result.affectedRows > 0) {            
+    응답.send("업로드되었습니다!");
+    응답.end();
+  } else {
+    응답.send("입력 정보가 올바르지 않습니다.");
+  }  
+  })
+});
 
-
-app.get('/uplord', function(요청, 응답) {
+// result출력
+app.get('/lastresult', function(요청, 응답) {
   db.query('SELECT * FROM result', function (error, result) {
     if (error) {console.log(error);}
     응답.send(result)
   });
 })
 
-app.post('/uplord', function(요청, 응답){
-  console.log(요청.body);
-  db.query(`INSERT INTO result (date, title, number) VALUES(?, ?, ?)`,
-  [요청.body.date, 요청.body.title, 요청.body.number], 
-  function(error, result){
-  if(error){
-    throw error;
-  }
-  })
-});
-
-
-
-
-
-
-
-
-
-// addnamemodify //
-app.get('/addnamemodify', function(요청, 응답) { 
+// 합계출력
+app.get('/resultsum', function(요청, 응답) {
   db.query(`
-  show tables  
-  `
-  , function (error, result) {
+  SELECT sum(영유아2부)+sum(영유아3부)+sum(유치2부)+sum(유치3부)+sum(유년2부)
+  +sum(유년3부)+sum(초등2부)+sum(초등3부)+sum(중등부)+sum(고등부)
+  FROM result where month='1' and day='1';
+  `, function (error, result) {
     if (error) {console.log(error);}
     응답.send(result)
   });
 })
 
-app.post('/addnamemodify', function(요청, 응답){
-  console.log(요청.body);
-  db.query(`
-  ALTER TABLE ${요청.body.testname1} RENAME TO ${요청.body.testname2};`
-  , function(error, result){if(error){throw error}})
-});
+
+
+
+
+
 
 
 

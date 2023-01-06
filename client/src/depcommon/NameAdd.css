@@ -75,10 +75,6 @@
 }
 
 
-
-
-
-
 /* 추가 input 박스 */
 .nameadd_input {
   margin: auto;
@@ -115,12 +111,77 @@
 }
 
 
+.nameadd_button_box {
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
 .nameadd_button,
-.test_button,
+.namedelete_button,
 .home_button,
 .groupadd_button {
   width: 150px;
   height: 70px;
   margin: 10px;
   font-size: 1.3rem;
+  background-color: rgb(233, 233, 233);
+}
+
+.nameadd_button:hover,
+.namedelete_button:hover,
+.home_button:hover,
+.groupadd_button:hover {
+  background-color: rgb(172, 172, 172);
+}
+
+
+@media screen and (max-width : 600px) {
+  .nameadd {
+    height: 1550px;
+  }
+  .nameadd_main_wrapper {
+    width: 340px;
+    height: 1000px;
+    margin-top: 50px;
+  }
+  .nameadd_select_wrapper {
+    display: block;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .nameadd_content {
+    width: 250px;
+    height: 65px;
+    border-radius: 3px;
+  }
+  .nameadd_select_box1 {
+    display: none;
+  }
+
+  .nameadd_input {
+    display: block;
+    width: 200px;
+    height: 470px;
+    margin-top: 50px;
+  }  
+  .nameadd_inputbox {
+    margin-top: 15px;
+  }
+
+  .nameadd_button_box {
+    display: block;
+    margin-top: 110px;
+    width: 250px;
+    height: 420px;
+  }
+
+  .nameadd_button,
+  .namedelete_button,
+  .home_button,
+  .groupadd_button {
+    box-shadow: 5px 5px 10px 2px grey;
+  }
 }

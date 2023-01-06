@@ -5,11 +5,10 @@
   padding-top: 1px;
 }
 .groupadd_wrapper {
-  position: relative;
+  width: 700px;
+  height: 400px;
   left: 0;
   right: 0;
-  width: 700px;
-  height: 380px;
   margin: auto;
   background-color: #FFF;
   padding: 30px;
@@ -17,14 +16,17 @@
   border-radius: 7px;
   box-shadow: 15px 15px 20px 5px grey;
 }
+.groupadd_addselectbox {
+  display: flex;
+  margin-top: 30px;
+}
 .groupadd_addbox1,
-.groupadd_addbox2 {
-  width: 640px;
-  height: 100px;
+.groupadd_addbox2,
+.groupadd_addbox3 {
+  height: 200px;
   left: 0;
   right: 0;
   margin: auto;
-  display: flex;
 }
 .groupadd_select_div1,
 .groupadd_select_div2,
@@ -39,17 +41,15 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  margin-bottom: 5px;
 }
 
-.groupadd_select_div2 input {
+.groupadd_select_div3 input {
   font-size: 1.5rem;
   text-align: center;
 }
-.groupadd_select_div3{
+.noshow {
   display: none;
-}
-.show {
-  display: block;
 }
 
 .groupadd_select_dep1,
@@ -62,10 +62,13 @@
   width: 200px;
   height: 80px;
 }
+.show {
+  display: block;
+}
 
+/* 버튼 */
 
 .groupadd_button_div {
-  margin-top: 20px;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -77,7 +80,41 @@
   height: 80px;
   margin: 10px;
   font-size: 1.3rem;
+  background-color: rgb(233, 233, 233);
+}
+.groupadd_input_button:hover,
+.groupadd_back_button:hover,
+.groupadd_test_button:hover {
+  background-color: rgb(172, 172, 172);
 }
 
 
+@media screen and (max-width : 600px) {
+  .groupadd {
+    height: 1200px;
+    padding-top: 1px;
+  }
+  .groupadd_wrapper {
+    width: 340px;
+    height: 700px;
+    margin-top: 50px;
+  }
+  .groupadd_addselectbox {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 110px;
+  }
+
+
+  .groupadd_button_div {
+    display: block;
+ 
+  }
+  .groupadd_input_button,
+  .groupadd_back_button,
+  .groupadd_test_button {
+    box-shadow: 5px 5px 10px 2px grey;
+  }
+
+}
 

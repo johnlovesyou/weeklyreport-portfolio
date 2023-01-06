@@ -57,7 +57,7 @@
   right: 0;
   margin: auto;
   width: 60%;
-  height: 100%; 
+  height: 100px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,5 +79,50 @@
 @media screen and (max-width : 1500px) {
   .App_main {
     width: 1400px;
+  }
+}
+
+
+@media screen and (max-width : 1000px) { 
+  .App_main {
+    width: 900px;
+  }
+  .maintitle {
+    font-size: 60px;
+  }
+  .dep_box {
+    width: 650px;
+    margin-bottom: 30px;
+    
+  }
+  .dep_list {
+    margin: 15px;
+    width: 180px;
+    height: 130px;
+  }
+  .dep_buttonbox {
+    height: 200px;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width : 600px) { 
+  .App_main {
+    width: 400px;
+  }
+  .maintitle {
+    font-size: 40px;
+  }
+  .dep_box {
+    width: 370px;
+    margin-bottom: 30px;
+  }
+  .dep_list {
+    width: 150px;
+  }
+  .dep_buttonbox {
+    width: 350px;
+    height: 120px;
+    
   }
 }

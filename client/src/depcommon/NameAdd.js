@@ -162,37 +162,47 @@ function NameAdd(props) {
         <div className='nameadd_input'>
           <input type="text" className="input_none" onChange={(e)=>{setnewid(e.target.value)}}/>
           <div className='nameadd_inputbox'>
-            <div className='text'>부서</div> <input type="text" className="input" value={추가부서} />
+            <div className='text'>부서</div> <input type="text" className="input" placeholder='선택하세요' value={추가부서} />
           </div>
           <div className='nameadd_inputbox'>
-            <div className='text'>학년/나이</div> <input type="text" className="input" value={추가학년나이} />
+            <div className='text'>학년/나이</div> <input type="text" className="input" placeholder='선택하세요' value={추가학년나이} />
           </div>
           <div className='nameadd_inputbox'>
-            <div className='text'>소그룹/반</div> <input type="text" className="input" value={추가소그룹} />
+            <div className='text'>소그룹/반</div> <input type="text" className="input" placeholder='선택하세요' value={추가소그룹} />
           </div>
           <div className='nameadd_inputbox'>
             <div className='text'>이름</div> <input type="text" className="input" onChange={(e)=>{set추가이름(e.target.value)}}/>
           </div>   
         </div>
 
-        <button className='nameadd_button' 
-          onClick={()=>{
-            axios.post('/nameadd', {
-            d_num : result_d_num, a_num : result_a_num,
-            g_num : result_g_num, new_n : 추가이름
-          }).then((결과)=>{
-            alert(결과.data);
-            if (결과.data === "입력 성공!") {
-              navigate('/')
-            } 
-          })
-          .catch(()=>{console.log('실패함')})
-        }}>입력하기</button>
+        <div className='nameadd_button_box'>
+          <button className='nameadd_button' 
+            onClick={()=>{
+              axios.post('/nameadd', {
+              d_num : result_d_num, a_num : result_a_num,
+              g_num : result_g_num, g_ko : 추가소그룹, new_n : 추가이름
+            }).then((결과)=>{
+              alert(결과.data);  
+            })
+            .catch(()=>{console.log('실패함')})
+          }}>입력하기</button>
 
-     
-        <button className='home_button' onClick={()=>{ navigate('/') }} >Home</button> 
-        <button className='groupadd_button' onClick={()=>{ navigate('/groupadd') }} >소그룹추가</button>
-      
+          <button className='home_button' onClick={()=>{ navigate('/') }} >Home</button> 
+
+          <button className='namedelete_button' 
+            onClick={()=>{
+              axios.post('/namedelete', {
+              d_num : result_d_num, a_num : result_a_num,
+              delete_n : 추가이름
+            }).then((결과)=>{
+              alert(결과.data);
+            })
+            .catch(()=>{console.log('실패함')})
+          }}>삭제하기</button>
+
+          <button className='groupadd_button' onClick={()=>{ navigate('/groupadd') }} >소그룹관리</button>
+        </div>          
+
       </div>    
     </div>
   );

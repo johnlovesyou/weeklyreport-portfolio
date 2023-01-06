@@ -6,11 +6,10 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux"
 import axios from 'axios'
 import Dep1 from './dep/Dep1';
-import DateInput from './depcommon/DateInput';
 import NameAdd from './depcommon/NameAdd';
 import GroupAdd from './depcommon/GroupAdd';
 import Login from './depcommon/Login';
-import LastReport from './report/LastReport';
+import Report from './report/Report';
 import Basicinfo from './depdatabasic/Basicinfo'
 
 function App() {
@@ -43,7 +42,6 @@ function App() {
                   )
                 })}
             </div>
-
             <div className='dep_buttonbox'>
               <button className='link_lastreport' onClick={()=>{
               navigate('/lastreport')
@@ -51,6 +49,9 @@ function App() {
               <button className='link_login' onClick={()=>{
               navigate('/login')
               }}> 관리자 </button>  
+              <button className='link_login' onClick={()=>{
+              navigate('/lastreport/LastResult')
+              }}> 출석현황 </button>  
             </div>
           </div>
           }/>
@@ -60,11 +61,11 @@ function App() {
 
         <Route path="/dep/1" element={<Dep1></Dep1>}/>
         
-        <Route path="/dateinput" element={<DateInput></DateInput>}/>
+
         <Route path="/nameadd" element={<NameAdd></NameAdd>}/>
         <Route path="/groupadd" element={<GroupAdd></GroupAdd>}/>
 
-        <Route path="/lastreport/*" element={<LastReport></LastReport>}/>
+        <Route path="/lastreport/*" element={<Report></Report>}/>
 
       </Routes>
      

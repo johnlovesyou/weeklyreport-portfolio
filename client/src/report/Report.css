@@ -39,7 +39,39 @@
   font-weight: bold;
 }
 
+/* 날짜 */
+.report_dateselect_wrapper {
+  position: absolute;
+  top: 300px;
+  right: 200px;
+  display: flex;
+  height: 40px;
+  z-index: 9;
+}
+.report_dateselect_text1 {
+  width: 115px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(188, 254, 183);
+}
+.report_dateselect_box { 
+  width: 100px;
+  height: 100%;
+  font-size: 18px;
+}
+.report_dateselect_text2 {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
 
+
+/* // inputs */
 
 .inputs {
   position: absolute;

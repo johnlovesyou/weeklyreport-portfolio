@@ -64,17 +64,14 @@ function GroupAdd(props) {
   return (
     <div className='groupadd'>
 
+
       {/* groupadd 박스 */}
       <div className='groupadd_wrapper'>
+        
+        <div className='groupadd_addselectbox'>
           <div className='groupadd_addbox1'>
             <div className='groupadd_select_div1'>부서</div>
-            <div className='groupadd_select_div1'>학년/나이</div>
-            <div className='groupadd_select_div1'>소그룹명</div>
-          </div>
-
-          {/* 부서선택 */}
-          <div className='groupadd_addbox2'>
-            <div className='groupadd_select_div2'>
+            <div className='groupadd_select_div1'>
               <select className='groupadd_select_dep1'
                 onChange={(e)=>{ let copy = e.target.value; 
                         set추가부서(copy); setshow(d_num_ft(copy))}}>
@@ -82,11 +79,14 @@ function GroupAdd(props) {
                 {부서copy.map((a,i)=>{return (<option>{부서ko[i]}</option>)})}  
               </select>
             </div>
-            
+          </div>
+          
+          <div className='groupadd_addbox2'>
+            <div className='groupadd_select_div2'>학년/나이</div>
             {
               [1,2,3].map((a1,i1)=>{
                 return (
-                  <div className={classnames('groupadd_select_div3', {show: show === `${a1}`})}>
+                  <div className={classnames('groupadd_select_div2 noshow', {show: show === `${a1}`})}>
                     <select className='groupadd_select_dep2'
                       onChange={(e)=>{ let copy = e.target.value; set추가학년나이(copy)
                             let copy2 = da_num_ft(`${추가부서}`, `${copy}`)
@@ -100,42 +100,58 @@ function GroupAdd(props) {
                 )
               })
             } 
+          </div> 
 
-            <div className='groupadd_select_div2'>
+          <div className='groupadd_addbox3'>
+            <div className='groupadd_select_div3'>소그룹명</div>
+            <div className='groupadd_select_div3'>
               <input className='groupadd_select_textinputbox'
               type="text" onChange={(e)=>{
                 set추가소그룹(e.target.value)
               }}></input>
             </div>
-                    
-          </div> 
-
-
-          <div className='groupadd_button_div'>
-            <div>
-              <button className='groupadd_input_button'
-                onClick={()=>{
-                axios.post('/groupadd', {
-                  d_num : result_d_num, a_num : result_a_num,
-                  g_numplus1 : result_g_numplus1, new_gn : 추가소그룹
-                }).then((결과)=>{
-                  alert(결과.data);
-                  if (결과.data === "입력 성공!") { navigate('/nameadd')} 
-                })
-                .catch(()=>{console.log('실패함')})
-              }}>입력하기</button>
-            </div>
-
-            <div>
-              <button className='groupadd_back_button' 
-                onClick={()=>{
-                  navigate('/nameadd')
-                }}
-              >뒤로가기</button>
-            </div>
-
           </div>
-            
+
+        </div>
+
+        {/* 버튼 */}
+        <div className='groupadd_button_div'>
+          <div>
+            <button className='groupadd_input_button'
+              onClick={()=>{
+              axios.post('/groupadd', {
+                d_num : result_d_num, a_num : result_a_num,
+                g_numplus1 : result_g_numplus1, new_gn : 추가소그룹
+              }).then((결과)=>{
+                alert(결과.data);
+                if (결과.data === "입력되었습니다!") { navigate('/nameadd')} 
+              })
+              .catch(()=>{console.log('실패함')})
+            }}>입력하기</button>
+          </div>
+
+          <div>
+            <button className='groupadd_back_button' 
+              onClick={()=>{
+                navigate('/nameadd')
+              }}
+            >뒤로가기</button>
+          </div>
+
+          <div>
+            <button className='groupadd_input_button'
+              onClick={()=>{
+              axios.post('/groupdelete', {
+                d_num : result_d_num, a_num : result_a_num,
+                delete_gn : 추가소그룹
+              }).then((결과)=>{
+                alert(결과.data);
+                if (결과.data === "삭제되었습니다!") { navigate('/nameadd')} 
+              })
+              .catch(()=>{console.log('실패함')})
+            }}>삭제하기</button>
+          </div>
+        </div>
       </div>
     </div>
   );
