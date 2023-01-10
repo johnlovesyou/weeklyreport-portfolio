@@ -36,6 +36,11 @@ function Dep10(props) {
     })
   ) }, [])
 
+  // classNames
+  let [show, setshow] = useState(`고등부`) //부서별 수정할 것
+  let [color, setcolor] = useState('1')
+
+  // 데이터
   let [dmain, set_dmain] = useState(Basicdepmain)
   let [부서, set부서] = useState(Basicgroup)
   let [date_data, setdate_data] = useState(BasicDatedata)
@@ -102,9 +107,7 @@ function Dep10(props) {
   
   let [addperson, setaddperson] = useState(['']);
 
-  // classNames
-  let [show, setshow] = useState(`${y_ko[0]}`)
-  let [color, setcolor] = useState('1')
+  
   
 
   return (

@@ -36,6 +36,11 @@ function Dep2(props) {
     })
   ) }, [])
 
+  // classNames
+  let [show, setshow] = useState(`1~2세`) //부서별 수정할 것
+  let [color, setcolor] = useState('1')
+  
+  //  데이터
   let [dmain, set_dmain] = useState(Basicdepmain)
   let [부서, set부서] = useState(Basicgroup)
   let [date_data, setdate_data] = useState(BasicDatedata)
@@ -101,11 +106,6 @@ function Dep2(props) {
   let result_a_n = dgn_n_ft[2]
   
   let [addperson, setaddperson] = useState(['']);
-
-  // classNames
-  let [show, setshow] = useState(`${y_ko[0]}`)
-  let [color, setcolor] = useState('1')
-  
 
   return (
     <div className='dep_main'>

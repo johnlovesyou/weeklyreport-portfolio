@@ -36,6 +36,11 @@ function Dep3(props) {
     })
   ) }, [])
 
+  // classNames
+  let [show, setshow] = useState(`유치2부`) //부서별 수정할 것
+  let [color, setcolor] = useState('1')
+
+  // 데이터
   let [dmain, set_dmain] = useState(Basicdepmain)
   let [부서, set부서] = useState(Basicgroup)
   let [date_data, setdate_data] = useState(BasicDatedata)
@@ -48,8 +53,6 @@ function Dep3(props) {
     let result = copy[0].id
     return result
   }
-
- 
   
 
   // 각y_이름
@@ -102,9 +105,7 @@ function Dep3(props) {
   
   let [addperson, setaddperson] = useState(['']);
 
-  // classNames
-  let [show, setshow] = useState(`${y_ko[0]}`)
-  let [color, setcolor] = useState('1')
+
   
 
   return (
@@ -112,7 +113,7 @@ function Dep3(props) {
       <div className='dep_main_inner'>
         {/* 출석현황 */}
         <div className='dep_main_presentCondition'>
-
+          
           <div className='dep_main_title'>
             {/* 1) 타이틀 */}           {/* 부서별 수정할 것 */}
             <div className='dep_main_text'>유치2부</div> 

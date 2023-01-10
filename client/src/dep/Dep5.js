@@ -36,6 +36,11 @@ function Dep5(props) {
     })
   ) }, [])
 
+  // classNames
+  let [show, setshow] = useState('1학년'); //부서별 수정할 것
+  let [color, setcolor] = useState('1');
+
+  // 데이터
   let [dmain, set_dmain] = useState(Basicdepmain)
   let [부서, set부서] = useState(Basicgroup)
   let [date_data, setdate_data] = useState(BasicDatedata)
@@ -49,13 +54,11 @@ function Dep5(props) {
     return result
   }
 
- 
-  
-
   // 각y_이름
   let y_main = dmain.filter(e => e.dn === `dep5`) //부서별 수정할 것
   let y_copy = y_main.map(e => e.dan_ko)
   let y_ko = [...new Set(y_copy)] // ['1~2세', '3세', '4세']
+  let y_ko_copy = y_ko[0]
   let y_copy2 = y_main.map(e => e.dan)
   let y_n = [...new Set(y_copy2)] // ['1-1', '1-2', '1-3']
 
@@ -97,15 +100,11 @@ function Dep5(props) {
   }
   let [group_n, setgroup_n] = useState(`${y_n[0]}`)
   let dgn_n_ft = group_n.split('');
-  let result_d_n = dgn_n_ft[0]
-  let result_a_n = dgn_n_ft[2]
+  let result_d_n = dgn_n_ft[0];
+  let result_a_n = dgn_n_ft[2];
   
   let [addperson, setaddperson] = useState(['']);
 
-  // classNames
-  let [show, setshow] = useState(`${y_ko[0]}`)
-  let [color, setcolor] = useState('1')
-  
 
   return (
     <div className='dep_main'>

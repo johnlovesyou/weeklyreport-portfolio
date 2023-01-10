@@ -26,14 +26,6 @@ function App() {
   let state = useSelector((state) => { return state } )
   let navigate = useNavigate();
 
-  useMemo(()=>{ return (
-    axios.get(`/report`).then((결과)=>{ 
-      console.log(결과.data)
-      let copy = [...결과.data]
-      setinfo(copy)
-    })
-  ) }, [])
-
   let [info, setinfo] = useState(Basicinfo)
 
   return (
