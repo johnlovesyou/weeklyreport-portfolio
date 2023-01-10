@@ -18,7 +18,6 @@ let Basicdepmain = [
   {"dn": "dep3", "dn_ko": "유치2부", "dan": "3-3", "dan_ko": "7세", "dgn" : "3-3-1", "dgn_ko" : "7세첫번째반"},
   {"dn": "dep3", "dn_ko": "유치2부", "dan": "3-3", "dan_ko": "7세", "dgn" : "3-3-2", "dgn_ko" : "7세두번째반"},
 
-
 ]
 
 export default Basicdepmain;

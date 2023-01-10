@@ -145,6 +145,11 @@ function Dep9(props) {
             <div className='dep_main_present_date'>
               <Date date={date_data}></Date>
             </div>
+
+            <button onClick={()=>{
+              console.log(y_ko[0])
+            }}>test</button>
+
             {/* 출석현황 */}
             {
               [1,2,3].map((a1,i1)=>{

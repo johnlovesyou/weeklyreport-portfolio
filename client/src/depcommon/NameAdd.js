@@ -23,13 +23,13 @@ function NameAdd(props) {
   // 부서이름선택
   let 부서copy = 부서.map(e => e.dn_ko);
   let 부서ko = [...new Set(부서copy)];
-  let [d_num, setd_num] = useState('');
+  let [d_num, setd_num] = useState(''); // 영유아2부 -> 1, 유치2부 -> 3
   
   var d_num_ft = (num) => { // ex) 영유아2부 : 1, 유치2부 : 3
     let filter = 부서.filter(e => e.dn_ko === `${num}`)
-    let result_num = filter[0].dan
-    let result_num2 = result_num.split('');
-    return result_num2[0]
+    let copy = filter[0].dn
+    let result = copy.slice(3);
+    return result
   }
   
   // 각부서 나이&학년 선택
@@ -112,7 +112,7 @@ function NameAdd(props) {
                 <div className='nameadd_notice'>
                   {/* 각부서_나이&학년 선택*/}
                   {
-                    [1,2,3].map((a1,i1)=>{
+                    [1,2,3,4,5,6,7,8,9,10].map((a1,i1)=>{
                       return (
                         <div className={classnames('nameadd_notice_wrapper', {show: show ===`${a1}`})}>
                           <select className='nameadd_select_age' 
@@ -135,9 +135,12 @@ function NameAdd(props) {
               <div className='nameadd_content'>소그룹/반</div>
               <div className='nameadd_content'>
                 <div className='nameadd_notice'>
-                  {/* 영유아2부_학년별_소그룹선택 */}
+                  {/*학년별_소그룹선택 */}
                   {
-                    ['1-1', '1-2', '1-3', '2-1', '2-2', '2-3', '3-1', '3-2', '3-3'].map((a1,i1)=>{
+                    ['1-1', '1-2', '1-3', '2-1', '2-2', '2-3', '3-1', '3-2', '3-3',
+                    '4-1', '4-2', '4-3', '5-1', '5-2', '5-3', '6-1', '6-2', '6-3',
+                    '7-1', '7-2', '7-3', '8-1', '8-2', '8-3', '9-1', '9-2', '9-3', '10-1', '10-2', '10-3',
+                    ].map((a1,i1)=>{
                       return (
                         <div className={classnames('nameadd_notice_wrapper', {show: show2 ===`${a1}`})}>
                           <select className='nameadd_select_group' 

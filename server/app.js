@@ -16,25 +16,25 @@ app.use(cors());
 
 
 // 클라우드 업로드용 (naver)
-var mysql = require('mysql');
-var db = mysql.createPool({
-  host     : 'localhost',
-  port     : '3306',
-  user     : 'root',
-  password : 'gksksla6985!',
-  database : 'report'
-});
-
-// 내 컴퓨터 용
 // var mysql = require('mysql');
-// const { request } = require('https');
-// var db = mysql.createConnection({
+// var db = mysql.createPool({
 //   host     : 'localhost',
+//   port     : '3306',
 //   user     : 'root',
-//   password : 'gksksla',
+//   password : 'gksksla6985!',
 //   database : 'report'
 // });
-// db.connect();
+
+// 내 컴퓨터 용
+var mysql = require('mysql');
+const { request } = require('https');
+var db = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'gksksla',
+  database : 'report'
+});
+db.connect();
 
 
 ///////////// 로그인
@@ -90,6 +90,9 @@ app.get('/depmain', function(요청, 응답) {
   order by dgn
   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
+
+
+
 
 // dep부서.get //
 app.get('/dep/:id', function(요청, 응답) {

@@ -49,9 +49,6 @@ function Dep1(props) {
     return result
   }
 
- 
-  
-
   // 각y_이름
   let y_main = dmain.filter(e => e.dn === `dep1`) //부서별 수정할 것
   let y_copy = y_main.map(e => e.dan_ko)
