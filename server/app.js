@@ -65,6 +65,13 @@ app.get('/date', function(요청, 응답) {
   `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
 })
 
+// info //
+app.get('/info', function(요청, 응답) {
+  db.query(`
+  select * from info
+  `, function (error, result) {if(error) {console.log(error);} 응답.send(result) });
+})
+
 // depmain.get //
 app.get('/depmain', function(요청, 응답) {
   db.query(`

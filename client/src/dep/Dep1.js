@@ -275,7 +275,7 @@ function Dep1(props) {
               }}>다시하기</button>
             </div>
             
-            {/* 업로드버튼 */}
+            {/* 입력하기버튼 */}
             <div className='dateinput_content_button'>
               <button className='dateinput_uplordbutton'
               onClick={()=>{

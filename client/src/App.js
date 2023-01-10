@@ -19,7 +19,8 @@ import NameAdd from './depcommon/NameAdd';
 import GroupAdd from './depcommon/GroupAdd';
 import Login from './depcommon/Login';
 import Report from './report/Report';
-import Basicinfo from './depdatabasic/Basicinfo'
+import Basicinfo from './depdatabasic/Basicinfo';
+import Dep1_Report from './depreport/Dep1_Report';
 
 function App() {
 
@@ -71,6 +72,7 @@ function App() {
         <Route path="/dep/9" element={<Dep9></Dep9>}/>
         <Route path="/dep/10" element={<Dep10></Dep10>}/>
         
+        <Route path="/lastreport/1" element={<Dep1_Report></Dep1_Report>}/>
 
         <Route path="/nameadd" element={<NameAdd></NameAdd>}/>
         <Route path="/groupadd" element={<GroupAdd></GroupAdd>}/>

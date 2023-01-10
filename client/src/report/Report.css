@@ -162,7 +162,7 @@
 
 .출석-반 {
   font-size: 18px;
-  width: 57px;
+  width: 80px;
   height: 50px;
   position: absolute;
   background-color: #fcfbe6;
@@ -170,31 +170,34 @@
   top: 1075px;
 }
 .출석-반.출석-반1 {
-  left: 432px;
+  left: 435px;
 }
 .출석-반.출석-반2 {
-  left: 533px;
+  left: 538px;
 }
 .출석-반.출석-반3 {
-  left: 634px;
+  left: 638px;
 }
 .출석-반.출석-반4 {
-  left: 734px;
+  left: 739px;
 }
 .출석-반.출석-반5 {
-  left: 835px;
+  left: 840px;
 }
 .출석-반.출석-반6 {
-  left: 936px;
+  left: 941px;
 }
 .출석-반.출석-반7 {
-  left: 1037px;
+  left: 1042px;
 }
 .출석-반.출석-반8 {
-  left: 1138px;
+  left: 1142px;
 }
 .출석-반.출석-반9 {
-  left: 1239px;
+  left: 1243px;
+}
+.출석-반.출석-반10 {
+  left: 1345px;
 }
 
 

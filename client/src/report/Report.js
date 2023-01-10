@@ -19,11 +19,18 @@ function Report(props) {
       console.log(결과.data)
       let copy = [...결과.data]
       setdate_data(copy)
+    }),
+    axios.get(`/info`).then((결과)=>{ 
+      console.log(결과.data)
+      let copy = [...결과.data]
+      setinfo(copy)
     })
   ) }, [])
+  
   let [date_data, setdate_data] = useState(BasicDatedata)
   let [date_month, setdate_month] = useState('')
   let [date_day, setdate_day] = useState('')
+  let [info, setinfo] = useState('')
 
   var date_ft = (ds) => {
     let result = [];
@@ -102,7 +109,7 @@ function Report(props) {
                   <button className='button1' onClick={()=>{
 
                     부서변경(state.부서info[i].dep)
-                    설교자변경(state.부서info[i].ministry)
+                    설교자변경(info[i].ministry)
                     반변경(state.각부서반[i])
                     학년변경(state.각부서학년[i])
                     재적변경(info[i].all_num)
@@ -158,7 +165,7 @@ function Report(props) {
 
             {/* 출석현황 줄 - 반 */}
             {
-              [1,2,3,4,5,6,7,8,9].map((a)=>{
+              [1,2,3,4,5,6,7,8,9,10].map((a)=>{
                 return (
                   <input type="text" className={"출석-반 출석-반" + a}
                   defaultValue={반[a]}
