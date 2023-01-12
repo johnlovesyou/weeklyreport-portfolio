@@ -100,7 +100,7 @@ function Dep4(props) {
     let result = copy1[0].dan
     return result
   }
-  let [group_n, setgroup_n] = useState(`${y_n[0]}`)
+  let [group_n, setgroup_n] = useState(`4-1`)
   let dgn_n_ft = group_n.split('');
   let result_d_n = dgn_n_ft[0]
   let result_a_n = dgn_n_ft[2]

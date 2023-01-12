@@ -42,8 +42,8 @@
 /* 날짜 */
 .report_dateselect_wrapper {
   position: absolute;
-  top: 300px;
-  right: 200px;
+  top: 220px;
+  right: 620px;
   display: flex;
   height: 40px;
   z-index: 9;
@@ -62,11 +62,11 @@
   font-size: 18px;
 }
 .report_dateselect_text2 {
+  position: absolute;
+  top: 185px;
+  right: 620px;
   width: 200px;
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 18px;
 }
 
@@ -173,33 +173,35 @@
   left: 435px;
 }
 .출석-반.출석-반2 {
-  left: 538px;
+  left: 528px;
 }
 .출석-반.출석-반3 {
-  left: 638px;
+  left: 620px;
 }
 .출석-반.출석-반4 {
-  left: 739px;
+  left: 710px;
 }
 .출석-반.출석-반5 {
-  left: 840px;
+  left: 802px;
 }
 .출석-반.출석-반6 {
-  left: 941px;
+  left: 893px;
 }
 .출석-반.출석-반7 {
-  left: 1042px;
+  left: 984px;
 }
 .출석-반.출석-반8 {
-  left: 1142px;
+  left: 1076px;
 }
 .출석-반.출석-반9 {
-  left: 1243px;
+  left: 1167px;
 }
 .출석-반.출석-반10 {
-  left: 1345px;
+  left: 1258px;
 }
-
+.출석-반.출석-반11 {
+  left: 1350px;
+}
 
 .학년_세-1 {
   font-size: 20px;
@@ -235,33 +237,36 @@
   left: 435px;
 }
 .출석1.출석1-2 {
-  left: 537px;
+  left: 528px;
 }
 .출석1.출석1-3 {
-  left: 638px;
+  left: 620px;
 }
 .출석1.출석1-4 {
-  left: 739px;
+  left: 710px;
 }
 .출석1.출석1-5 {
-  left: 840px;
+  left: 802px;
 }
 .출석1.출석1-6 {
-  left: 941px;
+  left: 893px;
 }
 .출석1.출석1-7 {
-  left: 1042px;
+  left: 984px;
 }
 .출석1.출석1-8 {
-  left: 1143px;
+  left: 1076px;
 }
 .출석1.출석1-9 {
-  left: 1244px;
+  left: 1167px;
 }
 .출석1.출석1-10 {
-  left: 1345px;
+  left: 1258px;
 }
 .출석1.출석1-11 {
+  left: 1350px;
+}
+.출석1.출석1-12 {
   text-align: center;
   font-size: 25px;
   border-radius: 5px;
@@ -284,33 +289,36 @@
   left: 435px;
 }
 .출석2.출석2-2 {
-  left: 537px;
+  left: 528px;
 }
 .출석2.출석2-3 {
-  left: 638px;
+  left: 620px;
 }
 .출석2.출석2-4 {
-  left: 739px;
+  left: 710px;
 }
 .출석2.출석2-5 {
-  left: 840px;
+  left: 802px;
 }
 .출석2.출석2-6 {
-  left: 941px;
+  left: 893px;
 }
 .출석2.출석2-7 {
-  left: 1042px;
+  left: 984px;
 }
 .출석2.출석2-8 {
-  left: 1143px;
+  left: 1076px;
 }
 .출석2.출석2-9 {
-  left: 1244px;
+  left: 1167px;
 }
 .출석2.출석2-10 {
-  left: 1345px;
+  left: 1258px;
 }
 .출석2.출석2-11 {
+  left: 1350px;
+}
+.출석2.출석2-12 {
   left: 1446px;
   background-color: #e6e7e9;
   border: 1px solid #b7b8b9;
@@ -326,33 +334,36 @@
   left: 435px;
 }
 .출석3.출석3-2 {
-  left: 537px;
+  left: 528px;
 }
 .출석3.출석3-3 {
-  left: 638px;
+  left: 620px;
 }
 .출석3.출석3-4 {
-  left: 739px;
+  left: 710px;
 }
 .출석3.출석3-5 {
-  left: 840px;
+  left: 802px;
 }
 .출석3.출석3-6 {
-  left: 941px;
+  left: 893px;
 }
 .출석3.출석3-7 {
-  left: 1042px;
+  left: 984px;
 }
 .출석3.출석3-8 {
-  left: 1143px;
+  left: 1076px;
 }
 .출석3.출석3-9 {
-  left: 1244px;
+  left: 1167px;
 }
 .출석3.출석3-10 {
-  left: 1345px;
+  left: 1258px;
 }
 .출석3.출석3-11 {
+  left: 1350px;
+}
+.출석3.출석3-12 {
   left: 1446px;
   background-color: #e6e7e9;
   border: 1px solid #b7b8b9;
@@ -592,7 +603,7 @@
 .button2 {
   background-color: #fcfbe6;
   font-size: 20px;
-  width: 150px;
+  width: 120px;
   height: 80px;
   position: absolute;
   cursor: pointer;
@@ -604,18 +615,22 @@
   font-weight: bold;
 }
 
-.uplordButton1 {
+.resultButton {
   top: 180px;
-  left: 1350px;
+  left: 1390px;
 }
 
 .homeButton1 {
   top: 180px;
-  left: 1150px;
+  left: 1250px;
+}
+
+.statsButton{
+  top: 180px;
+  left: 1110px;
 }
 
 .savebutton {
   top: 2420px;
-  left: 1350px;
+  left: 1390px;
 }
-

@@ -43,7 +43,7 @@ function LastResult () {
 
       <div className='title'>
         <div className='title_text'>반야월교회 주일학교</div>
-        <div className='title_text'>출석현황</div>
+        <div className='title_text'>출석 전체통계</div>
       </div>
 
       <div className='depnamebox'>

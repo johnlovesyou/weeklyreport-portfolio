@@ -54,8 +54,6 @@ function Dep10(props) {
     return result
   }
 
- 
-  
 
   // 각y_이름
   let y_main = dmain.filter(e => e.dn === `dep10`) //부서별 수정할 것
@@ -100,10 +98,10 @@ function Dep10(props) {
     let result = copy1[0].dan
     return result
   }
-  let [group_n, setgroup_n] = useState(`${y_n[0]}`)
+  let [group_n, setgroup_n] = useState(`10-1`)
   let dgn_n_ft = group_n.split('');
-  let result_d_n = dgn_n_ft[0]
-  let result_a_n = dgn_n_ft[2]
+  let result_d_n = 10
+  let result_a_n = 1
   
   let [addperson, setaddperson] = useState(['']);
 
