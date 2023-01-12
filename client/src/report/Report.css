@@ -9,8 +9,9 @@
   right: 0;
   margin: auto;
   width: 1700px;
-  height: 2600px;
-  background-image: url('../images/YouthReport2.jpg');
+  height: 1450px;
+  background-image: url('../images/YouthReport2-1.jpg'); 
+  background-repeat: no-repeat;
 }
 
 .buttons {
@@ -38,6 +39,36 @@
   background-color: #6f6e5a;
   font-weight: bold;
 }
+
+.button2 {
+  background-color: #fcfbe6;
+  font-size: 20px;
+  width: 120px;
+  height: 80px;
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.5s;
+  z-index: 9;
+}
+
+.button2:hover {
+  background-color: #6f6e5a;
+  font-weight: bold;
+}
+
+.statsButton{
+  top: 130px;
+  left: 990px;
+}
+.homeButton1 {
+  top: 130px;
+  left: 1130px;
+}
+.resultButton {
+  top: 130px;
+  left: 1270px;
+}
+
 
 /* 날짜 */
 .report_dateselect_wrapper {
@@ -76,7 +107,7 @@
 .inputs {
   position: absolute;
   width: 1600px;
-  height: 2200px;
+  
   top: -6px;
   left: -8px;
 }
@@ -207,14 +238,14 @@
   font-size: 20px;
   top: 1145px;
   left: 280px;
-  width: 48px;
+  width: 105px;
   height: 50px;
 }
 .학년_세-2 {
   font-size: 20px;
   top: 1215px;
   left: 280px;
-  width: 48px;
+  width: 105px;
   height: 50px;
   background-color: #eaf5ef;
   border: 1px solid #a1b2a8;
@@ -223,7 +254,7 @@
   font-size: 20px;
   top: 1287px;
   left: 280px;
-  width: 48px;
+  width: 105px;
   height: 50px;
 }
 
@@ -391,246 +422,67 @@
 
 
 
-
-
+.결석자박스 {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: left;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 1700px;
+  background-image: url(../images/YouthReport2-2.jpg);
+  background-repeat: no-repeat;
+  padding-top: 96px;
+  padding-left: 264px;
+}
+.결석자박스리스트 {
+  width: 630px;
+  height: 80px;
+  background-image: url(../images/YouthReport2-3.jpg);
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 20px;
+  margin: 1px;
+}
+.소그룹 {
+  width: 130px;
+  height: 50px;
+}
 .결석자 {
+  margin-left: 130px;
+  width: 160px;
+  height: 50px;
+}
+.사유 {
+  margin-left: 310px;
   width: 290px;
   height: 50px;
 }
 
-.결석자.결석_1 {
-  left: 290px;
-  top: 1560px;
-}
-.결석자.결석_2 {
-  left: 597px;
-  top: 1560px;
-}
-.결석자.결석_3 {
-  left: 917px;
-  top: 1560px;
-}
-.결석자.결석_4 {
-  left: 1230px;
-  top: 1560px;
-}
 
-.결석자.결석_5 {
-  left: 290px;
-  top: 1631px;
-}
-.결석자.결석_6 {
-  left: 597px;
-  top: 1631px;
-}
-.결석자.결석_7 {
-  left: 917px;
-  top: 1631px;
-}
-.결석자.결석_8 {
-  left: 1230px;
-  top: 1631px;
-}
-
-.결석자.결석_9 {
-  left: 290px;
-  top: 1702px;
-}
-.결석자.결석_10 {
-  left: 597px;
-  top: 1702px;
-}
-.결석자.결석_11 {
-  left: 917px;
-  top: 1702px;
-}
-.결석자.결석_12 {
-  left: 1230px;
-  top: 1702px;
-}
-
-.결석자.결석_13 {
-  left: 290px;
-  top: 1773px;
-}
-.결석자.결석_14 {
-  left: 597px;
-  top: 1773px;
-}
-.결석자.결석_15 {
-  left: 917px;
-  top: 1773px;
-}
-.결석자.결석_16 {
-  left: 1230px;
-  top: 1773px;
-}
-
-
-.결석자.결석_17 {
-  left: 290px;
-  top: 1844px;
-}
-.결석자.결석_18 {
-  left: 597px;
-  top: 1844px;
-}
-.결석자.결석_19 {
-  left: 917px;
-  top: 1844px;
-}
-.결석자.결석_20 {
-  left: 1230px;
-  top: 1844px;
-}
-
-.결석자.결석_21 {
-  left: 290px;
-  top: 1915px;
-}
-.결석자.결석_22 {
-  left: 597px;
-  top: 1915px;
-}
-.결석자.결석_23 {
-  left: 917px;
-  top: 1915px;
-}
-.결석자.결석_24 {
-  left: 1230px;
-  top: 1915px;
-}
-
-.결석자.결석_25 {
-  left: 290px;
-  top: 1981px;
-}
-.결석자.결석_26 {
-  left: 597px;
-  top: 1981px;
-}
-.결석자.결석_27 {
-  left: 917px;
-  top: 1981px;
-}
-.결석자.결석_28 {
-  left: 1230px;
-  top: 1981px;
-}
-
-.결석자.결석_29 {
-  left: 290px;
-  top: 2050px;
-}
-.결석자.결석_30 {
-  left: 597px;
-  top: 2050px;
-}
-.결석자.결석_31 {
-  left: 917px;
-  top: 2050px;
-}
-.결석자.결석_32 {
-  left: 1230px;
-  top: 2050px;
-}
-.결석자.결석_33 {
-  left: 290px;
-  top: 2120px;
-}
-.결석자.결석_34 {
-  left: 597px;
-  top: 2120px;
-}
-.결석자.결석_35 {
-  left: 917px;
-  top: 2120px;
-}
-.결석자.결석_36 {
-  left: 1230px;
-  top: 2120px;
-}
-.결석자.결석_37 {
-  left: 290px;
-  top: 2190px;
-}
-.결석자.결석_38 {
-  left: 597px;
-  top: 2190px;
-}
-.결석자.결석_39 {
-  left: 917px;
-  top: 2190px;
-}
-.결석자.결석_40 {
-  left: 1230px;
-  top: 2190px;
-}
-.결석자.결석_41 {
-  left: 290px;
-  top: 2260px;
-}
-.결석자.결석_42 {
-  left: 597px;
-  top: 2260px;
-}
-.결석자.결석_43 {
-  left: 917px;
-  top: 2260px;
-}
-.결석자.결석_44 {
-  left: 1230px;
-  top: 2260px;
-}
-.결석자.결석_45 {
-  left: 290px;
-  top: 2330px;
-}
-.결석자.결석_46 {
-  left: 597px;
-  top: 2330px;
-}
-.결석자.결석_47 {
-  left: 917px;
-  top: 2330px;
-}
-.결석자.결석_48 {
-  left: 1230px;
-  top: 2330px;
-}
-
-
-.button2 {
-  background-color: #fcfbe6;
-  font-size: 20px;
-  width: 120px;
-  height: 80px;
-  position: absolute;
-  cursor: pointer;
-  transition: all 0.5s;
-}
-
-.button2:hover {
-  background-color: #6f6e5a;
-  font-weight: bold;
-}
-
-.resultButton {
-  top: 180px;
-  left: 1390px;
-}
-
-.homeButton1 {
-  top: 180px;
-  left: 1250px;
-}
-
-.statsButton{
-  top: 180px;
-  left: 1110px;
+.report_footer {
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: relative;
+  top:50px;
+  width: 1700px;
+  height: 300px;
+  background-image: url(../images/YouthReport2-4.jpg);
+  background-repeat: no-repeat;
 }
 
 .savebutton {
-  top: 2420px;
-  left: 1390px;
+  position: absolute;
+  top: 30px;
+  left: 1250px;
+}
+.homebutton2 {
+  position: absolute;
+  top: 30px;
+  left: 1400px;
 }

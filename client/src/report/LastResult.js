@@ -39,91 +39,93 @@ function LastResult () {
   }
 
   return (
-    <div className='lastresult'>
+    <div  className='lastresult_wrapper'>
+      <div className='lastresult'>
 
-      <div className='title'>
-        <div className='title_text'>반야월교회 주일학교</div>
-        <div className='title_text'>출석 전체통계</div>
-      </div>
+        <div className='title'>
+          <div className='title_text'>반야월교회 주일학교</div>
+          <div className='title_text'>출석 전체통계</div>
+        </div>
 
-      <div className='depnamebox'>
-        <div className='box'>날짜</div>
-        <div className='boxline'></div>
-        <div className='box'>영유아2부</div>
-        <div className='boxline'></div>
-        <div className='box'>영유아3부</div>
-        <div className='boxline'></div>
-        <div className='box'>유치2부</div>
-        <div className='boxline'></div>
-        <div className='box'>유치3부</div>
-        <div className='boxline'></div>
-        <div className='box'>유년2부</div>
-        <div className='boxline'></div>
-        <div className='box'>유년3부</div>
-        <div className='boxline'></div>
-        <div className='box'>초등2부</div>
-        <div className='boxline'></div>
-        <div className='box'>초등3부</div>
-        <div className='boxline'></div>
-        <div className='box'>중등부</div>
-        <div className='boxline'></div>
-        <div className='box'>고등부</div>
-        <div className='boxline'></div>
-        <div className='box'>합계</div>
-      </div>
-          
-      <div className='statsbox'>
-        {
-          result.map((a, i)=>{
-            return (
-              <div className='tablebox'>
-                <div className='box'>
-                  <div className='date'>{result[i].month}월</div>
-                  <div className='date'>{result[i].day}일</div>
-                </div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].영유아2부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].영유아3부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].유치2부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].유치3부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].유년2부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].유년3부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].초등2부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].초등3부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].중등부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result[i].고등부}</div>
-                <div className='boxline'></div>
-                <div className='box'>{result_sum_ft(i)}</div>
-              </div>
-            )
-          })
-        } 
-      </div>  
-
-        <button class="button5 homeButton" onClick={()=>{
-          
-          // axios.post('/resultsuminput', {
+        <div className='depnamebox'>
+          <div className='box'>날짜</div>
+          <div className='boxline'></div>
+          <div className='box'>영유아2부</div>
+          <div className='boxline'></div>
+          <div className='box'>영유아3부</div>
+          <div className='boxline'></div>
+          <div className='box'>유치2부</div>
+          <div className='boxline'></div>
+          <div className='box'>유치3부</div>
+          <div className='boxline'></div>
+          <div className='box'>유년2부</div>
+          <div className='boxline'></div>
+          <div className='box'>유년3부</div>
+          <div className='boxline'></div>
+          <div className='box'>초등2부</div>
+          <div className='boxline'></div>
+          <div className='box'>초등3부</div>
+          <div className='boxline'></div>
+          <div className='box'>중등부</div>
+          <div className='boxline'></div>
+          <div className='box'>고등부</div>
+          <div className='boxline'></div>
+          <div className='box'>합계</div>
+        </div>
             
-          //  }).then((결과)=>{
-          //  })
-          // .catch(()=>{console.log('실패함')})
+        <div className='statsbox'>
+          {
+            result.map((a, i)=>{
+              return (
+                <div className='tablebox'>
+                  <div className='box'>
+                    <div className='date'>{result[i].month}월</div>
+                    <div className='date'>{result[i].day}일</div>
+                  </div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].영유아2부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].영유아3부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].유치2부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].유치3부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].유년2부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].유년3부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].초등2부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].초등3부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].중등부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result[i].고등부}</div>
+                  <div className='boxline'></div>
+                  <div className='box'>{result_sum_ft(i)}</div>
+                </div>
+              )
+            })
+          } 
+        </div>  
 
-              navigate('/')
-              }}>처음으로</button>
-
-
+          <button class="button5 homeButton" onClick={()=>{
+            
+            // axios.post('/resultsuminput', {
               
+            //  }).then((결과)=>{
+            //  })
+            // .catch(()=>{console.log('실패함')})
 
-      
+                navigate('/')
+                }}>처음으로</button>
+
+
+                
+
+        
+      </div>
     </div>
   )
 

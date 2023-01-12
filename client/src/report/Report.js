@@ -9,7 +9,7 @@ import Modify from './Modify';
 import LastResult from './LastResult';
 import BasicDatedata from '../depdatabasic/BasicDatedata'
 import Basicgroup from '../depdatabasic/Basicgroup'
-
+import Basicgroup2 from '../depdatabasic/Basicgoup2'
 function Report(props) {
   
   let state = useSelector((state) => { return state } )
@@ -45,6 +45,7 @@ function Report(props) {
   let [부서data, set부서data] = useState(Basicgroup)
   let [depage, setdepage] = useState('')
   let [depgroup, setdepgroup] = useState('')
+  let [결석자명단, set결석자명단] = useState(Basicgroup2)
 
 
   var date_ft = (ds) => {
@@ -118,9 +119,10 @@ function Report(props) {
     return result3
   }
 
-
-
-
+  let 부서결석 = 부서data.filter(e => eval("e.day"+(`${date_id}`)) !== '1')
+  
+   
+  
   const date = new Date();
   const year = date.getFullYear();
 
@@ -158,12 +160,19 @@ function Report(props) {
   let [총계, 총계변경] = useState('')
   총계 = parseInt(출석1합계 || 0)+parseInt(출석2합계 || 0)+parseInt(출석3합계 || 0)
   let 출석 = [1,2,3,4,5,6,7,8,9,10,11]
-  
-  let 결석자관리 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-    21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-    41,42,43,44,45,46,47,48]
-  
-  let [결석, 결석변경] = useState({
+
+
+  let [소그룹, 소그룹변경] = useState({
+    1:'', 2:'', 3:'', 4:'', 5:'', 6:'', 7:'', 8:'', 9:'', 10:'', 11:'', 12:'', 13:'', 14:'', 15:'', 16:'',
+    17:'', 18:'', 19:'', 20:'', 21:'', 22:'', 23:'', 24:'', 25:'', 26:'', 27:'', 28:'', 29:'', 30:'', 31:'', 32:'',
+    33:'', 34:'', 35:'', 36:'', 37:'', 38:'', 39:'', 40:'', 41:'', 42:'', 43:'', 44:'', 45:'', 46:'', 47:'', 48:'',
+  })
+  let [결석자, 결석자변경] = useState({
+    1:'', 2:'', 3:'', 4:'', 5:'', 6:'', 7:'', 8:'', 9:'', 10:'', 11:'', 12:'', 13:'', 14:'', 15:'', 16:'',
+    17:'', 18:'', 19:'', 20:'', 21:'', 22:'', 23:'', 24:'', 25:'', 26:'', 27:'', 28:'', 29:'', 30:'', 31:'', 32:'',
+    33:'', 34:'', 35:'', 36:'', 37:'', 38:'', 39:'', 40:'', 41:'', 42:'', 43:'', 44:'', 45:'', 46:'', 47:'', 48:'',
+  })
+  let [사유, 사유변경] = useState({
     1:'', 2:'', 3:'', 4:'', 5:'', 6:'', 7:'', 8:'', 9:'', 10:'', 11:'', 12:'', 13:'', 14:'', 15:'', 16:'',
     17:'', 18:'', 19:'', 20:'', 21:'', 22:'', 23:'', 24:'', 25:'', 26:'', 27:'', 28:'', 29:'', 30:'', 31:'', 32:'',
     33:'', 34:'', 35:'', 36:'', 37:'', 38:'', 39:'', 40:'', 41:'', 42:'', 43:'', 44:'', 45:'', 46:'', 47:'', 48:'',
@@ -175,8 +184,10 @@ function Report(props) {
     <Routes>
       <Route path="/" element={
 
+      <div className='mainwrapper'>
+
         <div className='main'>
-        
+
           {/* 부서 초기화 버튼 */}
           <div className='buttons'>
             {
@@ -200,6 +211,28 @@ function Report(props) {
                 )
               })
             }
+
+            <button className="button2 resultButton" onClick={()=>{
+              navigate('/lastreport/lastresult')
+            }}>전체통계</button>
+
+            <button className="button2 homeButton1" onClick={()=>{
+              navigate('/')
+            }}>Home</button>
+
+            <button className="button2 statsButton" onClick={()=>{
+              if (date_day === '' || date_day === '') {
+                alert('날짜를 선택하세요')
+              } else if (부서 === '') {
+                alert('부서를 선택하세요')
+              } else {
+                소그룹별출석인원_출석1(`${y_n[0]}`)
+                소그룹별출석인원_출석2(`${y_n[1]}`)
+                소그룹별출석인원_출석3(`${y_n[2]}`)
+                set결석자명단(부서결석)
+              }
+            }}>출석현황<br></br>불러오기</button>
+
           </div>
 
           {/* 날짜선택 */}
@@ -304,22 +337,36 @@ function Report(props) {
 
             <input type="text" className="출석총원-재적" defaultValue={재적} />
             <input type="text" className="출석총원-계" value={총계}/>
-
-            {/* 결석 */}
-            {
-              결석자관리.map((a)=>{
-                return (
-                  <input type="text" className={"결석자 결석_" + a}
-                  onInput={(e)=>{let copy = {...결석}; copy[a] = e.target.value; 결석변경(copy)}}
-                  ></input>      
-                )
-              })
-            } 
-
-            
+          
           </div>
-
-          <button class="button2 savebutton" onClick={()=>{
+        </div>  
+          
+        {/* 결석 박스*/}
+        <div className='결석자박스'>
+        {
+          결석자명단.map((a, i)=>{
+            return (
+              <div className='결석자박스리스트'>
+                <input type="text" className="소그룹"
+                defaultValue={결석자명단[i].dag_ko}
+                onInput={(e)=>{let copy = {...소그룹}; copy[i+1] = e.target.value; 소그룹변경(copy)}}
+                ></input>
+                <input type="text" className="결석자"
+                defaultValue={결석자명단[i].n}
+                onInput={(e)=>{let copy = {...결석자}; copy[i+1] = e.target.value; 결석자변경(copy)}}
+                ></input>
+                <input type="text" className="사유"
+                onInput={(e)=>{let copy = {...사유}; copy[i+1] = e.target.value; 사유변경(copy)}}
+                ></input>
+              </div>
+            )
+          })
+        }
+        </div>
+            
+          
+        <div className='report_footer'>
+          <button className="button2 savebutton" onClick={()=>{
             if (date_day === '' || date_day === '') {
               alert('날짜를 선택하세요')
             } else {
@@ -327,28 +374,13 @@ function Report(props) {
             }
           }}>저장하기</button>
 
-          <button class="button2 resultButton" onClick={()=>{
-            navigate('/lastreport/lastresult')
-          }}>전체통계</button>
-
-          <button class="button2 homeButton1" onClick={()=>{
-            navigate('/')
-          }}>Home</button>
-
-          <button class="button2 statsButton" onClick={()=>{
-            if (date_day === '' || date_day === '') {
-              alert('날짜를 선택하세요')
-            } else if (부서 === '') {
-              alert('부서를 선택하세요')
-            } else {
-              소그룹별출석인원_출석1(`${y_n[0]}`)
-              소그룹별출석인원_출석2(`${y_n[1]}`)
-              소그룹별출석인원_출석3(`${y_n[2]}`)
-            }
-          }}>출석현황<br></br>불러오기</button>
-
+          <button className="button2 homebutton2" onClick={()=>{
+              navigate('/')
+          }}>home</button>
         </div>
-        }/>
+        
+      </div>
+      }/>
 
         <Route path="/result" element={
           <Result 
@@ -360,7 +392,8 @@ function Report(props) {
             출석1합계={출석1합계} 출석2합계={출석2합계} 출석3합계={출석3합계}
             출석1={출석1} 출석2={출석2} 출석3={출석3} 
             재적={재적} 총계={총계}
-            결석={결석}
+            소그룹={소그룹} 결석자={결석자} 사유={사유}
+            결석자명단={결석자명단}
           ></Result>
         }/>
 
@@ -377,8 +410,10 @@ function Report(props) {
             
             출석1합계={출석1합계} 출석2합계={출석2합계} 출석3합계={출석3합계}
             출석1변경={출석1변경} 출석2변경={출석2변경} 출석3변경={출석3변경} 
-            출석1={출석1} 출석2={출석2} 출석3={출석3} 
-            결석={결석} 결석변경={결석변경}
+            출석1={출석1} 출석2={출석2} 출석3={출석3}
+            소그룹={소그룹} 소그룹변경={소그룹변경}
+            결석자={결석자} 결석자변경={결석자변경} 사유={사유} 사유변경={사유변경}
+            결석자명단={결석자명단} 결석자명단변경={set결석자명단}
         ></Modify>}/> 
 
 

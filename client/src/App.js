@@ -43,10 +43,12 @@ function App() {
                   )
                 })}
             </div>
-            <div className='dep_buttonbox'>
+            <div className='dep_buttonbox1'>
               <button className='link_lastreport' onClick={()=>{
               navigate('/lastreport')
-              }}> 보고서 </button>
+              }}> 주일학교 보고서 작성하기 </button>
+            </div>
+            <div className='dep_buttonbox2'>
               <button className='link_login' onClick={()=>{
               navigate('/login')
               }}> 관리자 </button>  

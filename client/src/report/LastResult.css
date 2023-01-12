@@ -1,6 +1,14 @@
-.lastresult {
+.lastresult_wrapper {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+}
+.lastresult {
+  position: relative;
+  width: 1700px;
+  left: 0;
+  right: 0;
+  margin: auto;
+
 }
 .title {
   margin-top: 50px;
@@ -92,5 +100,6 @@
   font-weight: bold;
 }
 .homeButton {
-  left: 1250px;
+  top: 10px;
+  right: 270px;
  }
