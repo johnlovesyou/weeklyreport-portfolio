@@ -22,9 +22,9 @@ function GroupAdd(props) {
 
   var d_num_ft = (num) => { // ex) 영유아2부 : 1, 유치2부 : 3
     let filter = 부서.filter(e => e.dn_ko === `${num}`)
-    let result_num = filter[0].dan
-    let result_num2 = result_num.split('');
-    return result_num2[0]
+    let copy = filter[0].dn
+    let result = copy.slice(3);
+    return result
   }
 
   // 각부서 나이&학년 선택
@@ -84,7 +84,7 @@ function GroupAdd(props) {
           <div className='groupadd_addbox2'>
             <div className='groupadd_select_div2'>학년/나이</div>
             {
-              [1,2,3].map((a1,i1)=>{
+              [1,2,3,4,5,6,7,8,9,10].map((a1,i1)=>{
                 return (
                   <div className={classnames('groupadd_select_div2 noshow', {show: show === `${a1}`})}>
                     <select className='groupadd_select_dep2'

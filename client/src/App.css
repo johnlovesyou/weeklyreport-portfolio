@@ -83,7 +83,6 @@
   right: 0;
   margin: auto;
   width: 60%;
-  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,7 +149,6 @@
   .dep_buttonbox1 {
     width: 330px;
     height: 120px;
-
   }
   .link_lastreport {
     width: 320px;

@@ -186,6 +186,8 @@ function Report(props) {
 
       <div className='mainwrapper'>
 
+        <div className='main_notice'>주일학교 보고서는 <br></br>PC에서 작성바랍니다</div>
+
         <div className='main'>
 
           {/* 부서 초기화 버튼 */}
