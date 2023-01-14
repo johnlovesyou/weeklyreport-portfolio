@@ -93,11 +93,12 @@ function Dep10(props) {
   }
 
   // 출석 업로드
-  var group_n_ft = (dan_ko) => {
-    let copy1 = dmain.filter(e => e.dan_ko === `${dan_ko}`)
-    let result = copy1[0].dan
+  var group_n_ft = (da_ko) => {
+    let copy1 = 부서.filter(e => e.da_ko === `${da_ko}`)
+    let result = copy1[0].da
     return result
   }
+  
   let [group_n, setgroup_n] = useState(`10-1`)
   let dgn_n_ft = group_n.split('');
   let result_d_n = 10
@@ -124,7 +125,8 @@ function Dep10(props) {
                 return ( 
                   <button className={classnames('dep_agebutton', {buttoncolor: color === `${i+1}`})} 
                   onClick={()=>{setshow(`${y_ko[i]}`); setcolor(`${i+1}`)
-                  setgroup_n(group_n_ft(`${y_ko[i]}`))
+                  let copy = group_n_ft(`${y_ko[i]}`)
+                  setgroup_n(copy)
                   }}> {y_ko[i]} </button>   
                 )})
               }
