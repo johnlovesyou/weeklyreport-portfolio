@@ -108,7 +108,7 @@ function Result(props) {
               <div className='result결석자박스리스트'>
                 <span type="text" className="result소그룹">{storage.결석자명단[i].dag_ko}</span>
                 <span type="text" className="result결석자">{storage.결석자명단[i].n}</span>
-                <span type="text" className="result사유">{storage.사유[i]}</span>
+                <span type="text" className="result사유">{storage.사유[i+1]}</span>
               </div>
             )
           })
