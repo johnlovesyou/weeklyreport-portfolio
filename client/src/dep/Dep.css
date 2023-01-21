@@ -1,11 +1,12 @@
 .dep_main {
+  
 }
 .dep_main button:hover {
   cursor: pointer;
 }
 .dep_main_inner {
   position: relative;
-  width: 1800px;  
+  width: 100%;  
   left: 0;
   right: 0;
   margin: auto;
@@ -319,7 +320,6 @@ input[type="checkbox"]:checked::after {
 .dep_main_noitce_text4 {
   position: absolute;
   top: 120px;
-  
 }
 
 
@@ -379,9 +379,15 @@ input[type="checkbox"]:checked::after {
 }
 
 @media screen and (max-width : 600px) { 
+  .dep_main {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100vh;
+    overflow-x: hidden;
+  }
   /* 출석현황 */
   .dep_main_title {
-    width: 580px;
+    width: 100%;
     margin-bottom: 130px;
     padding: 1px;
   }
@@ -418,7 +424,7 @@ input[type="checkbox"]:checked::after {
   }
   /* 4) 출석입력 */
   .dep_main_dateinput {
-    width: 400px;
+    width: 350px;
   }
   .dep_main_input_wrapper {
     margin-top: 250px;
@@ -440,20 +446,34 @@ input[type="checkbox"]:checked::after {
   }
   /* 출석적용현황 */
   .dateinput_content_stats {
-    width: 400px;
+    width: 95%;
     margin: 15px;
   }
   /* 버튼 */
   .dateinput_content_button_box {
-    left: -30px;
+    left: -35px;
   }
   .dateinput_content_button {
-    width: 80px;
+    width: 75px;
     height: 60px;
+    margin: 2px;
   }
   .dateinput_content_button button {
     width: 75px;
     height: 60px;
     font-size: 14px;
   }
+  .dep_main_noitce_text3 {
+    top: 90px;
+    width: 350px;
+    line-height: 20px;
+    text-align: left;
+  }
+  .dep_main_noitce_text4 {
+    top: 150px;
+    width: 350px;
+    line-height: 20px;
+    text-align: left;
+  }
+  
 }

@@ -10,8 +10,6 @@
   margin: auto;
   padding: 1px;
   width: 1800px;
-  height: 1200px;
-
 }
 .maintitle {
   margin: 160px 0 32px 0;
@@ -101,15 +99,14 @@
 
 @media screen and (max-width : 1500px) {
   .App_main {
-    width: 1400px;
+    width: 100%;
   }
 }
 
 
 @media screen and (max-width : 1000px) { 
   .App_main {
-    width: 900px;
-    height: 1300px;
+    width: 100%;
   }
   .maintitle {
     font-size: 60px;
@@ -132,8 +129,7 @@
 
 @media screen and (max-width : 600px) { 
   .App_main {
-    width: 400px;
-    height: 1400px;
+    width: 100%;
   }
   .maintitle {
     margin: 80px 0 0 0;
