@@ -122,6 +122,7 @@ function Modify(props) {
                 onInput={(e)=>{let copy = {...props.결석자}; copy[i+1] = e.target.value; props.결석자변경(copy)}}
                 ></input>
                 <input type="text" className="사유"
+                defaultValue={storage.사유[i+1]}
                 onInput={(e)=>{let copy = {...props.사유}; copy[i+1] = e.target.value; props.사유변경(copy)}}
                 ></input>
               </div>
