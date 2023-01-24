@@ -194,7 +194,7 @@ function Dep3(props) {
             <div className='dep_main_dateselect_text2'>← 날짜를 선택하세요</div>
           </div>
           {/* 안내메시지 */}
-          <div className='dep_main_noitce_text1'>-  ↓ 학생 선택 후 +버튼을 누르면 입력됩니다.  -</div>
+          <div className='dep_main_noitce_text1'>-  ↓ 학생 선택 후 입력대기버튼을 눌러주세요.  -</div>
           {/* 3) 현황버튼 */}
           <div className='dep_main_inputstate'>
             <div className='dep_main_inputstate_text1'>[ 날짜:  {date} ]</div>
