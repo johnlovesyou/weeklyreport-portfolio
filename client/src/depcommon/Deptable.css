@@ -49,14 +49,13 @@
   position: relative;
   width: 1680px;
 }
-.dep_nametablebox .dep_nametableboxwrapper {
+.dep_nametablebox .dep_deptable_table {
   display: flex;
 }
 .dep_nametablebox .dep_deptable_date {
   width: calc(1580px / 53);
-  height: 30px;
+  height: 31px;
   border: 0.1px solid rgb(187, 187, 187);
-  vertical-align: middle;
 } 
 .dep_nametablebox .color_1 {
   background-color: rgb(198, 252, 213);

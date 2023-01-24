@@ -320,11 +320,11 @@ function Dep6(props) {
               }}>출석삭제</button>
             </div>
 
+          </div>
+
             {/* 안내메시지 */}
             <div className='dep_main_noitce_text3'>- '입력대기' 클릭 후 '입력하기/출석삭제' 버튼을 클릭해야 자료가 입력/삭제됩니다. -</div>
             <div className='dep_main_noitce_text4'>- 한번에 입력 가능한 인원 : 20명이하 / 삭제 : 5명 이하 -</div>
-          </div>
-
           
 
         </div>

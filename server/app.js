@@ -21,7 +21,7 @@ app.use(cors());
 //   host     : 'localhost',
 //   port     : '3306',
 //   user     : 'root',
-//   password : 'gksksla6985!',
+//   password : '',
 //   database : 'report'
 // });
 

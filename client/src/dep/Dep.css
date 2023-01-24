@@ -1,6 +1,9 @@
 .dep_main {
   
 }
+.dep_main button {
+  color: black;
+}
 .dep_main button:hover {
   cursor: pointer;
 }
@@ -103,7 +106,7 @@
 /* 출석기입 */
 .dep_main_presentInput {
   position: relative;
-  width: 1800px;
+  width: 100%;
 }
 /* 1) 타이틀 */
 /* 위와 동일 */
@@ -289,10 +292,9 @@ input[type="checkbox"]:checked::after {
 
 /* 버튼 */
 .dateinput_content_button_box {
-  height: 200px;
-  position: absolute;
-  right: -50px;
+  position: relative;
   display: flex;
+  justify-content: right;
   margin: 50px;
 }
 .dateinput_content_button {
@@ -312,23 +314,20 @@ input[type="checkbox"]:checked::after {
 }
 
 
-.dep_main_noitce_text3 {
-  position: absolute;
-  top: 90px;
-  
-}
+.dep_main_noitce_text3,
 .dep_main_noitce_text4 {
-  position: absolute;
-  top: 120px;
+  display: flex;
+  justify-content: right;
+  margin: 20px;
+  margin-right: 55px;
 }
-
 
 @media screen and (max-width : 1500px) { 
   .dep_main_title {
-    width: 1400px;
+    width: 100%;
   }
   .dep_main_presentInput {
-    width: 1400px;
+    width: 100%;
   }
   .dep_main_inputstate {
     top: 70px;
@@ -352,10 +351,10 @@ input[type="checkbox"]:checked::after {
 
 @media screen and (max-width : 1000px) { 
   .dep_main_title {
-    width: 950px;
+    width: 100%;
   }
   .dep_main_presentInput {
-    width: 950px;
+    width: 100%;
   }
   .dep_main_input_wrapper {
     margin-top: 150px;
@@ -382,7 +381,6 @@ input[type="checkbox"]:checked::after {
   .dep_main {
     width: 100%;
     max-width: 100%;
-    max-height: 100vh;
     overflow-x: hidden;
   }
   /* 출석현황 */
@@ -402,6 +400,7 @@ input[type="checkbox"]:checked::after {
 
   /* 출석기입 */
   .dep_main_presentInput{
+    width: 100%;
     padding: 1px;
   }
   /* 2) 날짜선택 */
@@ -424,7 +423,7 @@ input[type="checkbox"]:checked::after {
   }
   /* 4) 출석입력 */
   .dep_main_dateinput {
-    width: 350px;
+    width: 95%;
   }
   .dep_main_input_wrapper {
     margin-top: 250px;
@@ -449,9 +448,14 @@ input[type="checkbox"]:checked::after {
     width: 95%;
     margin: 15px;
   }
+  .dateinput_state_content_name {
+    width: 85px;
+    height: 40px;
+    font-size: 14px;
+  }
   /* 버튼 */
   .dateinput_content_button_box {
-    left: -35px;
+    justify-content: center;
   }
   .dateinput_content_button {
     width: 75px;
@@ -465,15 +469,15 @@ input[type="checkbox"]:checked::after {
   }
   .dep_main_noitce_text3 {
     top: 90px;
-    width: 350px;
-    line-height: 20px;
-    text-align: left;
+    width: 90%;
+    line-height: 25px;
+    text-align: center;
   }
   .dep_main_noitce_text4 {
     top: 150px;
-    width: 350px;
-    line-height: 20px;
-    text-align: left;
+    width: 90%;
+    line-height: 25px;
+    text-align: center;
   }
   
 }
