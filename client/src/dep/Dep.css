@@ -429,14 +429,14 @@ input[type="checkbox"]:checked::after {
     margin-top: 250px;
   }
   .dep_main_dateinput_content2 {
-    width: 400px;
+    width: 95vw;
   }
   .dep_main_dateinput_box {
     display: block;
     width: 60px;
   }
   .dateinput_name_label {
-    width: 70px;
+    width: 65px;
   }
    
   .dep_main_dateinput_dateinput_content1,
@@ -456,6 +456,8 @@ input[type="checkbox"]:checked::after {
   /* 버튼 */
   .dateinput_content_button_box {
     justify-content: center;
+    margin: 1px;
+    width: 95vw;
   }
   .dateinput_content_button {
     width: 75px;

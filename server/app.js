@@ -5,7 +5,7 @@ const app = express();
 app.use(express.static('build'));
 app.use(express.urlencoded({extended: true})) 
 
-app.listen(8001, ()=>{
+app.listen(80, ()=>{
   console.log('server is running')
 });
 
@@ -16,25 +16,25 @@ app.use(cors());
 
 
 // 클라우드 업로드용 (naver)
-// var mysql = require('mysql');
-// var db = mysql.createPool({
-//   host     : 'localhost',
-//   port     : '3306',
-//   user     : 'root',
-//   password : '',
-//   database : 'report'
-// });
-
-// 내 컴퓨터 용
 var mysql = require('mysql');
-const { request } = require('https');
-var db = mysql.createConnection({
+var db = mysql.createPool({
   host     : 'localhost',
+  port     : '3306',
   user     : 'root',
-  password : 'gksksla',
+  password : '',
   database : 'report'
 });
-db.connect();
+
+// 내 컴퓨터 용
+// var mysql = require('mysql');
+// const { request } = require('https');
+// var db = mysql.createConnection({
+//   host     : 'localhost',
+//   user     : 'root',
+//   password : 'gksksla',
+//   database : 'report'
+// });
+// db.connect();
 
 
 ///////////// 로그인
