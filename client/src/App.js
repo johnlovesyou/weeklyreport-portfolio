@@ -36,6 +36,7 @@ function App() {
           
           <div className='App_main'>
             <div className='maintitle'>주일학교 출석 관리</div>
+            <div className='maintitle2'>(현 페이지는 시범 사이트입니다.)</div>
             <div className='dep_box'>
               { state.부서info.map((a, i)=>{
                   return (

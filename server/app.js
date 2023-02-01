@@ -21,7 +21,7 @@ var db = mysql.createPool({
   host     : 'localhost',
   port     : '3306',
   user     : 'root',
-  password : '',
+  password : 'gksksla6985!',
   database : 'report'
 });
 
