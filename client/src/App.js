@@ -35,8 +35,7 @@ function App() {
         <Route path="/" element={
           
           <div className='App_main'>
-            <div className='maintitle'>주일학교 출석 관리</div>
-            <div className='maintitle2'>(현 페이지는 시범 사이트입니다.)</div>
+            <div className='maintitle'>출석 관리</div>
             <div className='dep_box'>
               { state.부서info.map((a, i)=>{
                   return (
@@ -47,7 +46,7 @@ function App() {
             <div className='dep_buttonbox1'>
               <button className='link_lastreport' onClick={()=>{
               navigate('/lastreport')
-              }}> 주일학교 보고서 작성하기 </button>
+              }}> 주간 보고서 작성하기 </button>
             </div>
             <div className='dep_buttonbox2'>
               <button className='link_login' onClick={()=>{

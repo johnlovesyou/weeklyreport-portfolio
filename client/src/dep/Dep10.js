@@ -37,7 +37,7 @@ function Dep10(props) {
   ) }, [])
 
   // classNames
-  let [show, setshow] = useState(`고등부`) //부서별 수정할 것
+  let [show, setshow] = useState(`1학년`) //부서별 수정할 것
   let [color, setcolor] = useState('1')
 
   // 데이터
@@ -117,7 +117,7 @@ function Dep10(props) {
 
           <div className='dep_main_title'>
             {/* 1) 타이틀 */}           {/* 부서별 수정할 것 */}
-            <div className='dep_main_text'>고등부</div> 
+            <div className='dep_main_text'>상희T-2반</div> 
             {/* 2) 버튼 */}
             <div className='dep_main_buttonleft'>
               {

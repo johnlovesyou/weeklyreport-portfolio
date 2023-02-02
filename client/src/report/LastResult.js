@@ -43,32 +43,32 @@ function LastResult () {
       <div className='lastresult'>
 
         <div className='title'>
-          <div className='title_text'>주일학교 전체</div>
+          <div className='title_text'>학원 전체</div>
           <div className='title_text'>출석 통계</div>
         </div>
 
         <div className='depnamebox'>
           <div className='box'>날짜</div>
           <div className='boxline'></div>
-          <div className='box'>영유아2부</div>
+          <div className='box'>상철T-1</div>
           <div className='boxline'></div>
-          <div className='box'>영유아3부</div>
+          <div className='box'>상철T-2</div>
           <div className='boxline'></div>
-          <div className='box'>유치2부</div>
+          <div className='box'>상철T-3</div>
           <div className='boxline'></div>
-          <div className='box'>유치3부</div>
+          <div className='box'>현우T-1</div>
           <div className='boxline'></div>
-          <div className='box'>유년2부</div>
+          <div className='box'>현우T-2</div>
           <div className='boxline'></div>
-          <div className='box'>유년3부</div>
+          <div className='box'>현우T-3</div>
           <div className='boxline'></div>
-          <div className='box'>초등2부</div>
+          <div className='box'>주은T-1</div>
           <div className='boxline'></div>
-          <div className='box'>초등3부</div>
+          <div className='box'>주은T-2</div>
           <div className='boxline'></div>
-          <div className='box'>중등부</div>
+          <div className='box'>상희T-1</div>
           <div className='boxline'></div>
-          <div className='box'>고등부</div>
+          <div className='box'>상희T-2</div>
           <div className='boxline'></div>
           <div className='box'>합계</div>
         </div>

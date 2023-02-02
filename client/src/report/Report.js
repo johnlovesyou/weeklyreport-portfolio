@@ -188,7 +188,7 @@ function Report(props) {
 
       <div className='mainwrapper'>
 
-        <div className='main_notice'>주일학교 보고서는 <br></br>PC에서 작성바랍니다</div>
+        <div className='main_notice'>주간 보고서는 <br></br>PC에서 작성바랍니다</div>
 
         <div className='main'>
 
@@ -283,9 +283,9 @@ function Report(props) {
             <input type="text" className="날짜 일" defaultValue={date_day} onChange={(e)=>{일변경(e.target.value)}}/>
             <input type="text" className="날짜 째주" onChange={(e)=>{째주변경(e.target.value)}}/>
 
-            <input type="text" className="예배 예배기도자" onChange={(e)=>{예배기도자변경(e.target.value)}}/>
+            <input type="text" className="예배 예배기도자" defaultValue={설교자} onChange={(e)=>{예배기도자변경(e.target.value)}}/>
             <input type="text" className="예배 설교본문" onChange={(e)=>{설교본문변경(e.target.value)}}/>
-            <input type="text" className="예배 설교자" defaultValue={설교자} onChange={(e)=>{설교자변경(e.target.value)}}/>
+            <input type="text" className="예배 설교자" onChange={(e)=>{설교자변경(e.target.value)}}/>
             <input type="text" className="예배 설교제목" onChange={(e)=>{설교제목변경(e.target.value)}}/>
 
             {/* 헌금 input */}

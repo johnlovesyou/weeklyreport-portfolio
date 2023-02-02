@@ -35,14 +35,14 @@
   margin: 20px;
   width: 200px;
   height: 150px;
-  background-color: rgb(194, 224, 204);
+  background-color: rgb(135, 193, 251);
   position: relative;
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 5px 5px 10px 2px grey;
 }
 .dep_list:hover {
-  background-color: rgb(107, 131, 119);
+  background-color: rgb(87, 171, 254);
 }
 .dep_list p {
   position: absolute;
@@ -71,14 +71,14 @@
   font-size: 24px;
   width: 500px;
   height: 100px;
-  background-color: rgb(194, 224, 204);
+  background-color: rgb(135, 193, 251);
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 5px 5px 10px 2px grey;
   border: 1px;
 }
 .link_lastreport:hover {
-  background-color: rgb(107, 131, 119);
+  background-color: rgb(87, 171, 254);
 }
 
 .dep_buttonbox2 {

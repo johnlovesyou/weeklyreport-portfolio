@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(210, 255, 208);
+  background-color: rgb(165, 214, 252);
   margin-top: 30px;
   font-size: 2rem;
 }
@@ -93,7 +93,7 @@
   width: 50%;
   height: 50%;
   border-radius: 8px;
-  background-color: rgb(188, 254, 183);
+  background-color: rgb(165, 214, 252);
 }
 
 .dep_main_statsbox {
@@ -125,7 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(188, 254, 183);
+  background-color: rgb(165, 214, 252);
 }
 .dep_main_dateselect_box { 
   width: 100px;
@@ -173,7 +173,7 @@
   justify-content: center;
   width: 130px;
   height: 50px;
-  background-color: rgb(188, 254, 183);
+  background-color: rgb(165, 214, 252);
 }
 
 
@@ -249,7 +249,7 @@ input[type="checkbox"]::after {
   width: 15%;
 } 
 input[type="checkbox"]:checked {
-  background: #1b673c;
+  background-color: rgb(117, 194, 253);
 }
 input[type="checkbox"]:checked::after {
   display: block;
@@ -283,7 +283,7 @@ input[type="checkbox"]:checked::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(205, 253, 201);
+  background-color: rgb(165, 214, 252);
 }
 .showflex {
   display: block;

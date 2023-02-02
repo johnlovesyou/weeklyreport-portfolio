@@ -118,7 +118,7 @@ function Dep8(props) {
 
           <div className='dep_main_title'>
             {/* 1) 타이틀 */}           {/* 부서별 수정할 것 */}
-            <div className='dep_main_text'>초등3부</div> 
+            <div className='dep_main_text'>주은T-2반</div> 
             {/* 2) 버튼 */}
             <div className='dep_main_buttonleft'>
               {
